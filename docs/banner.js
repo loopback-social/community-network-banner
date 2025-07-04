@@ -1,39 +1,37 @@
-/* banner.js – 2025-07-04 */
+/* banner.js – 2025-07-04 (thin text + no horizontal scroll) */
 (function () {
-  /* 중복 삽입 방지 */
   if (window.__GLOBAL_TOP_BANNER__) return;
   window.__GLOBAL_TOP_BANNER__ = true;
 
-  /* ───────────── 설정 ───────────── */
+  /* ── 설정 ───────────────────────────── */
   const HEIGHT = 50;                    // px
   const TITLE  = "커뮤니티 네트워크";
   const BTN_TX = "사이트 목록";
 
-  /* 커뮤니티 목록 (순서 무관) */
   const communities = [
     { name: "닷넷데브", url: "https://forum.dotnetdev.kr/" },
     { name: "슬로그램", url: "https://forum.slogs.dev/"   },
     { name: "CloudBro", url: "https://www.cloudbro.ai/"    }
-  ];
-  communities.sort((a, b) =>
+  ].sort((a, b) =>
     a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
   );
 
-  /* ───────────── 웹폰트 주입 ───────────── */
+  /* ── 웹폰트 ──────────────────────────── */
   const fontLink = document.createElement("link");
   fontLink.rel = "stylesheet";
   fontLink.href =
-    "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap";
+    "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap";
   document.head.appendChild(fontLink);
 
-  /* ───────────── 스타일 시트 삽입 ───────────── */
+  /* ── 스타일 ──────────────────────────── */
   const style = document.createElement("style");
   style.textContent = `
     #global-top-banner{
+      box-sizing:border-box;             /* ← 패딩 포함 너비 100% */
       width:100%;height:${HEIGHT}px;
       background:#000;color:#fff;padding:0 1rem;
       display:flex;align-items:center;gap:1rem;
-      font:500 16px/1 'Noto Sans KR', sans-serif;
+      font:400 16px/1 'Noto Sans KR', sans-serif;
       box-shadow:0 2px 4px rgba(0,0,0,.2);
       position:relative;z-index:999;
     }
@@ -56,13 +54,13 @@
     #global-top-banner .menu.open{display:block;}
     #global-top-banner .menu a{
       display:block;padding:.5rem 1rem;color:#000;text-decoration:none;
-      font-weight:500;
+      font-weight:400;
     }
     #global-top-banner .menu a:hover{background:#f2f2f2;}
   `;
   document.head.appendChild(style);
 
-  /* ───────────── DOM 구성 ───────────── */
+  /* ── DOM ─────────────────────────────── */
   const banner    = document.createElement("div");
   banner.id       = "global-top-banner";
 
@@ -97,14 +95,13 @@
   banner.append(dropdown, titleEl);
   document.body.insertBefore(banner, document.body.firstChild);
 
-  /* ───────────── 인터랙션 ───────────── */
+  /* ── 인터랙션 ─────────────────────────── */
   toggleBtn.addEventListener("click", () => {
     const opened = menu.classList.toggle("open");
     toggleBtn.setAttribute("aria-expanded", opened);
     toggleBtn.querySelector(".arrow").style.transform =
       opened ? "rotate(180deg)" : "rotate(0deg)";
   });
-
   document.addEventListener("click", e => {
     if (!dropdown.contains(e.target)) {
       menu.classList.remove("open");
