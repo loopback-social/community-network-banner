@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- 모바일 대응용 뷰포트 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banner Test Page</title>
+
+  <!-- 페이지용 최소 스타일(예시) -->
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
+    main { max-width: 720px; padding: 1rem; margin: auto; }
+    h1   { margin-top: 0; }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Global Top-Banner Demo</h1>
+
+    <p>
+      아래 본문이 50&nbsp;px만큼 밀려 내려갔는지, 스크롤 시에도
+      배너가 상단에 고정되는지 확인하세요.
+      모바일 기기에서는 브라우저 개발자 모드(<kbd>Ctrl + Shift + M</kbd> 등)로
+      뷰포트를 바꿔가며 테스트할 수 있습니다.
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
+      sollicitudin nibh. Pellentesque in tellus nec mauris maximus elementum…
+    </p>
+  </main>
+
+  <!-- 배포된 스크립트를 직접 불러오는 경우 -->
+  <!-- <script src="https://cdn.jsdelivr.net/gh/USER/repo@1.0.0/banner.js" defer></script> -->
+
+  <!-- 로컬 테스트일 땐 아래처럼 상대 경로 사용 -->
+  <script src="./banner.js" defer></script>
+</body>
+</html>
