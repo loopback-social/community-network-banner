@@ -8,7 +8,7 @@
   const communities = [
     { name: "닷넷데브", url: "https://forum.dotnetdev.kr/" },
     { name: "슬로그램", url: "https://forum.slogs.dev/" },
-    { name: "CloudBro", url: "https://www.cloudbro.ai/" }
+    //{ name: "CloudBro", url: "https://www.cloudbro.ai/" },
   ].sort((a, b) =>
     a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
   );
