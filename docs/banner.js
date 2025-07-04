@@ -3,12 +3,12 @@
   window.__GLOBAL_TOP_BANNER__ = true;
 
   const TITLE = "Community Loop";
-  const TAGLINE  = "Connected. Continuous. Collaborative.";
+  const TAGLINE = "Connected. Continuous. Collaborative.";
 
   const communities = [
     { name: "닷넷데브", url: "https://forum.dotnetdev.kr/" },
-    { name: "슬로그램", url: "https://forum.slogs.dev/" },
-    //{ name: "CloudBro", url: "https://www.cloudbro.ai/" },
+    { name: "슬로그램", url: "https://forum.slogs.dev/" }
+    // { name: "CloudBro", url: "https://www.cloudbro.ai/" },
   ].sort((a, b) =>
     a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
   );
@@ -48,7 +48,6 @@
       transition: transform .2s ease;
     }
 
-    /* 메뉴는 배너 외부에 고정 위치 (최상위 z-index) */
     #global-top-menu {
       position: fixed; min-width: 180px;
       background: #fff; color: #000; border-radius: 4px;
@@ -104,15 +103,20 @@
 
   banner.append(dropdown, titleEl);
   document.body.insertBefore(banner, document.body.firstChild);
-  document.body.appendChild(menu); // 메뉴는 바깥으로 위치시킴
+  document.body.appendChild(menu); // 메뉴는 body 최상단에 배치
 
-  /* ────── 인터랙션 ────── */
+  /* ────── 메뉴 열기 / 닫기 ────── */
+  const closeMenu = () => {
+    menu.classList.remove("open");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    toggleBtn.querySelector(".arrow").style.transform = "rotate(0deg)";
+  };
+
   toggleBtn.addEventListener("click", () => {
     const opened = menu.classList.toggle("open");
     toggleBtn.setAttribute("aria-expanded", opened);
     toggleBtn.querySelector(".arrow").style.transform =
       opened ? "rotate(-180deg)" : "rotate(0deg)";
-
     if (opened) {
       const rect = toggleBtn.getBoundingClientRect();
       menu.style.left = `${rect.left}px`;
@@ -120,11 +124,13 @@
     }
   });
 
-  document.addEventListener("click", e => {
+  /* ────── 외부 클릭/터치 시 닫기 ────── */
+  const handleOutside = (e) => {
     if (!toggleBtn.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove("open");
-      toggleBtn.setAttribute("aria-expanded", "false");
-      toggleBtn.querySelector(".arrow").style.transform = "rotate(0deg)";
+      closeMenu();
     }
-  });
+  };
+  document.addEventListener("click", handleOutside);
+  document.addEventListener("touchstart", handleOutside, { passive: true });
+
 })();
