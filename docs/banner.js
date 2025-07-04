@@ -1,10 +1,10 @@
-/* banner.js – 2025-07-04 (thin text + no horizontal scroll) */
+/* banner.js – z-index fix (2025-07-04) */
 (function () {
   if (window.__GLOBAL_TOP_BANNER__) return;
   window.__GLOBAL_TOP_BANNER__ = true;
 
   /* ── 설정 ───────────────────────────── */
-  const HEIGHT = 50;                    // px
+  const HEIGHT = 50;
   const TITLE  = "커뮤니티 네트워크";
   const BTN_TX = "사이트 목록";
 
@@ -27,8 +27,7 @@
   const style = document.createElement("style");
   style.textContent = `
     #global-top-banner{
-      box-sizing:border-box;             /* ← 패딩 포함 너비 100% */
-      width:100%;height:${HEIGHT}px;
+      box-sizing:border-box;width:100%;height:${HEIGHT}px;
       background:#000;color:#fff;padding:0 1rem;
       display:flex;align-items:center;gap:1rem;
       font:400 16px/1 'Noto Sans KR', sans-serif;
@@ -45,11 +44,14 @@
       outline:2px solid #555;outline-offset:2px;
     }
     #global-top-banner .arrow{transition:transform .2s ease;}
+
+    /* 메뉴: 항상 맨 위에 보이도록 z-index 최대급 부여 */
     #global-top-banner .menu{
       position:absolute;top:100%;left:0;min-width:180px;
       background:#fff;color:#000;border-radius:4px;margin-top:4px;
       box-shadow:0 4px 12px rgba(0,0,0,.15);list-style:none;
       padding:.5rem 0;display:none;
+      z-index:2147483000;                 /* 거의 최상위 */
     }
     #global-top-banner .menu.open{display:block;}
     #global-top-banner .menu a{
