@@ -43,6 +43,7 @@
     }
     #global-top-banner .arrow {
       transition: transform .2s ease;
+      font-size: 0.5rem;
     }
     #global-top-menu {
       position: fixed; min-width: 180px;
@@ -76,7 +77,7 @@
   toggleBtn.className = "dropdown-toggle";
   toggleBtn.setAttribute("aria-haspopup", "true");
   toggleBtn.setAttribute("aria-expanded", "false");
-  toggleBtn.innerHTML = `${TITLE} <span class="arrow">⏷</span>`;
+  toggleBtn.innerHTML = `${TITLE} <span class="arrow">&#x25bc;</span>`;
 
   const menu = document.createElement("ul");
   menu.id = "global-top-menu";
