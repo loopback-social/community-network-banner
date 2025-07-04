@@ -8,19 +8,16 @@
   const communities = [
     { name: "닷넷데브", url: "https://forum.dotnetdev.kr/" },
     { name: "슬로그램", url: "https://forum.slogs.dev/" }
-    // { name: "CloudBro", url: "https://www.cloudbro.ai/" },
   ].sort((a, b) =>
     a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
   );
 
-  /* ────── 폰트 ────── */
   const fontLink = document.createElement("link");
   fontLink.rel = "stylesheet";
   fontLink.href =
     "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap";
   document.head.appendChild(fontLink);
 
-  /* ────── 스타일 ────── */
   const style = document.createElement("style");
   style.textContent = `
     #global-top-banner {
@@ -47,7 +44,6 @@
     #global-top-banner .arrow {
       transition: transform .2s ease;
     }
-
     #global-top-menu {
       position: fixed; min-width: 180px;
       background: #fff; color: #000; border-radius: 4px;
@@ -70,7 +66,6 @@
   `;
   document.head.appendChild(style);
 
-  /* ────── DOM 생성 ────── */
   const banner = document.createElement("div");
   banner.id = "global-top-banner";
 
@@ -103,9 +98,8 @@
 
   banner.append(dropdown, titleEl);
   document.body.insertBefore(banner, document.body.firstChild);
-  document.body.appendChild(menu); // 메뉴는 body 최상단에 배치
+  document.body.appendChild(menu);
 
-  /* ────── 메뉴 열기 / 닫기 ────── */
   const closeMenu = () => {
     menu.classList.remove("open");
     toggleBtn.setAttribute("aria-expanded", "false");
@@ -124,7 +118,6 @@
     }
   });
 
-  /* ────── 외부 클릭/터치 시 닫기 ────── */
   const handleOutside = (e) => {
     if (!toggleBtn.contains(e.target) && !menu.contains(e.target)) {
       closeMenu();
@@ -133,4 +126,10 @@
   document.addEventListener("click", handleOutside);
   document.addEventListener("touchstart", handleOutside, { passive: true });
 
+  const handleScrollClose = () => {
+    if (menu.classList.contains("open")) closeMenu();
+  };
+  document.addEventListener("scroll", handleScrollClose, { passive: true });
+  document.addEventListener("wheel", handleScrollClose, { passive: true });
+  document.addEventListener("touchmove", handleScrollClose, { passive: true });
 })();
