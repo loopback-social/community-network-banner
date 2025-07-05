@@ -1,2 +1,31 @@
 # community-network-banner
-Banner Repository for Community Federation
+
+Loopback Social 배너 리포지터리입니다.
+
+## 소개
+
+Loopback Social은 커뮤니티 간의 연대와 연합을 위한 플랫폼입니다.
+
+이 리포지터리와 웹사이트를 통해 커뮤니티 운영자는 각 커뮤니티 상단에 부착할 수 있는 검은색 띠 배너를 받을 수 있습니다. 이 배너에는 캠페인에 동참하는 다른 커뮤니티의 이름이 함께 표시됩니다.
+
+이를 통해 커뮤니티 간의 연대를 상징하고, 함께하는 캠페인으로서 운영하고자 합니다.
+
+## 작동 방식
+
+`docs/banner.js` 스크립트는 웹사이트에 포함될 때 페이지 상단에 검은색 띠 배너를 동적으로 생성하고 삽입합니다. 이 배너에는 `loopback.social`이라는 프로젝트 제목과 참여 커뮤니티 목록이 포함된 드롭다운 메뉴가 표시됩니다. 커뮤니티 목록은 `banner.js` 파일 내에서 관리됩니다.
+
+## 설치 방법
+
+웹사이트에 연대 배너를 추가하려면 다음 한 줄의 코드를 HTML 파일의 `</body>` 태그 바로 앞에 추가하면 됩니다.
+
+```html
+<script src="https://loopback.social/banner.js" defer></script>
+```
+
+## 참여 안내
+
+이 캠페인에 동참하고 싶으신가요? 이 저장소에 Pull Request를 보내 `docs/banner.js` 파일의 커뮤니티 목록에 당신의 커뮤니티를 추가해주세요.
+
+## 라이선스
+
+이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 `LICENSE` 파일을 참고하세요.

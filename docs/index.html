@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
+
   <!-- 모바일 대응용 뷰포트 -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Banner Test Page</title>
+  <title>커뮤니티 연대 배너</title>
 
   <!-- 페이지용 최소 스타일(예시) -->
   <style>
@@ -16,25 +17,28 @@
 
 <body>
   <main>
-    <h1>Global Top-Banner Demo</h1>
+    <h1>Loopback Social</h1>
 
     <p>
-      아래 본문이 50&nbsp;px만큼 밀려 내려갔는지, 스크롤 시에도
-      배너가 상단에 고정되는지 확인하세요.
-      모바일 기기에서는 브라우저 개발자 모드(<kbd>Ctrl + Shift + M</kbd> 등)로
-      뷰포트를 바꿔가며 테스트할 수 있습니다.
+      Loopback Social은 커뮤니티 간의 연결을 위한 플랫폼입니다.
+    </p>
+    <p>
+      이 웹사이트를 통해 커뮤니티 운영자는 각 커뮤니티 상단에 부착할 수 있는 검은색 띠 배너를 받을 수 있습니다. 이 배너에는 캠페인에 동참하는 다른 커뮤니티의 이름이 함께 표시됩니다.
+    </p>
+    <p>
+      이를 통해 커뮤니티 간의 연결을 상징하고, 함께하는 캠페인으로서 운영하고자 합니다.
     </p>
 
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-      sollicitudin nibh. Pellentesque in tellus nec mauris maximus elementum…
-    </p>
+    <h2>설치 방법</h2>
+    <p>웹 사이트나 포럼 상단에 배너를 추가하려면 다음 한 줄의 코드를 HTML 파일이나 스킨 본문에 <code>&lt;/body&gt;</code> 태그 (닫는 body 태그) 바로 앞에 추가하면 됩니다.</p>
+    <pre><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
+
+    <h2>작동 원리</h2>
+    <p><code>banner.js</code> 스크립트는 웹사이트에 포함될 때 페이지 상단에 검은색 띠 배너를 동적으로 생성하고 삽입합니다. 이 배너에는 <code>loopback.social</code>이라는 프로젝트 제목과 참여 커뮤니티 목록이 포함된 드롭다운 메뉴가 표시됩니다. 커뮤니티 목록은 <code>banner.js</code> 파일 내에서 관리됩니다.</p>
+
+    <footer>
+      <p>이 프로젝트는 MIT 라이선스를 따릅니다.</p>
+    </footer>
   </main>
-
-  <!-- 배포된 스크립트를 직접 불러오는 경우 -->
-  <!-- <script src="https://cdn.jsdelivr.net/gh/USER/repo@1.0.0/banner.js" defer></script> -->
-
-  <!-- 로컬 테스트일 땐 아래처럼 상대 경로 사용 -->
-  <script src="./banner.js" defer></script>
 </body>
 </html>
