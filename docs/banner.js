@@ -2,8 +2,8 @@
   if (window.__GLOBAL_TOP_BANNER__) return;
   window.__GLOBAL_TOP_BANNER__ = true;
 
-  const TITLE = "Community Loop";
-  const TAGLINE = "Connected. Continuous. Collaborative.";
+  const TITLE = "loopback.social";
+  const TAGLINE = "Every loop counts.";
 
   const communities = [
     { name: "닷넷데브", url: "https://forum.dotnetdev.kr/" },
