@@ -24,8 +24,12 @@ Loopback Social은 커뮤니티 간의 연대와 연합을 위한 플랫폼입�
 
 ## 참여 안내
 
-이 캠페인에 동참하고 싶으신가요? 이 저장소에 Pull Request를 보내 `docs/banner.js` 파일의 커뮤니티 목록에 당신의 커뮤니티를 추가해주세요.
+커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 이슈](https://github.com/dotnetdev-kr/community-network-banner/issues)를 제출해주세요.
 
 ## 라이선스
 
 이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 `LICENSE` 파일을 참고하세요.
+
+## Attributions
+
+[Site Icon (Loop)](https://icons8.com/icon/KhfdumHglzRO/synchronize) by [https://icons8.com](https://icons8.com)

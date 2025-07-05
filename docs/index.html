@@ -5,13 +5,45 @@
 
   <!-- 모바일 대응용 뷰포트 -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>커뮤니티 연대 배너</title>
+  <title>Loopback Social</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/icons8-loop-windows-11-color-180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./images/icons8-loop-windows-11-color-192.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Loopback Social" />
+  <meta property="og:description" content="Loopback Social은 커뮤니티 간의 연결을 위한 플랫폼입니다." />
+  <meta property="og:url" content="https://loopback.social" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://loopback.social/images/icons8-loop-windows-11-color-512.png" />
 
   <!-- 페이지용 최소 스타일(예시) -->
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
     main { max-width: 720px; padding: 1rem; margin: auto; }
     h1   { margin-top: 0; }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 0.25em;
+      position: relative;
+    }
+    .copy-button {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background-color: #ddd;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 0.25em;
+      cursor: pointer;
+    }
+    .copy-button:hover {
+      background-color: #ccc;
+    }
   </style>
 </head>
 
@@ -31,16 +63,33 @@
 
     <h2>설치 방법</h2>
     <p>웹 사이트나 포럼 상단에 배너를 추가하려면 다음 한 줄의 코드를 HTML 파일이나 스킨 본문에 <code>&lt;/body&gt;</code> 태그 (닫는 body 태그) 바로 앞에 추가하면 됩니다.</p>
-    <pre><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
+    <pre><button class="copy-button">복사</button><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
+
+    <h2>참여 방법</h2>
+    <p>커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 <a href="https://github.com/dotnetdev-kr/community-network-banner/issues">GitHub 저장소에 이슈</a>를 제출해주세요.</p>
 
     <h2>작동 원리</h2>
     <p><code>banner.js</code> 스크립트는 웹사이트에 포함될 때 페이지 상단에 검은색 띠 배너를 동적으로 생성하고 삽입합니다. 이 배너에는 <code>loopback.social</code>이라는 프로젝트 제목과 참여 커뮤니티 목록이 포함된 드롭다운 메뉴가 표시됩니다. 커뮤니티 목록은 <code>banner.js</code> 파일 내에서 관리됩니다.</p>
 
     <footer>
       <p>이 프로젝트는 MIT 라이선스를 따릅니다.</p>
+      <p><a target="_blank" href="https://icons8.com/icon/KhfdumHglzRO/synchronize">Loop</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
     </footer>
 
     <script src="./banner.js" defer></script>
+    <script>
+      document.querySelector('.copy-button').addEventListener('click', function() {
+        const code = this.nextElementSibling.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          this.innerText = '복사됨!';
+          setTimeout(() => {
+            this.innerText = '복사';
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
+    </script>
   </main>
 </body>
 </html>
