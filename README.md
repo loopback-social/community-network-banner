@@ -1,10 +1,10 @@
 # community-network-banner
 
-Loopback Social 배너 리포지터리입니다.
+[Loopback Social](https://loopback.social) 배너 리포지터리입니다.
 
 ## 소개
 
-Loopback Social은 커뮤니티 간의 연대와 연합을 위한 플랫폼입니다.
+[Loopback Social](https://loopback.social)은 커뮤니티 간의 연대와 연합을 위한 플랫폼입니다.
 
 이 웹사이트에서 커뮤니티 운영자는 각 커뮤니티 상단에 부착할 수 있는 검은색 띠 배너를 받을 수 있습니다. 이 배너에는 캠페인에 동참하는 다른 커뮤니티의 이름이 함께 표시됩니다.
 
