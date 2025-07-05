@@ -24,7 +24,7 @@ Loopback Social은 커뮤니티 간의 연대와 연합을 위한 플랫폼입�
 
 ## 참여 안내
 
-커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 이슈](https://github.com/dotnetdev-kr/community-network-banner/issues)를 제출해주세요.
+커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 이슈를 제출](https://github.com/dotnetdev-kr/community-network-banner/issues/new/choose)를해주세요.
 
 ## 라이선스
 
