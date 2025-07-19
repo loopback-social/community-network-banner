@@ -64,8 +64,30 @@
     #global-top-banner .title {
       letter-spacing: .02em;
     }
-      #global-top-banner .news-ticker { overflow: hidden; flex: 1; height: 1em; position: relative; }
-      #global-top-banner .news-ticker span { position: absolute; left: 0; width: 100%; transition: transform .5s ease; }
+      #global-top-banner .news-ticker {
+        overflow: hidden;
+        flex: 1;
+        height: 1em;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+      #global-top-banner .news-ticker span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        transition: transform .5s ease;
+        display: block;
+      }
+      #global-top-banner .news-ticker a,
+      #global-top-banner .news-ticker a:link,
+      #global-top-banner .news-ticker a:visited,
+      #global-top-banner .news-ticker a:hover,
+      #global-top-banner .news-ticker a:active {
+        color: #fff !important;
+        text-decoration: underline;
+        font-weight: inherit;
+      }
     #global-top-banner .dropdown {
       position: relative; font-weight: bold;
     }
