@@ -1,0 +1,25 @@
+[
+  {
+    "start": "2020-01-01 00:00:00",
+    "end": "2099-12-31 23:59:59",
+    "timezone": "+09:00",
+    "message": "새로운 커뮤니티 등록 이벤트가 진행 중입니다!",
+    "link": "https://loopback.social/news1",
+    "display": true
+  },
+  {
+    "start": "2020-01-01 00:00:00",
+    "end": "2099-12-31 23:59:59",
+    "timezone": "+09:00",
+    "message": "7월 특별 세미나에 참여하세요.",
+    "link": "https://loopback.social/seminar",
+    "display": true
+  },
+  {
+    "start": "2020-01-01 00:00:00",
+    "end": "2099-12-31 23:59:59",
+    "timezone": "+09:00",
+    "message": "더 많은 소식을 준비 중입니다!",
+    "display": false
+  }
+]

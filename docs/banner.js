@@ -5,9 +5,36 @@
   const TITLE = "loopback.social";
   const TAGLINE = "Every loop counts.";
 
+  const scriptSrc = document.currentScript && document.currentScript.src;
+
+  const parseNewsDate = (str, tz) => {
+    if (!str) throw new Error("Missing date");
+    const timezone = typeof tz === "string" && tz ? tz : "Z";
+    return new Date(str.replace(" ", "T") + timezone);
+  };
+
+  let news = [];
+  try {
+    const urlNews = new URL("news.json", scriptSrc || location.href);
+    const respNews = await fetch(urlNews);
+    const rawNews = await respNews.json();
+    const now = new Date();
+    news = rawNews.filter((n) => {
+      if (n.display !== true) return false;
+      try {
+        const start = parseNewsDate(n.start, n.timezone);
+        const end = parseNewsDate(n.end, n.timezone);
+        return start <= now && now <= end;
+      } catch {
+        return false;
+      }
+    });
+  } catch (err) {
+    console.error("Failed to load news.json", err);
+  }
+
   let communities = [];
   try {
-    const scriptSrc = document.currentScript && document.currentScript.src;
     const url = new URL('communities.json', scriptSrc || location.href);
     const response = await fetch(url);
     communities = await response.json();
@@ -37,6 +64,8 @@
     #global-top-banner .title {
       letter-spacing: .02em;
     }
+      #global-top-banner .news-ticker { overflow: hidden; flex: 1; height: 1em; position: relative; }
+      #global-top-banner .news-ticker span { position: absolute; left: 0; width: 100%; transition: transform .5s ease; }
     #global-top-banner .dropdown {
       position: relative; font-weight: bold;
     }
@@ -99,11 +128,49 @@
   });
 
   dropdown.appendChild(toggleBtn);
-  const titleEl = document.createElement("span");
-  titleEl.className = "title";
-  titleEl.textContent = TAGLINE;
 
-  banner.append(dropdown, titleEl);
+  const createNewsSpan = (item) => {
+    const span = document.createElement("span");
+    if (item.link) {
+      const a = document.createElement("a");
+      a.href = item.link;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = item.message;
+      span.appendChild(a);
+    } else {
+      span.textContent = item.message;
+    }
+    return span;
+  };
+
+  if (news.length) {
+    const ticker = document.createElement("div");
+    ticker.className = "news-ticker";
+    let current = createNewsSpan(news[0]);
+    ticker.appendChild(current);
+    let idx = 1;
+    setInterval(() => {
+      const next = createNewsSpan(news[idx % news.length]);
+      next.style.transform = "translateY(100%)";
+      ticker.appendChild(next);
+      requestAnimationFrame(() => {
+        next.style.transform = "translateY(0)";
+        current.style.transform = "translateY(-100%)";
+      });
+      setTimeout(() => {
+        ticker.removeChild(current);
+        current = next;
+      }, 500);
+      idx++;
+    }, 15000);
+    banner.append(dropdown, ticker);
+  } else {
+    const titleEl = document.createElement("span");
+    titleEl.className = "title";
+    titleEl.textContent = TAGLINE;
+    banner.append(dropdown, titleEl);
+  }
   document.body.insertBefore(banner, document.body.firstChild);
   document.body.appendChild(menu);
 
