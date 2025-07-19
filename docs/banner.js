@@ -1,15 +1,20 @@
-(function () {
+(async function () {
   if (window.__GLOBAL_TOP_BANNER__) return;
   window.__GLOBAL_TOP_BANNER__ = true;
 
   const TITLE = "loopback.social";
   const TAGLINE = "Every loop counts.";
 
-  const communities = [
-    { name: "닷넷데브", url: "https://forum.dotnetdev.kr/" },
-    { name: "슬로그램", url: "https://forum.slogs.dev/" },
-    { name: "한국 연합우주 개발자 모임", url: "https://fedidev.kr/" }
-  ].sort((a, b) =>
+  let communities = [];
+  try {
+    const scriptSrc = document.currentScript && document.currentScript.src;
+    const url = new URL('communities.json', scriptSrc || location.href);
+    const response = await fetch(url);
+    communities = await response.json();
+  } catch (err) {
+    console.error('Failed to load communities.json', err);
+  }
+  communities.sort((a, b) =>
     a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
   );
 
