@@ -78,6 +78,9 @@
     }
     #global-top-banner .news-ticker .news-content {
       display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     #global-top-banner .news-ticker a,
     #global-top-banner .news-ticker a:link,
