@@ -67,20 +67,54 @@
       letter-spacing: .02em;
     }
     #global-top-banner .news-section {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
       flex: 1;
+      overflow: hidden;
+      position: relative;
     }
     #global-top-banner .news-ticker {
-      flex: 1;
+      width: 100%;
       overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: opacity 0.2s ease;
+    }
+    #global-top-banner .news-ticker:hover {
+      opacity: 0.8;
     }
     #global-top-banner .news-ticker .news-content {
-      display: block;
+      display: inline-block;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      animation: marquee 25s linear infinite;
+      padding-left: 100%;
+    }
+    @keyframes marquee {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+      #global-top-banner {
+        padding: 0.4rem 0.8rem;
+        font-size: 13px;
+        gap: 0.8rem;
+      }
+      #global-top-banner .news-ticker .news-content {
+        animation-duration: 30s;
+      }
+    }
+    @media (max-width: 480px) {
+      #global-top-banner {
+        padding: 0.3rem 0.6rem;
+        font-size: 12px;
+        gap: 0.6rem;
+      }
+      #global-top-banner .news-ticker .news-content {
+        animation-duration: 35s;
+      }
     }
     #global-top-banner .news-ticker a,
     #global-top-banner .news-ticker a:link,
@@ -91,24 +125,7 @@
       text-decoration: underline;
       font-weight: inherit;
     }
-    #global-top-banner .view-all-news {
-      background: none;
-      border: 1px solid #555;
-      color: inherit;
-      cursor: pointer;
-      padding: 0.25rem 0.5rem;
-      border-radius: 3px;
-      font-size: 12px;
-      white-space: nowrap;
-      transition: background-color 0.2s ease;
-    }
-    #global-top-banner .view-all-news:hover {
-      background-color: #333;
-    }
-    #global-top-banner .view-all-news:focus {
-      outline: 2px solid #555;
-      outline-offset: 2px;
-    }
+
     #global-news-modal {
       position: fixed;
       top: 0;
@@ -250,10 +267,10 @@
 
   dropdown.appendChild(toggleBtn);
 
-  let newsSection, newsTicker, newsContent, viewAllButton, newsModal;
+  let newsSection, newsTicker, newsContent, newsModal;
   
   if (news.length) {
-    // Create news section with ticker and button
+    // Create news section with marquee ticker
     newsSection = document.createElement("div");
     newsSection.className = "news-section";
 
@@ -264,28 +281,12 @@
     newsContent = document.createElement("span");
     newsContent.className = "news-content";
     
-    // Display first news item
-    const firstNews = news[0];
-    if (firstNews.link) {
-      const a = document.createElement("a");
-      a.href = firstNews.link;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = firstNews.message;
-      newsContent.appendChild(a);
-    } else {
-      newsContent.textContent = firstNews.message;
-    }
+    // Create marquee content with all news items
+    const marqueeText = news.map(item => item.message).join(" • ");
+    newsContent.textContent = marqueeText;
     
     newsTicker.appendChild(newsContent);
-
-    // Create "View All News" button
-    viewAllButton = document.createElement("button");
-    viewAllButton.className = "view-all-news";
-    viewAllButton.textContent = "전체 뉴스 보기";
-
     newsSection.appendChild(newsTicker);
-    newsSection.appendChild(viewAllButton);
 
     // Create modal
     newsModal = document.createElement("div");
@@ -314,41 +315,22 @@
     
     news.forEach(item => {
       const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = item.link;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = item.message;
-      li.appendChild(a);
+      if (item.link) {
+        const a = document.createElement("a");
+        a.href = item.link;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = item.message;
+        li.appendChild(a);
+      } else {
+        li.textContent = item.message;
+      }
       newsList.appendChild(li);
     });
     
     modalContent.appendChild(modalHeader);
     modalContent.appendChild(newsList);
     newsModal.appendChild(modalContent);
-
-    // Start news rotation if there are multiple news items
-    if (news.length > 1) {
-      let currentIndex = 0;
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % news.length;
-        const currentNews = news[currentIndex];
-        
-        // Clear current content
-        newsContent.innerHTML = "";
-        
-        if (currentNews.link) {
-          const a = document.createElement("a");
-          a.href = currentNews.link;
-          a.target = "_blank";
-          a.rel = "noopener noreferrer";
-          a.textContent = currentNews.message;
-          newsContent.appendChild(a);
-        } else {
-          newsContent.textContent = currentNews.message;
-        }
-      }, 3000); // 3 seconds interval
-    }
 
     banner.append(dropdown, newsSection);
   } else {
@@ -394,8 +376,13 @@
   });
 
   // Modal event handlers
-  if (viewAllButton && newsModal) {
-    viewAllButton.addEventListener("click", openModal);
+  if (newsTicker && newsModal) {
+    // Add click event to news ticker
+    newsTicker.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal();
+    });
     
     const closeButton = newsModal.querySelector(".close-modal");
     if (closeButton) {
