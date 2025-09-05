@@ -1,0 +1,28 @@
+name: JSON Lint
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/*.json'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/*.json'
+
+jobs:
+  json-lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate JSON files
+      run: |
+        echo "Validating JSON files..."
+        for file in docs/*.json; do
+          echo "Checking $file..."
+          python -m json.tool "$file" > /dev/null && echo "✅ $file is valid" || exit 1
+        done
+        echo "🎉 All JSON files are valid!"
