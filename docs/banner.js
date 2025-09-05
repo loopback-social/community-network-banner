@@ -64,30 +64,124 @@
     #global-top-banner .title {
       letter-spacing: .02em;
     }
-      #global-top-banner .news-ticker {
-        overflow: hidden;
-        flex: 1;
-        height: 1em;
-        position: relative;
-        margin: 0;
-        padding: 0;
-      }
-      #global-top-banner .news-ticker span {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        transition: transform .5s ease;
-        display: block;
-      }
-      #global-top-banner .news-ticker a,
-      #global-top-banner .news-ticker a:link,
-      #global-top-banner .news-ticker a:visited,
-      #global-top-banner .news-ticker a:hover,
-      #global-top-banner .news-ticker a:active {
-        color: #fff !important;
-        text-decoration: underline;
-        font-weight: inherit;
-      }
+    #global-top-banner .news-section {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    #global-top-banner .news-ticker {
+      flex: 1;
+      overflow: hidden;
+    }
+    #global-top-banner .news-ticker .news-content {
+      display: block;
+    }
+    #global-top-banner .news-ticker a,
+    #global-top-banner .news-ticker a:link,
+    #global-top-banner .news-ticker a:visited,
+    #global-top-banner .news-ticker a:hover,
+    #global-top-banner .news-ticker a:active {
+      color: #fff !important;
+      text-decoration: underline;
+      font-weight: inherit;
+    }
+    #global-top-banner .view-all-news {
+      background: none;
+      border: 1px solid #555;
+      color: inherit;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-size: 12px;
+      white-space: nowrap;
+      transition: background-color 0.2s ease;
+    }
+    #global-top-banner .view-all-news:hover {
+      background-color: #333;
+    }
+    #global-top-banner .view-all-news:focus {
+      outline: 2px solid #555;
+      outline-offset: 2px;
+    }
+    #global-news-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2147483647;
+    }
+    #global-news-modal.open {
+      display: flex;
+    }
+    #global-news-modal .modal-content {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      margin: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    #global-news-modal .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    #global-news-modal .modal-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0;
+      color: #000;
+    }
+    #global-news-modal .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #global-news-modal .close-modal:hover {
+      color: #000;
+    }
+    #global-news-modal .news-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #global-news-modal .news-list li {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    #global-news-modal .news-list li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    #global-news-modal .news-list a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    #global-news-modal .news-list a:hover {
+      text-decoration: underline;
+    }
     #global-top-banner .dropdown {
       position: relative; font-weight: bold;
     }
@@ -151,42 +245,107 @@
 
   dropdown.appendChild(toggleBtn);
 
-  const createNewsSpan = (item) => {
-    const span = document.createElement("span");
-    if (item.link) {
+  let newsSection, newsTicker, newsContent, viewAllButton, newsModal;
+  
+  if (news.length) {
+    // Create news section with ticker and button
+    newsSection = document.createElement("div");
+    newsSection.className = "news-section";
+
+    // Create news ticker
+    newsTicker = document.createElement("div");
+    newsTicker.className = "news-ticker";
+    
+    newsContent = document.createElement("span");
+    newsContent.className = "news-content";
+    
+    // Display first news item
+    const firstNews = news[0];
+    if (firstNews.link) {
+      const a = document.createElement("a");
+      a.href = firstNews.link;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = firstNews.message;
+      newsContent.appendChild(a);
+    } else {
+      newsContent.textContent = firstNews.message;
+    }
+    
+    newsTicker.appendChild(newsContent);
+
+    // Create "View All News" button
+    viewAllButton = document.createElement("button");
+    viewAllButton.className = "view-all-news";
+    viewAllButton.textContent = "전체 뉴스 보기";
+
+    newsSection.appendChild(newsTicker);
+    newsSection.appendChild(viewAllButton);
+
+    // Create modal
+    newsModal = document.createElement("div");
+    newsModal.id = "global-news-modal";
+    
+    const modalContent = document.createElement("div");
+    modalContent.className = "modal-content";
+    
+    const modalHeader = document.createElement("div");
+    modalHeader.className = "modal-header";
+    
+    const modalTitle = document.createElement("h3");
+    modalTitle.className = "modal-title";
+    modalTitle.textContent = "전체 뉴스";
+    
+    const closeButton = document.createElement("button");
+    closeButton.className = "close-modal";
+    closeButton.innerHTML = "&times;";
+    closeButton.setAttribute("aria-label", "닫기");
+    
+    modalHeader.appendChild(modalTitle);
+    modalHeader.appendChild(closeButton);
+    
+    const newsList = document.createElement("ul");
+    newsList.className = "news-list";
+    
+    news.forEach(item => {
+      const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = item.link;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.textContent = item.message;
-      span.appendChild(a);
-    } else {
-      span.textContent = item.message;
-    }
-    return span;
-  };
+      li.appendChild(a);
+      newsList.appendChild(li);
+    });
+    
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(newsList);
+    newsModal.appendChild(modalContent);
 
-  if (news.length) {
-    const ticker = document.createElement("div");
-    ticker.className = "news-ticker";
-    let current = createNewsSpan(news[0]);
-    ticker.appendChild(current);
-    let idx = 1;
-    setInterval(() => {
-      const next = createNewsSpan(news[idx % news.length]);
-      next.style.transform = "translateY(100%)";
-      ticker.appendChild(next);
-      requestAnimationFrame(() => {
-        next.style.transform = "translateY(0)";
-        current.style.transform = "translateY(-100%)";
-      });
-      setTimeout(() => {
-        ticker.removeChild(current);
-        current = next;
-      }, 500);
-      idx++;
-    }, 15000);
-    banner.append(dropdown, ticker);
+    // Start news rotation if there are multiple news items
+    if (news.length > 1) {
+      let currentIndex = 0;
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % news.length;
+        const currentNews = news[currentIndex];
+        
+        // Clear current content
+        newsContent.innerHTML = "";
+        
+        if (currentNews.link) {
+          const a = document.createElement("a");
+          a.href = currentNews.link;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = currentNews.message;
+          newsContent.appendChild(a);
+        } else {
+          newsContent.textContent = currentNews.message;
+        }
+      }, 3000); // 3 seconds interval
+    }
+
+    banner.append(dropdown, newsSection);
   } else {
     const titleEl = document.createElement("span");
     titleEl.className = "title";
@@ -195,11 +354,26 @@
   }
   document.body.insertBefore(banner, document.body.firstChild);
   document.body.appendChild(menu);
+  if (newsModal) {
+    document.body.appendChild(newsModal);
+  }
 
   const closeMenu = () => {
     menu.classList.remove("open");
     toggleBtn.setAttribute("aria-expanded", "false");
     toggleBtn.querySelector(".arrow").style.transform = "rotate(0deg)";
+  };
+
+  const closeModal = () => {
+    if (newsModal) {
+      newsModal.classList.remove("open");
+    }
+  };
+
+  const openModal = () => {
+    if (newsModal) {
+      newsModal.classList.add("open");
+    }
   };
 
   toggleBtn.addEventListener("click", () => {
@@ -213,6 +387,30 @@
       menu.style.top = `${rect.bottom}px`;
     }
   });
+
+  // Modal event handlers
+  if (viewAllButton && newsModal) {
+    viewAllButton.addEventListener("click", openModal);
+    
+    const closeButton = newsModal.querySelector(".close-modal");
+    if (closeButton) {
+      closeButton.addEventListener("click", closeModal);
+    }
+    
+    // Close modal when clicking outside
+    newsModal.addEventListener("click", (e) => {
+      if (e.target === newsModal) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && newsModal.classList.contains("open")) {
+        closeModal();
+      }
+    });
+  }
 
   const handleOutside = (e) => {
     if (!toggleBtn.contains(e.target) && !menu.contains(e.target)) {
