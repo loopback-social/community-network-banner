@@ -1,0 +1,25 @@
+# 캐시 제어 설정
+<IfModule mod_headers.c>
+    # HTML 파일은 캐시하지 않음
+    <FilesMatch "\.(html)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # JSON 파일도 짧은 캐시 시간 설정 (5분)
+    <FilesMatch "\.(json)$">
+        Header set Cache-Control "max-age=300, must-revalidate"
+    </FilesMatch>
+    
+    # JavaScript 파일도 짧은 캐시 시간 설정 (1시간)
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "max-age=3600, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ETag 비활성화 (더 강력한 캐시 제어를 위해)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None

@@ -5,6 +5,12 @@
 
   <!-- 모바일 대응용 뷰포트 -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- 캐시 제어 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
   <title>Loopback Social</title>
 
   <!-- Favicon and App Icons -->
@@ -83,6 +89,14 @@
     <h2>작동 원리</h2>
     <p><code>banner.js</code> 스크립트는 웹사이트에 포함될 때 페이지 상단에 검은색 띠 배너를 동적으로 생성하고 삽입합니다. 이 배너에는 <code>loopback.social</code>이라는 프로젝트 제목과 참여 커뮤니티 목록이 포함된 드롭다운 메뉴가 표시됩니다. 커뮤니티 목록은 <code>communities.json</code> 파일에서, 뉴스 티커의 내용은 <code>news.json</code> 파일에서 관리됩니다.</p>
 
+    <h2>캐시 문제 해결</h2>
+    <p>만약 업데이트된 내용이 보이지 않는다면, 다음 방법을 시도해보세요:</p>
+    <ul>
+        <li><strong>강제 새로고침:</strong> Ctrl+F5 (Windows) 또는 Cmd+Shift+R (Mac)</li>
+        <li><strong>브라우저 캐시 삭제:</strong> 개발자 도구(F12) → Network 탭 → "Disable cache" 체크</li>
+        <li><strong>시크릿/인코그니토 모드</strong>에서 페이지 확인</li>
+    </ul>
+
     <footer>
       <p>이 프로젝트는 MIT 라이선스를 따릅니다.</p>
       <p><a target="_blank" href="https://icons8.com/icon/KhfdumHglzRO/synchronize">Loop</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
@@ -91,7 +105,8 @@
     <script src="./banner.js" defer></script>
     <script>
       document.querySelector('.copy-button').addEventListener('click', function() {
-        const code = this.nextElementSibling.innerText;
+        const codeTemplate = this.nextElementSibling.innerText;
+        const code = codeTemplate.replace('${Date.now()}', Date.now());
         navigator.clipboard.writeText(code).then(() => {
           this.innerText = '복사됨!';
           setTimeout(() => {

@@ -16,6 +16,7 @@
   let news = [];
   try {
     const urlNews = new URL("news.json", scriptSrc || location.href);
+    urlNews.searchParams.set('t', Date.now()); // 캐시 무효화를 위한 타임스탬프
     const respNews = await fetch(urlNews);
     const rawNews = await respNews.json();
     const now = new Date();
@@ -36,6 +37,7 @@
   let communities = [];
   try {
     const url = new URL('communities.json', scriptSrc || location.href);
+    url.searchParams.set('t', Date.now()); // 캐시 무효화를 위한 타임스탬프
     const response = await fetch(url);
     communities = await response.json();
   } catch (err) {
