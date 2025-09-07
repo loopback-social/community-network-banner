@@ -24,8 +24,8 @@
 
 loopback.social에 참여하는 방법은 크게 두 가지입니다.
 
-- 커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 커뮤니티 등재 이슈를 제출](https://github.com/dotnetdev-kr/community-network-banner/issues/new/choose)해주세요.
-- 뉴스 티커에 소식을 전하려면, 배너 설치 후 [GitHub 저장소에 뉴스 제보 등록 이슈를 제출](https://github.com/dotnetdev-kr/community-network-banner/issues/new/choose)해주세요.
+- 커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 커뮤니티 등재 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
+- 뉴스 티커에 소식을 전하려면, 배너 설치 후 [GitHub 저장소에 뉴스 제보 등록 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
 
 ## 작동 방식
 
