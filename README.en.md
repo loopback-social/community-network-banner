@@ -31,7 +31,28 @@ There are two main ways to participate in loopback.social:
 
 ## How It Works
 
-The `docs/banner.js` script dynamically creates and inserts a black banner at the top of the page when included in a website. This banner includes the project title `loopback.social` and a dropdown menu containing a list of participating communities. The community list is managed in the `communities.json` file in the same folder. The news ticker content is loaded from `news.json` and only displays items whose display period corresponds to the current time in rotation. You can edit these JSON files to add new entries or modify existing information.
+### File Structure
+
+- `docs/banner.js`: Lightweight loader script (cacheable)
+- `docs/banner.impl.js`: Actual banner implementation (cache-busted with timestamp)
+- `docs/communities.json`: List of participating communities
+- `docs/news.json`: News ticker content
+
+### Operation
+
+1. When `banner.js` loads, it dynamically loads `banner.impl.js` with a timestamped URL
+2. `banner.impl.js` creates and inserts a black banner at the top of the page
+3. The banner includes the `loopback.social` title and community dropdown menu
+4. The news ticker displays `news.json` items in rotation that match the current time
+
+### Cache Problem Resolution
+
+To resolve GitHub Pages caching issues, we use a two-stage loading structure:
+
+- `banner.js`: Always the same loader code (browser cacheable)
+- `banner.impl.js`: Forced refresh with timestamp parameter (`?ts=`)
+
+This enables immediate reflection when the banner is updated.
 
 ## License
 
