@@ -6,6 +6,7 @@
   const TAGLINE = "뉴스나 커뮤니티 링크를 제보하세요";
 
   const scriptSrc = document.currentScript && document.currentScript.src;
+  let hasLoadError = false;
 
   const parseNewsDate = (str, tz) => {
     if (!str) throw new Error("Missing date");
@@ -32,6 +33,7 @@
     });
   } catch (err) {
     console.error("Failed to load news.json", err);
+    hasLoadError = true;
   }
 
   let communities = [];
@@ -42,6 +44,7 @@
     communities = await response.json();
   } catch (err) {
     console.error('Failed to load communities.json', err);
+    hasLoadError = true;
   }
   communities.sort((a, b) =>
     a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
@@ -62,6 +65,9 @@
       font: 400 14px/1 'Noto Sans KR', sans-serif;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       position: relative; z-index: 999;
+    }
+    #global-top-banner.error {
+      background: #9e1a1a;
     }
     #global-top-banner .title {
       letter-spacing: .02em;
@@ -344,6 +350,11 @@
     titleEl.style.textDecoration = "none";
     banner.append(dropdown, titleEl);
   }
+  // 오류 상태일 때 배경색 변경
+  if (hasLoadError) {
+    banner.classList.add("error");
+  }
+  
   document.body.insertBefore(banner, document.body.firstChild);
   document.body.appendChild(menu);
   if (newsModal) {
