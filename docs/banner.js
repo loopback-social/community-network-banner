@@ -46,9 +46,6 @@
     console.error('Failed to load communities.json', err);
     hasLoadError = true;
   }
-  communities.sort((a, b) =>
-    a.name.localeCompare(b.name, "ko", { sensitivity: "base" })
-  );
 
   const fontLink = document.createElement("link");
   fontLink.rel = "stylesheet";
