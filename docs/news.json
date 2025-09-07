@@ -3,7 +3,7 @@
     "start": "2020-01-01 00:00:00",
     "end": "2099-12-31 23:59:59",
     "timezone": "+09:00",
-    "message": "Every loop counts.",
+    "message": "뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.",
     "link": "https://loopback.social/",
     "display": true
   },

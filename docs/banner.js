@@ -3,7 +3,7 @@
   window.__GLOBAL_TOP_BANNER__ = true;
 
   const TITLE = "loopback.social";
-  const TAGLINE = "Every loop counts.";
+  const TAGLINE = "뉴스나 커뮤니티 링크를 제보하세요";
 
   const scriptSrc = document.currentScript && document.currentScript.src;
 
@@ -334,9 +334,14 @@
 
     banner.append(dropdown, newsSection);
   } else {
-    const titleEl = document.createElement("span");
+    const titleEl = document.createElement("a");
     titleEl.className = "title";
+    titleEl.href = "https://loopback.social";
+    titleEl.target = "_blank";
+    titleEl.rel = "noopener noreferrer";
     titleEl.textContent = TAGLINE;
+    titleEl.style.color = "#fff";
+    titleEl.style.textDecoration = "none";
     banner.append(dropdown, titleEl);
   }
   document.body.insertBefore(banner, document.body.firstChild);
