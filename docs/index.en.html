@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Mobile viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Cache control -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
+  <title>Loopback Social</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/icons8-loop-windows-11-color-180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./images/icons8-loop-windows-11-color-192.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Loopback Social" />
+  <meta property="og:description" content="Loopback Social is a platform for connections between communities." />
+  <meta property="og:url" content="https://loopback.social" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://loopback.social/images/icons8-loop-windows-11-color-512.png" />
+
+  <!-- Minimal page styles -->
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
+    main { max-width: 720px; padding: 1rem; margin: auto; }
+    h1   { margin-top: 0; }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 0.25em;
+      position: relative;
+      overflow-x: auto;
+    }
+    .copy-button {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background-color: #ddd;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 0.25em;
+      cursor: pointer;
+    }
+    .copy-button:hover {
+      background-color: #ccc;
+    }
+    .lang-switcher {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+    .lang-switcher a {
+      text-decoration: none;
+      margin: 0 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: #f0f0f0;
+    }
+    .lang-switcher .active {
+      background: #007acc;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="lang-switcher">
+      <a href="index.html">🇰🇷 한국어</a>
+      <span class="active">🇺🇸 English</span>
+    </div>
+
+    <img src="./images/icons8-loop-windows-11-color-96.png" alt="Loopback Social Logo" style="display: block; margin: 0 auto 1rem; width: 96px; height: 96px;">
+    <h1>Loopback Social</h1>
+
+    <p>
+      <a href="https://github.com/loopback-social/community-network-banner" target="_blank">Loopback Social</a> is a platform for connections between communities.
+    </p>
+    <p>
+      Through this website, community administrators can obtain a black banner that can be attached to the top of each community. This banner displays the names of other communities participating in the campaign.
+    </p>
+    <p>
+      Though it's a loose connection, we started this project with the idea of appealing that communities are connected to each other, and sometimes incorporating various means such as event promotion banners or pop-ups.
+    </p>
+    <p>
+      Through this project, we aim to symbolize connections between communities and operate as a collaborative campaign.
+    </p>
+
+    <h2>Step 1. Installation</h2>
+    <p>To add a banner to the top of your website or forum, add the following line of code just before the <code>&lt;/body&gt;</code> tag (closing body tag) in your HTML file or skin body.</p>
+    <pre><button class="copy-button">Copy</button><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
+
+    <h2>Step 2. Get Your Name Out There</h2>
+    <p>There are two main ways to participate in loopback.social:</p>
+    <ul>
+        <li>To add your community to be displayed on the banner together, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">submit a community listing issue to the GitHub repository</a> after installing the banner.</li>
+        <li>To share news in the news ticker, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">submit a news submission issue to the GitHub repository</a> after installing the banner.</li>
+    </ul>
+
+    <h2>Step 3. Submit News</h2>
+    <p>If you have news to show in the news ticker at the bottom of the banner, you can edit <code>docs/news.json</code> or submit reports through the <strong>News Submission</strong> issue template on GitHub.</p>
+
+    <h2>How It Works</h2>
+    <p>The <code>banner.js</code> script dynamically creates and inserts a black banner at the top of the page when included in a website. This banner includes the project title <code>loopback.social</code> and a dropdown menu containing a list of participating communities. The community list is managed in the <code>communities.json</code> file, and the news ticker content is managed in the <code>news.json</code> file.</p>
+
+    <h2>Solving Cache Issues</h2>
+    <p>If you don't see the updated content, try the following methods:</p>
+    <ul>
+        <li><strong>Hard refresh:</strong> Ctrl+F5 (Windows) or Cmd+Shift+R (Mac)</li>
+        <li><strong>Clear browser cache:</strong> Developer tools (F12) → Network tab → Check "Disable cache"</li>
+        <li><strong>Check in incognito/private mode</strong></li>
+    </ul>
+
+    <footer>
+      <p>This project follows the MIT License.</p>
+      <p><a target="_blank" href="https://icons8.com/icon/KhfdumHglzRO/synchronize">Loop</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+    </footer>
+
+    <script src="./banner.js" defer></script>
+    <script>
+      document.querySelector('.copy-button').addEventListener('click', function() {
+        const codeTemplate = this.nextElementSibling.innerText;
+        const code = codeTemplate.replace('${Date.now()}', Date.now());
+        navigator.clipboard.writeText(code).then(() => {
+          this.innerText = 'Copied!';
+          setTimeout(() => {
+            this.innerText = 'Copy';
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CE354QS6P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2CE354QS6P');
+    </script>
+  </main>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # community-network-banner
 
+> 🇰🇷 **한국어** | 🇺🇸 [English](README.en.md)
+
 [Loopback Social](https://loopback.social) 배너 리포지터리입니다.
 
 ## 소개

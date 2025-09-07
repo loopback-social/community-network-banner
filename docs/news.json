@@ -3,15 +3,24 @@
     "start": "2020-01-01 00:00:00",
     "end": "2099-12-31 23:59:59",
     "timezone": "+09:00",
-    "message": "뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.",
-    "link": "https://loopback.social/",
+    "message": {
+      "ko": "뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.",
+      "en": "Submit news or community links! Click here to let us know."
+    },
+    "link": {
+      "ko": "https://loopback.social/",
+      "en": "https://loopback.social/index.en.html"
+    },
     "display": true
   },
   {
     "start": "2025-09-01 00:00:00",
     "end": "2025-12-13 12:12:12",
     "timezone": "+09:00",
-    "message": "눈은 침침해도 마음은 밝게! 노안콘 2025 제주 축제",
+    "message": {
+      "ko": "눈은 침침해도 마음은 밝게! 노안콘 2025 제주 축제",
+      "en": "Eyes may be dim, but hearts are bright! NoAnCon 2025 Jeju Festival"
+    },
     "link": "https://orbital-pet.diginori.com/conf/noan",
     "display": true
   }

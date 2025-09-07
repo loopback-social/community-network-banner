@@ -2,8 +2,27 @@
   if (window.__GLOBAL_TOP_BANNER__) return;
   window.__GLOBAL_TOP_BANNER__ = true;
 
+  // Language detection
+  const isEnglish = document.documentElement.lang === 'en' || 
+                   window.location.pathname.includes('.en.') ||
+                   window.location.search.includes('lang=en');
+  const lang = isEnglish ? 'en' : 'ko';
+
   const TITLE = "loopback.social";
-  const TAGLINE = "뉴스나 커뮤니티 링크를 제보하세요";
+  const TAGLINE = {
+    ko: "뉴스나 커뮤니티 링크를 제보하세요",
+    en: "Submit news or community links"
+  };
+
+  const MODAL_TITLE = {
+    ko: "전체 뉴스",
+    en: "All News"
+  };
+
+  const CLOSE_LABEL = {
+    ko: "닫기",
+    en: "Close"
+  };
 
   const scriptSrc = document.currentScript && document.currentScript.src;
   let hasLoadError = false;
@@ -12,6 +31,15 @@
     if (!str) throw new Error("Missing date");
     const timezone = typeof tz === "string" && tz ? tz : "Z";
     return new Date(str.replace(" ", "T") + timezone);
+  };
+
+  // Helper function to get localized text
+  const getLocalizedText = (text) => {
+    if (typeof text === 'string') return text;
+    if (typeof text === 'object' && text !== null) {
+      return text[lang] || text.ko || text.en || '';
+    }
+    return '';
   };
 
   let news = [];
@@ -30,7 +58,11 @@
       } catch {
         return false;
       }
-    });
+    }).map(item => ({
+      ...item,
+      message: getLocalizedText(item.message),
+      link: getLocalizedText(item.link)
+    }));
   } catch (err) {
     console.error("Failed to load news.json", err);
     hasLoadError = true;
@@ -41,7 +73,11 @@
     const url = new URL('communities.json', scriptSrc || location.href);
     url.searchParams.set('t', Date.now()); // 캐시 무효화를 위한 타임스탬프
     const response = await fetch(url);
-    communities = await response.json();
+    const rawCommunities = await response.json();
+    communities = rawCommunities.map(item => ({
+      name: getLocalizedText(item.name),
+      url: getLocalizedText(item.url)
+    }));
   } catch (err) {
     console.error('Failed to load communities.json', err);
     hasLoadError = true;
@@ -49,7 +85,8 @@
 
   const fontLink = document.createElement("link");
   fontLink.rel = "stylesheet";
-  fontLink.href =
+  fontLink.href = isEnglish ?
+    "https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" :
     "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap";
   document.head.appendChild(fontLink);
 
@@ -59,7 +96,7 @@
       box-sizing: border-box; width: 100%;
       background: #000; color: #fff; padding: 0.5em 1rem;
       display: flex; align-items: center; gap: 1rem;
-      font: 400 14px/1 'Noto Sans KR', sans-serif;
+      font: 400 14px/1 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       position: relative; z-index: 999;
     }
@@ -303,12 +340,12 @@
     
     const modalTitle = document.createElement("h3");
     modalTitle.className = "modal-title";
-    modalTitle.textContent = "전체 뉴스";
+    modalTitle.textContent = MODAL_TITLE[lang];
     
     const closeButton = document.createElement("button");
     closeButton.className = "close-modal";
     closeButton.innerHTML = "&times;";
-    closeButton.setAttribute("aria-label", "닫기");
+    closeButton.setAttribute("aria-label", CLOSE_LABEL[lang]);
     
     modalHeader.appendChild(modalTitle);
     modalHeader.appendChild(closeButton);
@@ -339,10 +376,10 @@
   } else {
     const titleEl = document.createElement("a");
     titleEl.className = "title";
-    titleEl.href = "https://loopback.social";
+    titleEl.href = isEnglish ? "https://loopback.social/index.en.html" : "https://loopback.social";
     titleEl.target = "_blank";
     titleEl.rel = "noopener noreferrer";
-    titleEl.textContent = TAGLINE;
+    titleEl.textContent = TAGLINE[lang];
     titleEl.style.color = "#fff";
     titleEl.style.textDecoration = "none";
     banner.append(dropdown, titleEl);

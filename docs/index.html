@@ -51,11 +51,31 @@
     .copy-button:hover {
       background-color: #ccc;
     }
+    .lang-switcher {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+    .lang-switcher a {
+      text-decoration: none;
+      margin: 0 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: #f0f0f0;
+    }
+    .lang-switcher .active {
+      background: #007acc;
+      color: white;
+    }
   </style>
 </head>
 
 <body>
   <main>
+    <div class="lang-switcher">
+      <span class="active">🇰🇷 한국어</span>
+      <a href="index.en.html">🇺🇸 English</a>
+    </div>
+
     <img src="./images/icons8-loop-windows-11-color-96.png" alt="Loopback Social Logo" style="display: block; margin: 0 auto 1rem; width: 96px; height: 96px;">
     <h1>Loopback Social</h1>
 
