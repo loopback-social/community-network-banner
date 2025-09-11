@@ -30,9 +30,20 @@
     "timezone": "+09:00",
     "message": {
       "ko": "[닷넷데브xCloudBro] Kubestronaut과 함께하는 Community Day - 2025/10/10 오후 1시 30분",
-      "en": "[DotNetDev x CloudBro] Community Day with Kubestronaut - 1:30 PM, October 10, 2025"
+      "en": "[.NET Dev x CloudBro] Community Day with Kubestronaut - 1:30 PM, October 10, 2025"
     },
     "link": "https://forum.dotnetdev.kr/t/xcloudbro-kubestronaut-community-day-2025-10-10-1-30/13721",
+    "display": true
+  },
+  {
+    "start": "2025-09-11 00:00:00",
+    "end": "2025-11-09 00:00:00",
+    "timezone": "+09:00",
+    "message": {
+      "ko": "(2025년 11월 8일) 모두를 위한 비영리 오픈소스 커뮤니티 컨퍼런스 - FOSS for All 2025",
+      "en": "(November 8, 2025) FOSS for All 2025 - A Non-Profit Open Source Community Conference for All"
+    },
+    "link": "https://2025.fossforall.org",
     "display": true
   }
 ]
