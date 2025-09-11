@@ -12,7 +12,7 @@
   { 
     "name": {
       "ko": "닷넷데브",
-      "en": "DotNet Dev"
+      "en": ".NET Dev"
     },
     "url": "https://forum.dotnetdev.kr/" 
   },
@@ -36,5 +36,12 @@
       "en": "NoAnCon"
     },
     "url": "https://orbital-pet.diginori.com/conf/noan" 
+  },
+  {
+    "name": {
+      "ko": "FOSS for All (포스포올)",
+      "en": "FOSS for All"
+    },
+    "url": "https://fossforall.org"
   }
 ]
