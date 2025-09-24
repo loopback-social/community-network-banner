@@ -42,6 +42,16 @@
     return '';
   };
 
+  // Fisher-Yates shuffle algorithm
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   let news = [];
   try {
     const urlNews = new URL("news.json", scriptSrc || location.href);
@@ -122,18 +132,15 @@
       opacity: 0.8;
     }
     #global-top-banner .news-ticker .news-content {
-      display: inline-block;
+      display: block;
       white-space: nowrap;
-      animation: marquee 25s linear infinite;
-      padding-left: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
     }
-    @keyframes marquee {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-100%, 0, 0);
-      }
+    #global-top-banner .news-ticker .news-content.fade-out {
+      opacity: 0;
     }
     /* 모바일 대응 */
     @media (max-width: 768px) {
@@ -142,18 +149,12 @@
         font-size: 13px;
         gap: 0.8rem;
       }
-      #global-top-banner .news-ticker .news-content {
-        animation-duration: 30s;
-      }
     }
     @media (max-width: 480px) {
       #global-top-banner {
         padding: 0.3rem 0.6rem;
         font-size: 12px;
         gap: 0.6rem;
-      }
-      #global-top-banner .news-ticker .news-content {
-        animation-duration: 35s;
       }
     }
     #global-top-banner .news-ticker a,
@@ -310,7 +311,11 @@
   let newsSection, newsTicker, newsContent, newsModal;
   
   if (news.length) {
-    // Create news section with marquee ticker
+    // Shuffle news array for random display order
+    const shuffledNews = shuffleArray(news);
+    let currentNewsIndex = 0;
+
+    // Create news section with static ticker
     newsSection = document.createElement("div");
     newsSection.className = "news-section";
 
@@ -321,9 +326,47 @@
     newsContent = document.createElement("span");
     newsContent.className = "news-content";
     
-    // Create marquee content with all news items
-    const marqueeText = news.map(item => item.message).join(" • ");
-    newsContent.textContent = marqueeText;
+    // Display first news item
+    const displayCurrentNews = () => {
+      const currentNews = shuffledNews[currentNewsIndex];
+      newsContent.textContent = currentNews.message;
+      
+      // If news item has a link, make it clickable
+      if (currentNews.link) {
+        const linkElement = document.createElement("a");
+        linkElement.href = currentNews.link;
+        linkElement.target = "_blank";
+        linkElement.rel = "noopener noreferrer";
+        linkElement.textContent = currentNews.message;
+        linkElement.style.color = "#fff";
+        linkElement.style.textDecoration = "underline";
+        newsContent.innerHTML = "";
+        newsContent.appendChild(linkElement);
+      }
+    };
+
+    // Function to switch to next news with fade effect
+    const switchToNextNews = () => {
+      newsContent.classList.add("fade-out");
+      
+      setTimeout(() => {
+        currentNewsIndex = (currentNewsIndex + 1) % shuffledNews.length;
+        
+        // If we've gone through all items, shuffle again
+        if (currentNewsIndex === 0) {
+          shuffledNews.splice(0, shuffledNews.length, ...shuffleArray(news));
+        }
+        
+        displayCurrentNews();
+        newsContent.classList.remove("fade-out");
+      }, 250); // Half of the transition duration
+    };
+
+    // Initialize with first news item
+    displayCurrentNews();
+    
+    // Set up 10-second interval for news rotation
+    setInterval(switchToNextNews, 10000);
     
     newsTicker.appendChild(newsContent);
     newsSection.appendChild(newsTicker);
