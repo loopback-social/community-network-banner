@@ -30,13 +30,6 @@
     },
     "url": "https://fedidev.kr/" 
   },
-  { 
-    "name": {
-      "ko": "노안콘",
-      "en": "NoAnCon"
-    },
-    "url": "https://orbital-pet.diginori.com/conf/noan" 
-  },
   {
     "name": {
       "ko": "FOSS for All (포스포올)",
