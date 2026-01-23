@@ -14,47 +14,14 @@
     "display": true
   },
   {
-    "start": "2025-12-01 00:00:00",
-    "end": "2025-12-06 12:12:12",
+    "start": "2026-01-01 00:00:00",
+    "end": "2026-03-13 00:00:00",
     "timezone": "+09:00",
     "message": {
-      "ko": "[부산 지역 세미나] .NET Universe: Busan Edition, 2512",
-      "en": ".NET Universe: Busan Edition, 2512"
+      "ko": "(2026년 3월 12일, 연사/자원봉사자/후원사 모집 중) AI와 .NET의 만남 - .NET Universe 2026",
+      "en": "(March 12, 2026, Speakers/Volunteers/Sponsors Wanted) AI Meets .NET - .NET Universe 2026"
     },
-    "link": "https://dotnetuniverse.net/2025/busan2512",
-    "display": true
-  },
-  {
-    "start": "2025-09-01 00:00:00",
-    "end": "2025-12-13 12:12:12",
-    "timezone": "+09:00",
-    "message": {
-      "ko": "눈은 침침해도 마음은 밝게! 노안콘 2025 제주 축제",
-      "en": "Eyes may be dim, but hearts are bright! NoAnCon 2025 Jeju Festival"
-    },
-    "link": "https://orbital-pet.diginori.com/conf/noan",
-    "display": true
-  },
-  {
-    "start": "2025-09-08 00:00:00",
-    "end": "2025-10-11 00:00:00",
-    "timezone": "+09:00",
-    "message": {
-      "ko": "[닷넷데브xCloudBro] Kubestronaut과 함께하는 Community Day - 2025/10/10 오후 1시 30분",
-      "en": "[.NET Dev x CloudBro] Community Day with Kubestronaut - 1:30 PM, October 10, 2025"
-    },
-    "link": "https://forum.dotnetdev.kr/t/xcloudbro-kubestronaut-community-day-2025-10-10-1-30/13721",
-    "display": true
-  },
-  {
-    "start": "2025-09-11 00:00:00",
-    "end": "2025-11-09 00:00:00",
-    "timezone": "+09:00",
-    "message": {
-      "ko": "(2025년 11월 8일) 모두를 위한 비영리 오픈소스 커뮤니티 컨퍼런스 - FOSS for All 2025",
-      "en": "(November 8, 2025) FOSS for All 2025 - A Non-Profit Open Source Community Conference for All"
-    },
-    "link": "https://event-us.kr/fossforall/event/110400",
+    "link": "https://dotnetuniverse.net/2026",
     "display": true
   }
 ]
