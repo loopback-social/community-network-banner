@@ -23,5 +23,16 @@
     },
     "link": "https://dotnetuniverse.net/2026",
     "display": true
+  },
+  {
+    "start": "2026-02-12 00:00:00",
+    "end": "2026-02-22 00:00:00",
+    "timezone": "+09:00",
+    "message": {
+      "ko": "부산IT모각코와 닷넷데브가 함께 하는 .NET Universe Busan Edition 2602 / 2026년 2월 12일 오후 2시, 라운지J",
+      "en": ".NET Universe Busan Edition 2602, hosted by Busan IT Mogakko and .NET Dev / February 12, 2026, 2:00 PM, Lounge J"
+    },
+    "link": "https://dotnetuniverse.net/xyz/busan-2602",
+    "display": "true"
   }
 ]
