@@ -29,6 +29,58 @@ There are two main ways to participate in loopback.social:
 - To add your community to be displayed on the banner together, [submit a community listing issue to the GitHub repository](https://github.com/loopback-social/community-network-banner/issues/new/choose) after installing the banner.
 - To share news in the news ticker, [submit a news submission issue to the GitHub repository](https://github.com/loopback-social/community-network-banner/issues/new/choose) after installing the banner.
 
+## News Registration Guide (`news.json`)
+
+To add items to the news ticker at the bottom of the banner, add entries to the `docs/news.json` file in the following format.
+
+### Item Format
+
+```json
+{
+  "start": "YYYY-MM-DD HH:mm:ss",
+  "end": "YYYY-MM-DD HH:mm:ss",
+  "timezone": "+09:00",
+  "message": {
+    "ko": "Korean message",
+    "en": "English message"
+  },
+  "link": "https://example.com",
+  "display": true
+}
+```
+
+### Field Reference
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `start` | ✅ | Display start date/time (`YYYY-MM-DD HH:mm:ss`) |
+| `end` | ✅ | Display end date/time (`YYYY-MM-DD HH:mm:ss`) |
+| `timezone` | ❌ | Timezone. Defaults to UTC if omitted. Accepts both UTC offsets (`"+09:00"`) and IANA names (`"Asia/Seoul"`, case-insensitive) |
+| `message` | ✅ | Message to display. Either a plain string or a localized object `{"ko": "...", "en": "..."}` |
+| `link` | ❌ | URL to navigate on click. Either a plain string or a localized object `{"ko": "...", "en": "..."}` |
+| `display` | ✅ | Whether to show the item. Accepts `true`, `"true"`, `"yes"`, or `"1"` as enabled |
+
+### Example
+
+```json
+{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-31 23:59:59",
+  "timezone": "Asia/Seoul",
+  "message": {
+    "ko": "3월 밋업에 참여하세요!",
+    "en": "Join our March meetup!"
+  },
+  "link": {
+    "ko": "https://example.com/ko",
+    "en": "https://example.com/en"
+  },
+  "display": true
+}
+```
+
+> **Note**: `link` and `message` can also be set as a single string, in which case the same value is used for all languages.
+
 ## How It Works
 
 ### File Structure

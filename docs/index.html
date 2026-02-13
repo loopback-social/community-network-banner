@@ -106,6 +106,55 @@
     <h2>Step 3. 뉴스 제보하기</h2>
     <p>배너 하단 뉴스 티커에 보여줄 새 소식이 있다면 <code>docs/news.json</code>을 수정하거나 GitHub에서 <strong>뉴스 제보 등록</strong> 이슈 템플릿을 통해 제보할 수 있습니다.</p>
 
+    <h3><code>news.json</code> 항목 형식</h3>
+    <pre><code>{
+  "start": "YYYY-MM-DD HH:mm:ss",
+  "end": "YYYY-MM-DD HH:mm:ss",
+  "timezone": "+09:00",
+  "message": {
+    "ko": "한국어 메시지",
+    "en": "English message"
+  },
+  "link": "https://example.com",
+  "display": true
+}</code></pre>
+
+    <h3>필드 설명</h3>
+    <table style="border-collapse: collapse; width: 100%; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f4f4f4;">
+          <th style="border: 1px solid #ddd; padding: 0.5em; text-align: left;">필드</th>
+          <th style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">필수</th>
+          <th style="border: 1px solid #ddd; padding: 0.5em; text-align: left;">설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시 시작 일시 (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시 종료 일시 (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>timezone</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">시간대. 생략 시 UTC. 오프셋(<code>"+09:00"</code>) 또는 IANA 이름(<code>"Asia/Seoul"</code>) 모두 사용 가능 (대소문자 무관)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>message</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시할 메시지. 문자열 또는 <code>{"ko": "...", "en": "..."}</code> 형태</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>link</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">클릭 시 이동할 URL. 문자열 또는 <code>{"ko": "...", "en": "..."}</code> 형태</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>display</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시 여부. <code>true</code>, <code>"true"</code>, <code>"yes"</code>, <code>"1"</code> 모두 활성으로 인식</td></tr>
+      </tbody>
+    </table>
+
+    <h3>예시</h3>
+    <pre><code>{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-31 23:59:59",
+  "timezone": "Asia/Seoul",
+  "message": {
+    "ko": "3월 밋업에 참여하세요!",
+    "en": "Join our March meetup!"
+  },
+  "link": {
+    "ko": "https://example.com/ko",
+    "en": "https://example.com/en"
+  },
+  "display": true
+}</code></pre>
+    <p><strong>참고:</strong> <code>link</code>와 <code>message</code>는 단일 문자열로도 설정할 수 있으며, 이 경우 모든 언어에 동일한 값이 사용됩니다.</p>
+
     <h2>작동 원리</h2>
     <p><code>banner.js</code> 스크립트는 웹사이트에 포함될 때 페이지 상단에 검은색 띠 배너를 동적으로 생성하고 삽입합니다. 이 배너에는 <code>loopback.social</code>이라는 프로젝트 제목과 참여 커뮤니티 목록이 포함된 드롭다운 메뉴가 표시됩니다. 커뮤니티 목록은 <code>communities.json</code> 파일에서, 뉴스 티커의 내용은 <code>news.json</code> 파일에서 관리됩니다.</p>
 

@@ -29,6 +29,58 @@ loopback.social에 참여하는 방법은 크게 두 가지입니다.
 - 커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 커뮤니티 등재 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
 - 뉴스 티커에 소식을 전하려면, 배너 설치 후 [GitHub 저장소에 뉴스 제보 등록 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
 
+## 뉴스 등록 가이드 (`news.json`)
+
+배너 하단 뉴스 티커에 표시할 항목은 `docs/news.json` 파일에 아래 형식으로 추가합니다.
+
+### 항목 형식
+
+```json
+{
+  "start": "YYYY-MM-DD HH:mm:ss",
+  "end": "YYYY-MM-DD HH:mm:ss",
+  "timezone": "+09:00",
+  "message": {
+    "ko": "한국어 메시지",
+    "en": "English message"
+  },
+  "link": "https://example.com",
+  "display": true
+}
+```
+
+### 필드 설명
+
+| 필드 | 필수 | 설명 |
+|------|------|------|
+| `start` | ✅ | 표시 시작 일시 (`YYYY-MM-DD HH:mm:ss`) |
+| `end` | ✅ | 표시 종료 일시 (`YYYY-MM-DD HH:mm:ss`) |
+| `timezone` | ❌ | 시간대. 생략 시 UTC. 오프셋(`"+09:00"`) 또는 IANA 이름(`"Asia/Seoul"`) 모두 사용 가능 (대소문자 무관) |
+| `message` | ✅ | 표시할 메시지. 문자열 또는 `{"ko": "...", "en": "..."}` 형태의 다국어 객체 |
+| `link` | ❌ | 클릭 시 이동할 URL. 문자열 또는 `{"ko": "...", "en": "..."}` 형태의 다국어 객체 |
+| `display` | ✅ | 표시 여부. `true`, `"true"`, `"yes"`, `"1"` 모두 활성으로 인식 |
+
+### 예시
+
+```json
+{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-31 23:59:59",
+  "timezone": "Asia/Seoul",
+  "message": {
+    "ko": "3월 밋업에 참여하세요!",
+    "en": "Join our March meetup!"
+  },
+  "link": {
+    "ko": "https://example.com/ko",
+    "en": "https://example.com/en"
+  },
+  "display": true
+}
+```
+
+> **참고**: `link`와 `message`는 단일 문자열로도 설정할 수 있으며, 이 경우 모든 언어에 동일한 값이 사용됩니다.
+
 ## 작동 방식
 
 ### 파일 구조

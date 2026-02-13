@@ -106,6 +106,55 @@
     <h2>Step 3. Submit News</h2>
     <p>If you have news to show in the news ticker at the bottom of the banner, you can edit <code>docs/news.json</code> or submit reports through the <strong>News Submission</strong> issue template on GitHub.</p>
 
+    <h3><code>news.json</code> Item Format</h3>
+    <pre><code>{
+  "start": "YYYY-MM-DD HH:mm:ss",
+  "end": "YYYY-MM-DD HH:mm:ss",
+  "timezone": "+09:00",
+  "message": {
+    "ko": "Korean message",
+    "en": "English message"
+  },
+  "link": "https://example.com",
+  "display": true
+}</code></pre>
+
+    <h3>Field Reference</h3>
+    <table style="border-collapse: collapse; width: 100%; font-size: 0.95em;">
+      <thead>
+        <tr style="background: #f4f4f4;">
+          <th style="border: 1px solid #ddd; padding: 0.5em; text-align: left;">Field</th>
+          <th style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">Required</th>
+          <th style="border: 1px solid #ddd; padding: 0.5em; text-align: left;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Display start date/time (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Display end date/time (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>timezone</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">Timezone. Defaults to UTC if omitted. Accepts both UTC offsets (<code>"+09:00"</code>) and IANA names (<code>"Asia/Seoul"</code>, case-insensitive)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>message</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Message to display. Either a plain string or a localized object <code>{"ko": "...", "en": "..."}</code></td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>link</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">URL to navigate on click. Either a plain string or a localized object <code>{"ko": "...", "en": "..."}</code></td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>display</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Whether to show the item. Accepts <code>true</code>, <code>"true"</code>, <code>"yes"</code>, or <code>"1"</code> as enabled</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Example</h3>
+    <pre><code>{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-31 23:59:59",
+  "timezone": "Asia/Seoul",
+  "message": {
+    "ko": "3월 밋업에 참여하세요!",
+    "en": "Join our March meetup!"
+  },
+  "link": {
+    "ko": "https://example.com/ko",
+    "en": "https://example.com/en"
+  },
+  "display": true
+}</code></pre>
+    <p><strong>Note:</strong> <code>link</code> and <code>message</code> can also be set as a single string, in which case the same value is used for all languages.</p>
+
     <h2>How It Works</h2>
     <p>The <code>banner.js</code> script dynamically creates and inserts a black banner at the top of the page when included in a website. This banner includes the project title <code>loopback.social</code> and a dropdown menu containing a list of participating communities. The community list is managed in the <code>communities.json</code> file, and the news ticker content is managed in the <code>news.json</code> file.</p>
 
