@@ -29,8 +29,32 @@
 
   const parseNewsDate = (str, tz) => {
     if (!str) throw new Error("Missing date");
-    const timezone = typeof tz === "string" && tz ? tz : "Z";
-    return new Date(str.replace(" ", "T") + timezone);
+    const timezone = typeof tz === "string" && tz.trim() ? tz.trim() : "Z";
+    // Check if timezone is an IANA name (e.g. "Asia/Seoul") vs offset (e.g. "+09:00", "Z")
+    const isOffset = /^[Zz]$|^[+-]\d{2}:\d{2}$/.test(timezone);
+    if (isOffset) {
+      return new Date(str.replace(" ", "T") + timezone);
+    }
+    // IANA timezone name: parse local parts then resolve via Intl
+    const parts = str.trim().split(/[\s T]+/);
+    const [y, mo, d] = parts[0].split("-").map(Number);
+    const [h, mi, s] = (parts[1] || "00:00:00").split(":").map(Number);
+    // Build a formatter that resolves the IANA zone's offset for the given date
+    const fmt = new Intl.DateTimeFormat("en-US", {
+      timeZone: timezone, year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false,
+      timeZoneName: "shortOffset"
+    });
+    // Use a reference date in the target zone to extract offset
+    const ref = new Date(Date.UTC(y, mo - 1, d, h, mi, s || 0));
+    const formatted = fmt.format(ref);
+    const match = formatted.match(/GMT([+-]\d{1,2}(?::\d{2})?)/i);
+    let offsetMin = 0;
+    if (match) {
+      const [, oh, om] = match[1].match(/([+-]?\d{1,2})(?::(\d{2}))?/);
+      offsetMin = parseInt(oh, 10) * 60 + (parseInt(om || "0", 10)) * (oh.startsWith("-") ? -1 : 1);
+    }
+    return new Date(Date.UTC(y, mo - 1, d, h - Math.trunc(offsetMin / 60), mi - (offsetMin % 60), s || 0));
   };
 
   // Helper function to get localized text
@@ -60,7 +84,8 @@
     const rawNews = await respNews.json();
     const now = new Date();
     news = rawNews.filter((n) => {
-      if (n.display !== true) return false;
+      const d = n.display;
+      if (!(d === true || (typeof d === "string" && ["true","yes","1"].includes(d.trim().toLowerCase())))) return false;
       try {
         const start = parseNewsDate(n.start, n.timezone);
         const end = parseNewsDate(n.end, n.timezone);
