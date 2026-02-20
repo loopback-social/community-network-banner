@@ -16,6 +16,13 @@
     },
     "url": "https://forum.dotnetdev.kr/" 
   },
+  {
+    "name": {
+      "ko": "닷넷 유니버스",
+      "en": ".NET Universe"
+    },
+    "url": "https://dotnetuniverse.net/"
+  },
   { 
     "name": {
       "ko": "슬로그램",
@@ -36,5 +43,12 @@
       "en": "FOSS for All"
     },
     "url": "https://fossforall.org"
+  },
+  {
+    "name": {
+      "ko": "CloudBro",
+      "en": "CloudBro"
+    },
+    "url": "https://www.cloudbro.ai"
   }
 ]
