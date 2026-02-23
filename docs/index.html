@@ -96,6 +96,10 @@
     <p>웹 사이트나 포럼 상단에 배너를 추가하려면 다음 한 줄의 코드를 HTML 파일이나 스킨 본문에 <code>&lt;/body&gt;</code> 태그 (닫는 body 태그) 바로 앞에 추가하면 됩니다.</p>
     <pre><button class="copy-button">복사</button><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
 
+    <h3>배너 색상 커스터마이징 (선택 사항)</h3>
+    <p><code>data-color</code> 속성으로 배너 배경색을 변경할 수 있습니다. 기본값은 검은색(<code>#000000</code>)입니다. 16진수 색상 코드를 사용하며, <code>#</code>는 생략해도 됩니다.</p>
+    <pre><button class="copy-button">복사</button><code>&lt;script src="https://loopback.social/banner.js" data-color="#005a9c" defer&gt;&lt;/script&gt;</code></pre>
+
     <h2>Step 2. 이름 알리기</h2>
     <p>loopback.social에 참여하는 방법은 크게 두 가지입니다.</p>
     <ul>
@@ -173,16 +177,18 @@
 
     <script src="./banner.js" defer></script>
     <script>
-      document.querySelector('.copy-button').addEventListener('click', function() {
-        const codeTemplate = this.nextElementSibling.innerText;
-        const code = codeTemplate.replace('${Date.now()}', Date.now());
-        navigator.clipboard.writeText(code).then(() => {
-          this.innerText = '복사됨!';
-          setTimeout(() => {
-            this.innerText = '복사';
-          }, 2000);
-        }).catch(err => {
-          console.error('Could not copy text: ', err);
+      document.querySelectorAll('.copy-button').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const codeTemplate = this.nextElementSibling.innerText;
+          const code = codeTemplate.replace('${Date.now()}', Date.now());
+          navigator.clipboard.writeText(code).then(() => {
+            this.innerText = '복사됨!';
+            setTimeout(() => {
+              this.innerText = '복사';
+            }, 2000);
+          }).catch(err => {
+            console.error('Could not copy text: ', err);
+          });
         });
       });
     </script>

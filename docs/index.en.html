@@ -96,6 +96,10 @@
     <p>To add a banner to the top of your website or forum, add the following line of code just before the <code>&lt;/body&gt;</code> tag (closing body tag) in your HTML file or skin body.</p>
     <pre><button class="copy-button">Copy</button><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
 
+    <h3>Customizing the Banner Color (Optional)</h3>
+    <p>You can change the banner background color using the <code>data-color</code> attribute. The default is black (<code>#000000</code>). Use a hex color code; the leading <code>#</code> is optional.</p>
+    <pre><button class="copy-button">Copy</button><code>&lt;script src="https://loopback.social/banner.js" data-color="#005a9c" defer&gt;&lt;/script&gt;</code></pre>
+
     <h2>Step 2. Get Your Name Out There</h2>
     <p>There are two main ways to participate in loopback.social:</p>
     <ul>
@@ -173,16 +177,18 @@
 
     <script src="./banner.js" defer></script>
     <script>
-      document.querySelector('.copy-button').addEventListener('click', function() {
-        const codeTemplate = this.nextElementSibling.innerText;
-        const code = codeTemplate.replace('${Date.now()}', Date.now());
-        navigator.clipboard.writeText(code).then(() => {
-          this.innerText = 'Copied!';
-          setTimeout(() => {
-            this.innerText = 'Copy';
-          }, 2000);
-        }).catch(err => {
-          console.error('Could not copy text: ', err);
+      document.querySelectorAll('.copy-button').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const codeTemplate = this.nextElementSibling.innerText;
+          const code = codeTemplate.replace('${Date.now()}', Date.now());
+          navigator.clipboard.writeText(code).then(() => {
+            this.innerText = 'Copied!';
+            setTimeout(() => {
+              this.innerText = 'Copy';
+            }, 2000);
+          }).catch(err => {
+            console.error('Could not copy text: ', err);
+          });
         });
       });
     </script>

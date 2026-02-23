@@ -3,8 +3,16 @@
   if (window.__GLOBAL_TOP_BANNER_LOADER__) return;
   window.__GLOBAL_TOP_BANNER_LOADER__ = true;
 
+  // Read configuration from data-* attributes on the script tag
+  const currentScript = document.currentScript;
+  const rawColor = currentScript && currentScript.dataset.color;
+  const normalizedColor = rawColor
+    ? (rawColor.startsWith('#') ? rawColor : '#' + rawColor)
+    : null;
+  window.__BANNER_CONFIG__ = { color: normalizedColor };
+
   // Get the current script src to resolve relative URLs
-  const scriptSrc = document.currentScript && document.currentScript.src;
+  const scriptSrc = currentScript && currentScript.src;
   
   // Create the implementation script URL with timestamp for cache busting
   const timestamp = Date.now();

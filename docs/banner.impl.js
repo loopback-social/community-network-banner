@@ -2,6 +2,10 @@
   if (window.__GLOBAL_TOP_BANNER__) return;
   window.__GLOBAL_TOP_BANNER__ = true;
 
+  // Read configuration (set by banner.js before this script loads)
+  const bannerConfig = window.__BANNER_CONFIG__ || {};
+  const bannerBg = bannerConfig.color || '#000';
+
   // Language detection
   const isEnglish = document.documentElement.lang === 'en' || 
                    window.location.pathname.includes('.en.') ||
@@ -129,7 +133,7 @@
   style.textContent = `
     #global-top-banner {
       box-sizing: border-box; width: 100%;
-      background: #000; color: #fff; padding: 0.5em 1rem;
+      background: ${bannerBg}; color: #fff; padding: 0.5em 1rem;
       display: flex; align-items: center; gap: 1rem;
       font: 400 14px/1 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
