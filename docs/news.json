@@ -34,5 +34,16 @@
     },
     "link": "https://dotnetuniverse.net/xyz/busan-2602",
     "display": true
+  },
+  {
+    "start": "2026-03-11 00:00:00",
+    "end": "2026-04-04 13:00:00",
+    "timezone": "Asia/Seoul",
+    "message": {
+      "ko": "[CloudBro] Ship to Production: 현업이 검증한 플랫폼 엔지니어링의 실전 오픈 프로젝트 데모데이!",
+      "en": "[CloudBro] Ship to Production: Community Open Project Demo Day"
+    },
+    "link": "https://event-us.kr/cloudbro/event/122081",
+    "display": true
   }
 ]
