@@ -34,6 +34,11 @@
     en: "Close"
   };
 
+  const VIEW_ALL_NEWS = {
+    ko: "전체 뉴스",
+    en: "All News"
+  };
+
   const scriptSrc = document.currentScript && document.currentScript.src;
   let hasLoadError = false;
 
@@ -159,12 +164,15 @@
     #global-top-banner .news-ticker {
       width: 100%;
       overflow: hidden;
-      cursor: pointer;
       position: relative;
-      transition: opacity 0.2s ease;
     }
-    #global-top-banner .news-ticker:hover {
-      opacity: 0.8;
+    #global-top-banner .view-all-news {
+      background: none; border: none; color: #fff; cursor: pointer;
+      font: inherit; white-space: nowrap; opacity: 0.7;
+      padding: 0; text-decoration: underline;
+    }
+    #global-top-banner .view-all-news:hover {
+      opacity: 1;
     }
     #global-top-banner .news-ticker .news-content {
       display: block;
@@ -406,6 +414,11 @@
     newsTicker.appendChild(newsContent);
     newsSection.appendChild(newsTicker);
 
+    // Create "View All News" button
+    const viewAllBtn = document.createElement("button");
+    viewAllBtn.className = "view-all-news";
+    viewAllBtn.textContent = VIEW_ALL_NEWS[lang] || VIEW_ALL_NEWS.en;
+
     // Create modal
     newsModal = document.createElement("div");
     newsModal.id = "global-news-modal";
@@ -450,7 +463,7 @@
     modalContent.appendChild(newsList);
     newsModal.appendChild(modalContent);
 
-    banner.append(dropdown, newsSection);
+    banner.append(dropdown, newsSection, viewAllBtn);
   } else {
     const titleEl = document.createElement("a");
     titleEl.className = "title";
@@ -504,13 +517,15 @@
   });
 
   // Modal event handlers
-  if (newsTicker && newsModal) {
-    // Add click event to news ticker
-    newsTicker.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      openModal();
-    });
+  if (newsModal) {
+    // "View All News" button opens modal
+    const viewAllBtn = banner.querySelector(".view-all-news");
+    if (viewAllBtn) {
+      viewAllBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+    }
     
     const closeButton = newsModal.querySelector(".close-modal");
     if (closeButton) {
