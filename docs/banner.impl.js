@@ -7,10 +7,16 @@
   const bannerBg = bannerConfig.color || '#000';
 
   // Language detection
-  const isEnglish = document.documentElement.lang === 'en' || 
-                   window.location.pathname.includes('.en.') ||
-                   window.location.search.includes('lang=en');
-  const lang = isEnglish ? 'en' : 'ko';
+  // bannerConfig.lang: 'auto' (default) = detect from page, or specific locale like 'ko', 'en'
+  const configLang = (bannerConfig.lang || 'auto').trim().toLowerCase();
+  const lang = configLang !== 'auto'
+    ? configLang
+    : (document.documentElement.lang === 'en' ||
+       window.location.pathname.includes('.en.') ||
+       window.location.search.includes('lang=en'))
+      ? 'en'
+      : 'ko';
+  const isEnglish = lang === 'en';
 
   const TITLE = "loopback.social";
   const TAGLINE = {

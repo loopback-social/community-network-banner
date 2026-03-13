@@ -9,7 +9,8 @@
   const normalizedColor = rawColor
     ? (rawColor.startsWith('#') ? rawColor : '#' + rawColor)
     : null;
-  window.__BANNER_CONFIG__ = { color: normalizedColor };
+  const rawLang = currentScript && currentScript.dataset.lang;
+  window.__BANNER_CONFIG__ = { color: normalizedColor, lang: rawLang || 'auto' };
 
   // Get the current script src to resolve relative URLs
   const scriptSrc = currentScript && currentScript.src;
