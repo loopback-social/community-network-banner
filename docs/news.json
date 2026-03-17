@@ -45,5 +45,16 @@
     },
     "link": "https://event-us.kr/cloudbro/event/122081",
     "display": true
+  },
+  {
+    "start": "2026-03-16 00:00:00",
+    "end": "2026-03-22 23:59:59",
+    "timezone": "Asia/Seoul",
+    "message": {
+      "ko": "(가칭) 파일 하나로 시작하는 C# 베타 리더 모집",
+      "en": "(Tentative) Recruiting Beta Readers for 'Starting C# with a Single File'"
+    },
+    "link": "https://forum.dotnetdev.kr/t/c/14450",
+    "display": true
   }
 ]
