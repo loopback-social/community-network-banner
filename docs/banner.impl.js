@@ -288,17 +288,21 @@
     #global-news-modal .news-list a:hover {
       text-decoration: underline;
     }
-    #global-top-banner .dropdown {
+    #global-top-banner .gtb-dropdown {
       position: relative; font-weight: bold;
     }
-    #global-top-banner button.dropdown-toggle {
+    #global-top-banner button.gtb-dropdown-toggle {
       background: none; border: none; color: inherit; cursor: pointer;
       display: flex; align-items: center; gap: .25rem; font: inherit;
     }
-    #global-top-banner button.dropdown-toggle:focus {
+    #global-top-banner button.gtb-dropdown-toggle:focus {
       outline: 2px solid #555; outline-offset: 2px;
     }
-    #global-top-banner .arrow {
+    #global-top-banner button.gtb-dropdown-toggle::after {
+      content: none !important;
+      display: none !important;
+    }
+    #global-top-banner .gtb-arrow {
       transition: transform .2s ease;
       font-size: 0.5rem;
     }
@@ -328,13 +332,14 @@
   banner.id = "global-top-banner";
 
   const dropdown = document.createElement("div");
-  dropdown.className = "dropdown";
+  dropdown.className = "gtb-dropdown";
 
   const toggleBtn = document.createElement("button");
-  toggleBtn.className = "dropdown-toggle";
+  toggleBtn.className = "gtb-dropdown-toggle";
+  toggleBtn.type = "button";
   toggleBtn.setAttribute("aria-haspopup", "true");
   toggleBtn.setAttribute("aria-expanded", "false");
-  toggleBtn.innerHTML = `${TITLE} <span class="arrow">&#x25bc;</span>`;
+  toggleBtn.innerHTML = `${TITLE} <span class="gtb-arrow">&#x25bc;</span>`;
 
   const menu = document.createElement("ul");
   menu.id = "global-top-menu";
@@ -489,7 +494,7 @@
   const closeMenu = () => {
     menu.classList.remove("open");
     toggleBtn.setAttribute("aria-expanded", "false");
-    toggleBtn.querySelector(".arrow").style.transform = "rotate(0deg)";
+    toggleBtn.querySelector(".gtb-arrow").style.transform = "rotate(0deg)";
   };
 
   const closeModal = () => {
@@ -507,7 +512,7 @@
   toggleBtn.addEventListener("click", () => {
     const opened = menu.classList.toggle("open");
     toggleBtn.setAttribute("aria-expanded", opened);
-    toggleBtn.querySelector(".arrow").style.transform =
+    toggleBtn.querySelector(".gtb-arrow").style.transform =
       opened ? "rotate(-180deg)" : "rotate(0deg)";
     if (opened) {
       const rect = toggleBtn.getBoundingClientRect();
