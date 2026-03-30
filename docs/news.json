@@ -78,5 +78,16 @@
     },
     "link": "https://dotnetuniverse.net/xyz/copilot-dev-days-2604",
     "display": true
+  },
+  {
+    "start": "2026-03-30 00:00:00",
+    "end": "2027-01-01 00:00:00",
+    "timezone": "Asia/Seoul",
+    "message": {
+      "ko": ".NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.",
+      "en": "Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates."
+    },
+    "link": "https://dotnetuniverse.net/2026",
+    "display": true
   }
 ]
