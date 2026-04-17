@@ -36,6 +36,17 @@
     "display": true
   },
   {
+    "start": "2026-04-17 00:00:00",
+    "end": "2026-04-25 22:00:00",
+    "timezone": "Asia/Seoul",
+    "message": {
+      "ko": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604",
+      "en": ".NET Universe: Busan Edition, 2604 with Busan IT Mogakko"
+    },
+    "link": "https://dotnetuniverse.net/xyz/busan-2604",
+    "display": true
+  },
+  {
     "start": "2026-03-11 00:00:00",
     "end": "2026-04-04 13:00:00",
     "timezone": "Asia/Seoul",
