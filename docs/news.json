@@ -100,5 +100,27 @@
     },
     "link": "https://dotnetuniverse.net/2026",
     "display": true
+  },
+  {
+    "start": "2026-05-02 13:00:00",
+    "end": "2026-05-02 17:00:00",
+    "timezone": "Asia/Seoul",
+    "message": {
+      "ko": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층",
+      "en": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F"
+    },
+    "link": "https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472",
+    "display": true
+  },
+  {
+    "start": "2026-08-29 09:00:00",
+    "end": "2026-08-29 17:00:00",
+    "timezone": "Asia/Seoul",
+    "message": {
+      "ko": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!",
+      "en": "UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!"
+    },
+    "link": "https://event-us.kr/m/124753/53287",
+    "display": true
   }
 ]
