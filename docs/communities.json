@@ -43,5 +43,12 @@
       "en": "CloudBro"
     },
     "url": "https://www.cloudbro.ai"
+  },
+  {
+    "name": {
+      "ko": "우분투한국커뮤니티",
+      "en": "Ubuntu Korea"
+    },
+    "url": "https://ubuntu-kr.org"
   }
 ]
