@@ -133,5 +133,16 @@
     },
     "link": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205",
     "display": true
+  },
+  {
+    "start": "2026-05-28 13:30:00",
+    "end": "2026-05-28 17:30:00",
+    "timezone": "+09:00",
+    "message": {
+      "ko": "🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월",
+      "en": "🚀 [dot4] Monthly .NET Talks · May"
+    },
+    "link": "https://ticketa.co/event/qpye8cf5",
+    "display": true
   }
 ]
