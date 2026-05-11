@@ -48,7 +48,7 @@ body:
     id: message_en
     attributes:
       label: 뉴스 메시지 (영어) / Message (English)
-      description: 비워두면 한국어 메시지를 그대로 사용합니다. / Leave blank to reuse the Korean message.
+      description: 비워두면 리포지터리 컨트리뷰터가 PR 단계에서 재량껏 번역해 채울 수 있습니다. / If left blank, a repository contributor may translate it at the PR stage.
     validations:
       required: false
 
