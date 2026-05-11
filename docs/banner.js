@@ -5,12 +5,17 @@
 
   // Read configuration from data-* attributes on the script tag
   const currentScript = document.currentScript;
-  const rawColor = currentScript && currentScript.dataset.color;
-  const normalizedColor = rawColor
-    ? (rawColor.startsWith('#') ? rawColor : '#' + rawColor)
+  const normalizeHex = (raw) => raw
+    ? (raw.startsWith('#') ? raw : '#' + raw)
     : null;
+  const rawColor = currentScript && currentScript.dataset.color;
+  const rawTextColor = currentScript && currentScript.dataset.textcolor;
   const rawLang = currentScript && currentScript.dataset.lang;
-  window.__BANNER_CONFIG__ = { color: normalizedColor, lang: rawLang || 'auto' };
+  window.__BANNER_CONFIG__ = {
+    color: normalizeHex(rawColor),
+    textColor: normalizeHex(rawTextColor),
+    lang: rawLang || 'auto'
+  };
 
   // Get the current script src to resolve relative URLs
   const scriptSrc = currentScript && currentScript.src;

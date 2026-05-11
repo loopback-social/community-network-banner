@@ -5,6 +5,7 @@
   // Read configuration (set by banner.js before this script loads)
   const bannerConfig = window.__BANNER_CONFIG__ || {};
   const bannerBg = bannerConfig.color || '#000';
+  const bannerText = bannerConfig.textColor || '#fff';
 
   // Language detection
   // bannerConfig.lang: 'auto' (default) = detect from page, or specific locale like 'ko', 'en'
@@ -144,7 +145,7 @@
   style.textContent = `
     #global-top-banner {
       box-sizing: border-box; width: 100%;
-      background: ${bannerBg}; color: #fff; padding: 0.5em 1rem;
+      background: ${bannerBg}; color: ${bannerText}; padding: 0.5em 1rem;
       display: flex; align-items: center; gap: 1rem;
       font: 400 14px/1 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
@@ -167,7 +168,7 @@
       position: relative;
     }
     #global-top-banner .view-all-news {
-      background: none; border: none; color: #fff; cursor: pointer;
+      background: none; border: none; color: ${bannerText}; cursor: pointer;
       font: inherit; white-space: nowrap; opacity: 0.7;
       padding: 0; text-decoration: underline;
     }
@@ -205,7 +206,7 @@
     #global-top-banner .news-ticker a:visited,
     #global-top-banner .news-ticker a:hover,
     #global-top-banner .news-ticker a:active {
-      color: #fff !important;
+      color: ${bannerText} !important;
       text-decoration: underline;
       font-weight: inherit;
     }
@@ -386,7 +387,7 @@
         linkElement.target = "_blank";
         linkElement.rel = "noopener noreferrer";
         linkElement.textContent = currentNews.message;
-        linkElement.style.color = "#fff";
+        linkElement.style.color = bannerText;
         linkElement.style.textDecoration = "underline";
         newsContent.innerHTML = "";
         newsContent.appendChild(linkElement);
@@ -476,7 +477,7 @@
     titleEl.target = "_blank";
     titleEl.rel = "noopener noreferrer";
     titleEl.textContent = TAGLINE[lang];
-    titleEl.style.color = "#fff";
+    titleEl.style.color = bannerText;
     titleEl.style.textDecoration = "none";
     banner.append(dropdown, titleEl);
   }

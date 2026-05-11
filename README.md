@@ -24,15 +24,16 @@
 
 ### 배너 옵션
 
-`data-color` 속성으로 배너 배경색을, `data-lang` 속성으로 표시 언어를 지정할 수 있습니다.
+`data-color` 속성으로 배너 배경색을, `data-textcolor` 속성으로 텍스트 색상을, `data-lang` 속성으로 표시 언어를 지정할 수 있습니다.
 
 | 속성 | 설명 | 기본값 | 예시 |
 |------|------|--------|------|
 | `data-color` | 배너 배경색 (16진수) | `#000000` | `#005a9c` |
+| `data-textcolor` | 배너 텍스트/링크 색상 (16진수) | `#ffffff` | `#f0f0f0` |
 | `data-lang` | 표시 언어 (`auto`, `ko`, `en`) | `auto` | `ko` |
 
 ```html
-<script src="https://loopback.social/banner.js" data-color="#005a9c" data-lang="en" defer></script>
+<script src="https://loopback.social/banner.js" data-color="#005a9c" data-textcolor="#ffffff" data-lang="en" defer></script>
 ```
 
 `data-lang`이 `auto`이면 페이지의 `lang` 속성이나 URL을 기반으로 자동 감지합니다.

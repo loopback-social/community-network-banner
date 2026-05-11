@@ -24,15 +24,16 @@ To add a solidarity banner to your website, simply add the following line of cod
 
 ### Banner Options
 
-Use the `data-color` attribute to set the banner background color, and the `data-lang` attribute to set the display language.
+Use the `data-color` attribute to set the banner background color, `data-textcolor` to set the text color, and `data-lang` to set the display language.
 
 | Attribute | Description | Default | Example |
 |-----------|-------------|---------|--------|
 | `data-color` | Banner background color (hex) | `#000000` | `#005a9c` |
+| `data-textcolor` | Banner text/link color (hex) | `#ffffff` | `#f0f0f0` |
 | `data-lang` | Display language (`auto`, `ko`, `en`) | `auto` | `ko` |
 
 ```html
-<script src="https://loopback.social/banner.js" data-color="#005a9c" data-lang="en" defer></script>
+<script src="https://loopback.social/banner.js" data-color="#005a9c" data-textcolor="#ffffff" data-lang="en" defer></script>
 ```
 
 When `data-lang` is set to `auto`, the language is automatically detected from the page's `lang` attribute or URL.
