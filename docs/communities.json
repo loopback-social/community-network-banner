@@ -50,5 +50,12 @@
       "en": "Ubuntu Korea"
     },
     "url": "https://ubuntu-kr.org"
+  },
+  {
+    "name": {
+      "ko": "dot4",
+      "en": "dot4"
+    },
+    "url": "https://dot4.kr/"
   }
 ]
