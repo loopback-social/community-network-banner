@@ -1,0 +1,163 @@
+name: Issue to PR
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  community-submission:
+    if: contains(github.event.issue.labels.*.name, 'community-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse issue body
+        id: parse
+        uses: stefanbuck/github-issue-parser@v3
+        with:
+          template-path: .github/ISSUE_TEMPLATE/add_request.yml
+
+      - name: Append community entry
+        id: build
+        env:
+          PARSED: ${{ steps.parse.outputs.jsonString }}
+        run: node .github/scripts/append-community.mjs
+
+      - name: Install AJV
+        run: npm install --no-save ajv-cli@5 ajv-formats@3
+
+      - name: Validate communities.json
+        run: npx ajv validate -s docs/schemas/communities.schema.json -d docs/communities.json --strict=false --all-errors
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: submission/community-${{ github.event.issue.number }}
+          base: main
+          delete-branch: true
+          title: "Add community: ${{ steps.build.outputs.name }} (issue #${{ github.event.issue.number }})"
+          body: |
+            자동 생성된 PR입니다. / Automated PR.
+
+            - 이슈 / Issue: #${{ github.event.issue.number }}
+            - 추가 항목 / Added: **${{ steps.build.outputs.name }}**
+
+            Closes #${{ github.event.issue.number }}.
+          commit-message: |
+            Add community ${{ steps.build.outputs.name }}
+
+            From issue #${{ github.event.issue.number }}.
+          labels: |
+            community-submission
+            automated
+
+      - name: Comment on issue (success)
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            제보 감사합니다! 검토용 PR을 자동으로 생성했습니다.
+            Thanks for the submission — an automated PR has been opened for review.
+
+            ${{ steps.cpr.outputs.pull-request-url }}
+
+      - name: Comment on issue (failure)
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            자동 처리 중 오류가 발생했습니다. 양식의 필드를 다시 확인해주세요.
+            Automated processing failed. Please review the form fields.
+
+            워크플로 로그 / Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  news-submission:
+    if: contains(github.event.issue.labels.*.name, 'news-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse issue body
+        id: parse
+        uses: stefanbuck/github-issue-parser@v3
+        with:
+          template-path: .github/ISSUE_TEMPLATE/news_submission.yml
+
+      - name: Append news entry
+        id: build
+        env:
+          PARSED: ${{ steps.parse.outputs.jsonString }}
+        run: node .github/scripts/append-news.mjs
+
+      - name: Install AJV
+        run: npm install --no-save ajv-cli@5 ajv-formats@3
+
+      - name: Validate news.json
+        run: npx ajv validate -s docs/schemas/news.schema.json -d docs/news.json --strict=false --all-errors
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: submission/news-${{ github.event.issue.number }}
+          base: main
+          delete-branch: true
+          title: "Add news: ${{ steps.build.outputs.summary }} (issue #${{ github.event.issue.number }})"
+          body: |
+            자동 생성된 PR입니다. / Automated PR.
+
+            - 이슈 / Issue: #${{ github.event.issue.number }}
+            - 추가 항목 / Added: ${{ steps.build.outputs.summary }}
+
+            Closes #${{ github.event.issue.number }}.
+          commit-message: |
+            Add news ${{ steps.build.outputs.summary }}
+
+            From issue #${{ github.event.issue.number }}.
+          labels: |
+            news-submission
+            automated
+
+      - name: Comment on issue (success)
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            제보 감사합니다! 검토용 PR을 자동으로 생성했습니다.
+            Thanks for the submission — an automated PR has been opened for review.
+
+            ${{ steps.cpr.outputs.pull-request-url }}
+
+      - name: Comment on issue (failure)
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            자동 처리 중 오류가 발생했습니다. 양식의 필드를 다시 확인해주세요.
+            Automated processing failed. Please review the form fields.
+
+            워크플로 로그 / Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

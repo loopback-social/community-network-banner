@@ -5,24 +5,42 @@ on:
     branches: [ main ]
     paths:
       - 'docs/*.json'
+      - 'docs/schemas/*.json'
+      - '.github/workflows/json-lint.yml'
   pull_request:
     branches: [ main ]
     paths:
       - 'docs/*.json'
+      - 'docs/schemas/*.json'
+      - '.github/workflows/json-lint.yml'
 
 jobs:
   json-lint:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Validate JSON files
-      run: |
-        echo "Validating JSON files..."
-        for file in docs/*.json; do
-          echo "Checking $file..."
-          python -m json.tool "$file" > /dev/null && echo "✅ $file is valid" || exit 1
-        done
-        echo "🎉 All JSON files are valid!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: |
+          echo "Validating JSON syntax..."
+          for file in docs/*.json docs/schemas/*.json; do
+            [ -f "$file" ] || continue
+            echo "Checking $file..."
+            python -m json.tool "$file" > /dev/null && echo "OK $file" || exit 1
+          done
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install AJV CLI
+        run: npm install --no-save ajv-cli@5 ajv-formats@3
+
+      - name: Validate news.json against schema
+        run: npx ajv validate -s docs/schemas/news.schema.json -d docs/news.json --strict=false --all-errors
+
+      - name: Validate communities.json against schema
+        run: npx ajv validate -s docs/schemas/communities.schema.json -d docs/communities.json --strict=false --all-errors

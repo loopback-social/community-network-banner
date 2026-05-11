@@ -45,6 +45,8 @@ There are two main ways to participate in loopback.social:
 - To add your community to be displayed on the banner together, [submit a community listing issue to the GitHub repository](https://github.com/loopback-social/community-network-banner/issues/new/choose) after installing the banner.
 - To share news in the news ticker, [submit a news submission issue to the GitHub repository](https://github.com/loopback-social/community-network-banner/issues/new/choose) after installing the banner.
 
+Once you submit the issue form, an automation bot validates the inputs and opens a pull request that appends the entry to `docs/communities.json` or `docs/news.json`. A maintainer reviews and merges the PR, and the change goes live immediately.
+
 ## News Registration Guide (`news.json`)
 
 To add items to the news ticker at the bottom of the banner, add entries to the `docs/news.json` file in the following format.
@@ -105,6 +107,10 @@ To add items to the news ticker at the bottom of the banner, add entries to the 
 - `docs/banner.impl.js`: Actual banner implementation (cache-busted with timestamp)
 - `docs/communities.json`: List of participating communities
 - `docs/news.json`: News ticker content
+- `docs/schemas/`: JSON Schemas for `communities.json`/`news.json` (used by CI validation)
+- `.github/ISSUE_TEMPLATE/`: Structured submission forms (parsed by automation)
+- `.github/scripts/`: Form-to-JSON conversion scripts
+- `.github/workflows/issue-to-pr.yml`: Issue → PR automation workflow
 
 ### Operation
 

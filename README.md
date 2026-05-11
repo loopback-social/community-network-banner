@@ -45,6 +45,8 @@ loopback.social에 참여하는 방법은 크게 두 가지입니다.
 - 커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 커뮤니티 등재 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
 - 뉴스 티커에 소식을 전하려면, 배너 설치 후 [GitHub 저장소에 뉴스 제보 등록 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
 
+이슈 양식을 제출하면 자동화 봇이 입력값을 검증하고 `docs/communities.json` 또는 `docs/news.json`에 항목을 추가하는 PR을 자동으로 생성합니다. 운영자가 PR을 검토하고 머지하면 즉시 반영됩니다.
+
 ## 뉴스 등록 가이드 (`news.json`)
 
 배너 하단 뉴스 티커에 표시할 항목은 `docs/news.json` 파일에 아래 형식으로 추가합니다.
@@ -105,6 +107,10 @@ loopback.social에 참여하는 방법은 크게 두 가지입니다.
 - `docs/banner.impl.js`: 실제 배너 구현체 (타임스탬프로 캐시 무효화)
 - `docs/communities.json`: 참여 커뮤니티 목록
 - `docs/news.json`: 뉴스 티커 콘텐츠
+- `docs/schemas/`: `communities.json`/`news.json` JSON Schema (CI에서 검증에 사용)
+- `.github/ISSUE_TEMPLATE/`: 구조화된 제출 양식 (자동화 봇이 파싱)
+- `.github/scripts/`: 양식 → JSON 항목 변환 스크립트
+- `.github/workflows/issue-to-pr.yml`: 이슈 → PR 자동화 워크플로
 
 ### 동작 원리
 

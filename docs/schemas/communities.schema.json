@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://loopback.social/schemas/communities.schema.json",
+  "title": "Loopback Social Communities",
+  "description": "Schema for docs/communities.json — communities listed in the banner dropdown.",
+  "type": "array",
+  "items": { "$ref": "#/definitions/community" },
+  "definitions": {
+    "community": {
+      "type": "object",
+      "required": ["name", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/localizedString",
+          "description": "Display name. String or { ko, en } object."
+        },
+        "url": {
+          "$ref": "#/definitions/localizedString",
+          "description": "Community URL. String or { ko, en } object."
+        }
+      }
+    },
+    "localizedString": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "string", "minLength": 1 },
+          "properties": {
+            "ko": { "type": "string", "minLength": 1 },
+            "en": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    }
+  }
+}

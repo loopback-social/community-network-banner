@@ -1,0 +1,61 @@
+name: 커뮤니티 등록 요청 / Community submission
+description: Loopback Social 배너에 커뮤니티를 추가하려면 이 양식을 사용하세요. Use this form to add a community to the banner.
+title: "[Community] "
+labels: ["community-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        이 양식이 제출되면 자동화 봇이 `docs/communities.json`에 항목을 추가하는 PR을 생성합니다.
+        Once submitted, an automation bot will open a PR adding your entry to `docs/communities.json`.
+
+  - type: input
+    id: name_ko
+    attributes:
+      label: 커뮤니티 이름 (한국어) / Name (Korean)
+      placeholder: 예) 닷넷데브
+    validations:
+      required: true
+
+  - type: input
+    id: name_en
+    attributes:
+      label: 커뮤니티 이름 (영어) / Name (English)
+      description: 비워두면 한국어 이름을 그대로 사용합니다. / Leave blank to reuse the Korean name.
+      placeholder: e.g. .NET Dev
+    validations:
+      required: false
+
+  - type: input
+    id: url_ko
+    attributes:
+      label: 커뮤니티 URL (한국어) / URL (Korean)
+      description: https:// 로 시작하는 전체 URL을 입력하세요. / Provide the full https:// URL.
+      placeholder: https://example.com/
+    validations:
+      required: true
+
+  - type: input
+    id: url_en
+    attributes:
+      label: 커뮤니티 URL (영어) / URL (English)
+      description: 비워두면 한국어 URL을 그대로 사용합니다. / Leave blank to reuse the Korean URL.
+      placeholder: https://example.com/en
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 커뮤니티 설명 / Description
+      description: 검토용 컨텍스트입니다. 파일에는 저장되지 않습니다. / Context for reviewers; not stored in the JSON.
+    validations:
+      required: false
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 등록을 원하는 이유 / Why join
+      description: 검토용 컨텍스트입니다. 파일에는 저장되지 않습니다. / Context for reviewers; not stored in the JSON.
+    validations:
+      required: false
