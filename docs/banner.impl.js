@@ -95,7 +95,9 @@
   // webcal:// triggers calendar subscription in most native apps; falls back gracefully because we also expose the https link.
   const icsWebcalHref = icsHref.replace(/^https?:/i, 'webcal:');
   const calLabel = isEnglish ? 'Loopback Social events' : 'Loopback Social 커뮤니티 행사';
-  const googleCalHref = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icsHref)}`;
+  // Google Calendar's "Add by URL" deep link only opens the subscribe dialog
+  // when cid= carries a webcal:// URL; passing https:// silently no-ops.
+  const googleCalHref = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icsWebcalHref)}`;
   const outlookLiveHref = `https://outlook.live.com/calendar/0/addcalendar?url=${encodeURIComponent(icsHref)}&name=${encodeURIComponent(calLabel)}`;
   const outlook365Href = `https://outlook.office.com/calendar/0/addcalendar?url=${encodeURIComponent(icsHref)}&name=${encodeURIComponent(calLabel)}`;
   let hasLoadError = false;
