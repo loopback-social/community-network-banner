@@ -41,10 +41,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/news.ics docs/feed.xml docs/events.jsonld docs/sitemap.xml
+          git add docs/feeds docs/sitemap.xml
           if git diff --cached --quiet; then
             echo "No feed changes."
           else
-            git commit -m "chore: regenerate feeds (ics/rss/jsonld/sitemap)"
+            git commit -m "chore: regenerate machine-readable feeds"
             git push
           fi
