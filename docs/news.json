@@ -144,5 +144,16 @@
     },
     "link": "https://ticketa.co/event/qpye8cf5",
     "display": true
+  },
+  {
+    "start": "2026-05-19 00:00:00",
+    "end": "2026-06-05 23:59:59",
+    "timezone": "+09:00",
+    "message": {
+      "ko": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)",
+      "en": "UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)"
+    },
+    "link": "https://2026.ubuntu-kr.org/cfp",
+    "display": true
   }
 ]
