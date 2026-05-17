@@ -26,6 +26,42 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://loopback.social/images/icons8-loop-windows-11-color-512.png" />
 
+  <!-- Machine-readable feeds. Each format ships in bilingual + ko + en variants (see hreflang). -->
+  <link rel="alternate" type="application/rss+xml" title="Loopback Social — Community News (RSS, bilingual)" href="/feeds/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Loopback Social — 커뮤니티 뉴스 (RSS)" href="/feeds/feed.ko.xml" hreflang="ko" />
+  <link rel="alternate" type="application/rss+xml" title="Loopback Social — Community News (RSS)" href="/feeds/feed.en.xml" hreflang="en" />
+  <link rel="alternate" type="application/atom+xml" title="Loopback Social — Community News (Atom, bilingual)" href="/feeds/feed.atom" />
+  <link rel="alternate" type="application/atom+xml" title="Loopback Social — 커뮤니티 뉴스 (Atom)" href="/feeds/feed.ko.atom" hreflang="ko" />
+  <link rel="alternate" type="application/atom+xml" title="Loopback Social — Community News (Atom)" href="/feeds/feed.en.atom" hreflang="en" />
+  <link rel="alternate" type="application/feed+json" title="Loopback Social — Community News (JSON Feed, bilingual)" href="/feeds/feed.json" />
+  <link rel="alternate" type="application/feed+json" title="Loopback Social — 커뮤니티 뉴스 (JSON Feed)" href="/feeds/feed.ko.json" hreflang="ko" />
+  <link rel="alternate" type="application/feed+json" title="Loopback Social — Community News (JSON Feed)" href="/feeds/feed.en.json" hreflang="en" />
+  <link rel="alternate" type="text/x-opml" title="Loopback Social — Subscribe to all feeds (OPML, bilingual)" href="/feeds/feeds.opml" />
+  <link rel="alternate" type="text/x-opml" title="Loopback Social — 모든 피드 (OPML)" href="/feeds/feeds.ko.opml" hreflang="ko" />
+  <link rel="alternate" type="text/x-opml" title="Loopback Social — Subscribe to all feeds (OPML)" href="/feeds/feeds.en.opml" hreflang="en" />
+  <link rel="alternate" type="text/calendar" title="Loopback Social — Community Events (bilingual)" href="/feeds/news.ics" />
+  <link rel="alternate" type="text/calendar" title="Loopback Social — 커뮤니티 행사" href="/feeds/news.ko.ics" hreflang="ko" />
+  <link rel="alternate" type="text/calendar" title="Loopback Social — Community Events" href="/feeds/news.en.ics" hreflang="en" />
+  <link rel="alternate" type="application/ld+json" title="Loopback Social — Events (Schema.org)" href="/feeds/events.jsonld" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Schema.org metadata about the site organization itself -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Loopback Social",
+    "url": "https://loopback.social/",
+    "logo": "https://loopback.social/images/icons8-loop-windows-11-color-512.png",
+    "description": "Loopback Social은 커뮤니티 간의 느슨한 연합으로, 참여 커뮤니티가 공동으로 사용하는 상단 배너와 공동 뉴스 피드를 제공합니다.",
+    "subjectOf": [
+      { "@type": "DataFeed", "name": "Community News (RSS)", "url": "https://loopback.social/feed.xml" },
+      { "@type": "DataFeed", "name": "Community Events (iCalendar)", "url": "https://loopback.social/news.ics" },
+      { "@type": "DataFeed", "name": "Events Schema.org JSON-LD", "url": "https://loopback.social/feeds/events.jsonld" }
+    ]
+  }
+  </script>
+
   <!-- 페이지용 최소 스타일(예시) -->
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
@@ -139,16 +175,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시 시작 일시 (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
-        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시 종료 일시 (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">배너 표시 시작 일시 (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">배너 표시 종료 일시 (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>timezone</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">시간대. 생략 시 UTC. 오프셋(<code>"+09:00"</code>) 또는 IANA 이름(<code>"Asia/Seoul"</code>) 모두 사용 가능 (대소문자 무관)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>event_start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">실제 이벤트 시작 일시. 캘린더(<code>news.ics</code>)와 Schema.org Event 데이터에 사용. 생략 시 <code>start</code> 사용</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>event_end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">실제 이벤트 종료 일시. 생략 시 <code>end</code> 사용</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>category</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;"><code>event</code> / <code>campaign</code> / <code>release</code> / <code>recruit</code> / <code>announcement</code> 중 하나. <code>event</code>로 지정하거나 <code>event_start</code>를 함께 넣으면 캘린더에 정확히 반영됩니다</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>location</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">사람이 읽을 수 있는 장소 이름. 캘린더 <code>LOCATION</code>과 Schema.org <code>Event.location.name</code>에 사용</td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>message</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시할 메시지. 문자열 또는 <code>{"ko": "...", "en": "..."}</code> 형태</td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>link</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">클릭 시 이동할 URL. 문자열 또는 <code>{"ko": "...", "en": "..."}</code> 형태</td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>display</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">표시 여부. <code>true</code>, <code>"true"</code>, <code>"yes"</code>, <code>"1"</code> 모두 활성으로 인식</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>id</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">RSS GUID / iCalendar UID로 쓰일 고유 식별자. 생략 시 메시지+시작 시각으로 자동 생성</td></tr>
       </tbody>
     </table>
 
-    <h3>예시</h3>
+    <h3>예시 1 — 단순 공지 (배너만)</h3>
     <pre><code>{
   "start": "2026-03-01 00:00:00",
   "end": "2026-03-31 23:59:59",
@@ -163,7 +204,40 @@
   },
   "display": true
 }</code></pre>
-    <p><strong>참고:</strong> <code>link</code>와 <code>message</code>는 단일 문자열로도 설정할 수 있으며, 이 경우 모든 언어에 동일한 값이 사용됩니다.</p>
+
+    <h3>예시 2 — 이벤트 (캘린더에 정확히 반영)</h3>
+    <p>아래 항목은 3월 1일부터 3월 14일까지 배너에 노출되지만, 실제 이벤트는 3월 14일 14:00–17:00에 열립니다. <code>category</code>·<code>event_start</code>·<code>event_end</code>·<code>location</code>을 함께 지정하면 <code>news.ics</code>와 <code>events.jsonld</code>에서 정확한 시각·장소로 표시됩니다.</p>
+    <pre><code>{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-14 17:00:00",
+  "timezone": "Asia/Seoul",
+  "event_start": "2026-03-14 14:00:00",
+  "event_end": "2026-03-14 17:00:00",
+  "category": "event",
+  "location": "서울 강남",
+  "message": {
+    "ko": "3월 정기 밋업",
+    "en": "March Regular Meetup"
+  },
+  "link": "https://example.com/march-meetup",
+  "display": true
+}</code></pre>
+    <p><strong>참고:</strong> <code>link</code>와 <code>message</code>, <code>location</code>은 단일 문자열로도 설정할 수 있으며, 이 경우 모든 언어에 동일한 값이 사용됩니다.</p>
+
+    <h2>피드 및 API (외부 연동용)</h2>
+    <p>참여 커뮤니티가 다른 커뮤니티의 일정과 소식을 자기 도구에서 활용할 수 있도록 다음 엔드포인트를 제공합니다. <code>news.json</code>·<code>communities.json</code>이 바뀔 때마다 GitHub Actions가 자동으로 다시 빌드하며, 매일 09:00 KST(00:00 UTC)에도 갱신됩니다. AI 에이전트도 이 경로들을 통해 항상 최신 정보를 가져갈 수 있습니다.</p>
+    <ul>
+      <li>iCalendar 피드 — 이중 언어 <a href="./feeds/news.ics"><code>/feeds/news.ics</code></a> · 한국어 <a href="./feeds/news.ko.ics"><code>/feeds/news.ko.ics</code></a> · 영어 <a href="./feeds/news.en.ics"><code>/feeds/news.en.ics</code></a>. Google/Apple/Outlook 캘린더에 구독 추가하면 커뮤니티 이벤트가 일정에 들어옵니다. <em>(<code>category: event</code>이거나 <code>event_start</code>가 있는 항목, 또는 7일 이내 짧은 기간 항목만 포함)</em></li>
+      <li>RSS 2.0 — 이중 언어 <a href="./feeds/feed.xml"><code>/feeds/feed.xml</code></a> · 한국어 <a href="./feeds/feed.ko.xml"><code>/feeds/feed.ko.xml</code></a> · 영어 <a href="./feeds/feed.en.xml"><code>/feeds/feed.en.xml</code></a></li>
+      <li>Atom 1.0 — 이중 언어 <a href="./feeds/feed.atom"><code>/feeds/feed.atom</code></a> · 한국어 <a href="./feeds/feed.ko.atom"><code>/feeds/feed.ko.atom</code></a> · 영어 <a href="./feeds/feed.en.atom"><code>/feeds/feed.en.atom</code></a></li>
+      <li>JSON Feed 1.1 — 이중 언어 <a href="./feeds/feed.json"><code>/feeds/feed.json</code></a> · 한국어 <a href="./feeds/feed.ko.json"><code>/feeds/feed.ko.json</code></a> · 영어 <a href="./feeds/feed.en.json"><code>/feeds/feed.en.json</code></a>. 어떤 변형이든 각 항목에 <code>_loopback_social</code> 확장 필드로 KO/EN 원문·이벤트 시각·장소가 함께 들어 있어 다운스트림 도구가 재현지화 가능.</li>
+      <li>OPML 2.0 번들 — 이중 언어 <a href="./feeds/feeds.opml"><code>/feeds/feeds.opml</code></a> · 한국어 <a href="./feeds/feeds.ko.opml"><code>/feeds/feeds.ko.opml</code></a> · 영어 <a href="./feeds/feeds.en.opml"><code>/feeds/feeds.en.opml</code></a>. 위 피드들과 참여 커뮤니티 컬렉션을 한 묶음으로 묶은 메타 파일. RSS 리더에서 OPML 가져오기(Import)로 네트워크 전체를 한 번에 구독할 수 있습니다.</li>
+      <li>각 형식별로 세 가지 변형: 접미사 없이 발행되는 파일은 항목 제목·설명에 한국어와 영어를 모두 표기합니다. <code>.ko</code>·<code>.en</code> 변형은 해당 언어만 노출하고 부족할 때만 반대 언어로 폴백합니다. 배너의 "피드"·"캘린더" 버튼은 사용 중인 언어 변형 URL을 자동으로 보여줍니다.</li>
+      <li><a href="./feeds/events.jsonld"><code>/feeds/events.jsonld</code></a> — Schema.org 기반 JSON-LD. <code>Organization</code>(참여 커뮤니티 목록)과 <code>Event</code> 그래프로, 검색 엔진과 AI 에이전트가 구조적으로 이해할 수 있습니다.</li>
+      <li><a href="./llms.txt"><code>/llms.txt</code></a> — AI 에이전트용 사이트 안내(엔드포인트 목록, 데이터 해석 가이드, 자주 묻는 질문에 답하는 방법).</li>
+      <li><a href="./sitemap.xml"><code>/sitemap.xml</code></a>, <a href="./robots.txt"><code>/robots.txt</code></a> — 검색 엔진을 위한 사이트맵과 크롤링 안내.</li>
+      <li><a href="./news.json"><code>/news.json</code></a>, <a href="./communities.json"><code>/communities.json</code></a> — 원본 데이터. 위의 모든 피드는 이 두 파일에서 빌드됩니다. JSON Schema는 <a href="./schemas/news.schema.json"><code>/schemas/news.schema.json</code></a>, <a href="./schemas/communities.schema.json"><code>/schemas/communities.schema.json</code></a>에 있습니다.</li>
+    </ul>
 
     <h2>작동 원리</h2>
     <p><code>banner.js</code> 스크립트는 웹사이트에 포함될 때 페이지 상단에 검은색 띠 배너를 동적으로 생성하고 삽입합니다. 이 배너에는 <code>loopback.social</code>이라는 프로젝트 제목과 참여 커뮤니티 목록이 포함된 드롭다운 메뉴가 표시됩니다. 커뮤니티 목록은 <code>communities.json</code> 파일에서, 뉴스 티커의 내용은 <code>news.json</code> 파일에서 관리됩니다.</p>

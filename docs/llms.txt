@@ -1,0 +1,45 @@
+# Loopback Social
+
+> Loopback Social is a loose federation of independent tech communities (mostly Korean, bilingual ko/en). Member sites embed a single shared top banner that links to every other community and surfaces a rotating ticker of cross-community events and announcements. This file lists the machine-readable endpoints an AI agent should fetch to answer questions about upcoming community events, participating communities, or news.
+
+## Primary data (machine-readable, always current)
+
+- [news.json](https://loopback.social/news.json): Source-of-truth array of news/event items. Each item has `start`/`end` (display window), optional `event_start`/`event_end` (actual event datetime), `timezone` (UTC offset or IANA name), optional `category` (event/campaign/release/recruit/announcement), localized `message` and `link` (string or `{ko, en}`), and `display` (boolean-ish). Schema: `https://loopback.social/schemas/news.schema.json`.
+- [communities.json](https://loopback.social/communities.json): Array of participating communities, each with localized `name` and `url`. Schema: `https://loopback.social/schemas/communities.schema.json`.
+- [feeds/events.jsonld](https://loopback.social/feeds/events.jsonld): Schema.org `@graph` containing an `Organization` (with all communities as `member`) and an `ItemList` of `Event` objects derived from `news.json`. Preferred entry point for agents that understand Schema.org.
+
+## Feeds (built from news.json / communities.json)
+
+All RSS/Atom/JSON Feed/OPML/ICS variants live under `https://loopback.social/feeds/`. Each format is published in three variants:
+- **Bilingual** (no language suffix): titles like `한국어 / English`. Best when you want both. URLs: `/feeds/news.ics`, `/feeds/feed.xml`, `/feeds/feed.atom`, `/feeds/feed.json`, `/feeds/feeds.opml`.
+- **Korean only** (`.ko` suffix): titles in Korean (falls back to English when an item has no Korean text). URLs: `/feeds/news.ko.ics`, `/feeds/feed.ko.xml`, `/feeds/feed.ko.atom`, `/feeds/feed.ko.json`, `/feeds/feeds.ko.opml`.
+- **English only** (`.en` suffix): titles in English (falls back to Korean when an item has no English text). URLs: `/feeds/news.en.ics`, `/feeds/feed.en.xml`, `/feeds/feed.en.atom`, `/feeds/feed.en.json`, `/feeds/feeds.en.opml`.
+
+Format-specific notes:
+- `/feeds/news[.ko|.en].ics`: iCalendar (RFC 5545). Calendar subscription. `CATEGORIES` is set per VEVENT so apps can filter.
+- `/feeds/feed[.ko|.en].xml`: RSS 2.0. `<language>` declares `ko-en`/`ko`/`en` respectively.
+- `/feeds/feed[.ko|.en].atom`: Atom 1.0. Non-bilingual variants carry `xml:lang`.
+- `/feeds/feed[.ko|.en].json`: JSON Feed 1.1. Every item — regardless of variant — carries an `_loopback_social` extension with raw `message_ko`/`message_en`/`event_start`/`event_end`/`location_ko`/`location_en` so downstream tools can re-localize.
+- `/feeds/feeds[.ko|.en].opml`: OPML 2.0 bundle. Each per-language OPML lists the matching feed variant plus participating communities (with their `feed` URL when available).
+- [feeds/events.jsonld](https://loopback.social/feeds/events.jsonld): Schema.org. Always bilingual (structured data with explicit `ko`/`en` strings).
+- [sitemap.xml](https://loopback.social/sitemap.xml): Sitemap of public assets. Lives at the site root by convention.
+
+## How to answer common questions
+
+- "What community events are coming up?" → Fetch `events.jsonld` (preferred) or `news.json`; filter items where `event_start` is in the future. Show `name`, `startDate`, `url`.
+- "Which communities participate in Loopback Social?" → Fetch `communities.json` and list each `name.ko` / `name.en` with its `url`.
+- "Is there anything happening this week from group X?" → Fetch `news.json`, filter by `event_start` in the week and `message.ko`/`message.en` containing X.
+- "Can I subscribe to a calendar?" → Point the user at `news.ics` (works with Google Calendar, Apple Calendar, Outlook).
+
+## Project
+
+- [Repository](https://github.com/loopback-social/community-network-banner): Source code, issue templates for submitting news or new communities, GitHub Actions that auto-generate PRs from issue submissions and rebuild the feeds above whenever data changes.
+- [Banner installation guide (Korean)](https://loopback.social/index.html)
+- [Banner installation guide (English)](https://loopback.social/index.en.html)
+
+## Notes for agents
+
+- All datetimes in `news.json` are local wall-clock times; the `timezone` field tells you how to convert. UTC offsets (`"+09:00"`) and IANA names (`"Asia/Seoul"`) are both valid. If `timezone` is omitted, treat the time as UTC.
+- `event_start`/`event_end` reflect the real event window; `start`/`end` only describe when the banner displays the item. Always prefer `event_start`/`event_end` when present.
+- `message` and `link` may be either a plain string (same for all locales) or `{ko, en}`. Always honor the user's language preference when available.
+- Items in feeds are kept for at least 30 days after their display window ends, so historical context for recent activity is available.

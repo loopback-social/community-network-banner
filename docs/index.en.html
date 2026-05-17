@@ -26,6 +26,42 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://loopback.social/images/icons8-loop-windows-11-color-512.png" />
 
+  <!-- Machine-readable feeds. Each format ships in bilingual + ko + en variants (see hreflang). -->
+  <link rel="alternate" type="application/rss+xml" title="Loopback Social — Community News (RSS, bilingual)" href="/feeds/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Loopback Social — 커뮤니티 뉴스 (RSS)" href="/feeds/feed.ko.xml" hreflang="ko" />
+  <link rel="alternate" type="application/rss+xml" title="Loopback Social — Community News (RSS)" href="/feeds/feed.en.xml" hreflang="en" />
+  <link rel="alternate" type="application/atom+xml" title="Loopback Social — Community News (Atom, bilingual)" href="/feeds/feed.atom" />
+  <link rel="alternate" type="application/atom+xml" title="Loopback Social — 커뮤니티 뉴스 (Atom)" href="/feeds/feed.ko.atom" hreflang="ko" />
+  <link rel="alternate" type="application/atom+xml" title="Loopback Social — Community News (Atom)" href="/feeds/feed.en.atom" hreflang="en" />
+  <link rel="alternate" type="application/feed+json" title="Loopback Social — Community News (JSON Feed, bilingual)" href="/feeds/feed.json" />
+  <link rel="alternate" type="application/feed+json" title="Loopback Social — 커뮤니티 뉴스 (JSON Feed)" href="/feeds/feed.ko.json" hreflang="ko" />
+  <link rel="alternate" type="application/feed+json" title="Loopback Social — Community News (JSON Feed)" href="/feeds/feed.en.json" hreflang="en" />
+  <link rel="alternate" type="text/x-opml" title="Loopback Social — Subscribe to all feeds (OPML, bilingual)" href="/feeds/feeds.opml" />
+  <link rel="alternate" type="text/x-opml" title="Loopback Social — 모든 피드 (OPML)" href="/feeds/feeds.ko.opml" hreflang="ko" />
+  <link rel="alternate" type="text/x-opml" title="Loopback Social — Subscribe to all feeds (OPML)" href="/feeds/feeds.en.opml" hreflang="en" />
+  <link rel="alternate" type="text/calendar" title="Loopback Social — Community Events (bilingual)" href="/feeds/news.ics" />
+  <link rel="alternate" type="text/calendar" title="Loopback Social — 커뮤니티 행사" href="/feeds/news.ko.ics" hreflang="ko" />
+  <link rel="alternate" type="text/calendar" title="Loopback Social — Community Events" href="/feeds/news.en.ics" hreflang="en" />
+  <link rel="alternate" type="application/ld+json" title="Loopback Social — Events (Schema.org)" href="/feeds/events.jsonld" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Schema.org metadata about the site organization itself -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Loopback Social",
+    "url": "https://loopback.social/",
+    "logo": "https://loopback.social/images/icons8-loop-windows-11-color-512.png",
+    "description": "Loopback Social is a loose federation of communities sharing a single top banner and a common news feed.",
+    "subjectOf": [
+      { "@type": "DataFeed", "name": "Community News (RSS)", "url": "https://loopback.social/feed.xml" },
+      { "@type": "DataFeed", "name": "Community Events (iCalendar)", "url": "https://loopback.social/news.ics" },
+      { "@type": "DataFeed", "name": "Events Schema.org JSON-LD", "url": "https://loopback.social/feeds/events.jsonld" }
+    ]
+  }
+  </script>
+
   <!-- Minimal page styles -->
   <style>
     body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
@@ -139,16 +175,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Display start date/time (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
-        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Display end date/time (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Banner display start (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Banner display end (<code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>timezone</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">Timezone. Defaults to UTC if omitted. Accepts both UTC offsets (<code>"+09:00"</code>) and IANA names (<code>"Asia/Seoul"</code>, case-insensitive)</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>event_start</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">Actual event start datetime, used by <code>news.ics</code> and the Schema.org Event payload. Falls back to <code>start</code></td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>event_end</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">Actual event end datetime. Falls back to <code>end</code></td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>category</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">One of <code>event</code> / <code>campaign</code> / <code>release</code> / <code>recruit</code> / <code>announcement</code>. Setting <code>event</code> (or providing <code>event_start</code>) ensures the item appears in the calendar feed</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>location</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">Human-readable venue name. Used as the calendar <code>LOCATION</code> and Schema.org <code>Event.location.name</code></td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>message</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Message to display. Either a plain string or a localized object <code>{"ko": "...", "en": "..."}</code></td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>link</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">URL to navigate on click. Either a plain string or a localized object <code>{"ko": "...", "en": "..."}</code></td></tr>
         <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>display</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">✅</td><td style="border: 1px solid #ddd; padding: 0.5em;">Whether to show the item. Accepts <code>true</code>, <code>"true"</code>, <code>"yes"</code>, or <code>"1"</code> as enabled</td></tr>
+        <tr><td style="border: 1px solid #ddd; padding: 0.5em;"><code>id</code></td><td style="border: 1px solid #ddd; padding: 0.5em; text-align: center;">❌</td><td style="border: 1px solid #ddd; padding: 0.5em;">Stable identifier used as the RSS GUID / iCalendar UID. Derived from message+start when omitted</td></tr>
       </tbody>
     </table>
 
-    <h3>Example</h3>
+    <h3>Example 1 — Simple announcement (banner only)</h3>
     <pre><code>{
   "start": "2026-03-01 00:00:00",
   "end": "2026-03-31 23:59:59",
@@ -163,7 +204,40 @@
   },
   "display": true
 }</code></pre>
-    <p><strong>Note:</strong> <code>link</code> and <code>message</code> can also be set as a single string, in which case the same value is used for all languages.</p>
+
+    <h3>Example 2 — Event (correctly surfaced in the calendar feed)</h3>
+    <p>The entry below appears in the banner from March 1 through March 14, but the actual event runs March 14, 14:00–17:00. Setting <code>category</code>, <code>event_start</code>, <code>event_end</code>, and <code>location</code> together ensures <code>news.ics</code> and <code>events.jsonld</code> reflect the exact event time and venue.</p>
+    <pre><code>{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-14 17:00:00",
+  "timezone": "Asia/Seoul",
+  "event_start": "2026-03-14 14:00:00",
+  "event_end": "2026-03-14 17:00:00",
+  "category": "event",
+  "location": "Seoul Gangnam",
+  "message": {
+    "ko": "3월 정기 밋업",
+    "en": "March Regular Meetup"
+  },
+  "link": "https://example.com/march-meetup",
+  "display": true
+}</code></pre>
+    <p><strong>Note:</strong> <code>link</code>, <code>message</code>, and <code>location</code> can also be set as a single string, in which case the same value is used for all languages.</p>
+
+    <h2>Feeds &amp; APIs (for external integrations)</h2>
+    <p>So participating communities can surface each other's events and announcements in their own tools, the following endpoints are published. They are rebuilt automatically by GitHub Actions whenever <code>news.json</code> or <code>communities.json</code> changes, and again daily at 00:00 UTC (09:00 KST). AI agents can also use these paths to fetch the latest information.</p>
+    <ul>
+      <li>iCalendar feed — bilingual <a href="./feeds/news.ics"><code>/feeds/news.ics</code></a> · Korean <a href="./feeds/news.ko.ics"><code>/feeds/news.ko.ics</code></a> · English <a href="./feeds/news.en.ics"><code>/feeds/news.en.ics</code></a>. Subscribe in Google/Apple/Outlook Calendar to receive community events in your calendar. <em>(Only items with <code>category: event</code>, an <code>event_start</code>, or a duration ≤ 7 days are included.)</em></li>
+      <li>RSS 2.0 — bilingual <a href="./feeds/feed.xml"><code>/feeds/feed.xml</code></a> · Korean <a href="./feeds/feed.ko.xml"><code>/feeds/feed.ko.xml</code></a> · English <a href="./feeds/feed.en.xml"><code>/feeds/feed.en.xml</code></a></li>
+      <li>Atom 1.0 — bilingual <a href="./feeds/feed.atom"><code>/feeds/feed.atom</code></a> · Korean <a href="./feeds/feed.ko.atom"><code>/feeds/feed.ko.atom</code></a> · English <a href="./feeds/feed.en.atom"><code>/feeds/feed.en.atom</code></a></li>
+      <li>JSON Feed 1.1 — bilingual <a href="./feeds/feed.json"><code>/feeds/feed.json</code></a> · Korean <a href="./feeds/feed.ko.json"><code>/feeds/feed.ko.json</code></a> · English <a href="./feeds/feed.en.json"><code>/feeds/feed.en.json</code></a>. Every variant's items also carry a <code>_loopback_social</code> extension with raw ko/en text, event window, and venue, so downstream tooling can re-localize.</li>
+      <li>OPML 2.0 bundle — bilingual <a href="./feeds/feeds.opml"><code>/feeds/feeds.opml</code></a> · Korean <a href="./feeds/feeds.ko.opml"><code>/feeds/feeds.ko.opml</code></a> · English <a href="./feeds/feeds.en.opml"><code>/feeds/feeds.en.opml</code></a>. Wraps the feeds above plus the participating-community collection. Import in any RSS reader to subscribe to the whole network in one step.</li>
+      <li>Three language variants per format: the suffix-less filenames carry both Korean and English text per item; the <code>.ko</code>/<code>.en</code> variants only expose that language (falling back to the other when an item lacks it). The banner's "Feed"/"Calendar" buttons auto-pick the variant matching the active language.</li>
+      <li><a href="./feeds/events.jsonld"><code>/feeds/events.jsonld</code></a> — Schema.org JSON-LD. An <code>Organization</code> (the participating communities) plus an <code>Event</code> graph — search engines and AI agents can consume it as structured data.</li>
+      <li><a href="./llms.txt"><code>/llms.txt</code></a> — Discovery file for AI agents (endpoint inventory, data interpretation hints, and worked answers to common questions).</li>
+      <li><a href="./sitemap.xml"><code>/sitemap.xml</code></a>, <a href="./robots.txt"><code>/robots.txt</code></a> — Sitemap and crawl directives for search engines.</li>
+      <li><a href="./news.json"><code>/news.json</code></a>, <a href="./communities.json"><code>/communities.json</code></a> — Raw source data. All feeds above are built from these two files. JSON Schemas live at <a href="./schemas/news.schema.json"><code>/schemas/news.schema.json</code></a> and <a href="./schemas/communities.schema.json"><code>/schemas/communities.schema.json</code></a>.</li>
+    </ul>
 
     <h2>How It Works</h2>
     <p>The <code>banner.js</code> script dynamically creates and inserts a black banner at the top of the page when included in a website. This banner includes the project title <code>loopback.social</code> and a dropdown menu containing a list of participating communities. The community list is managed in the <code>communities.json</code> file, and the news ticker content is managed in the <code>news.json</code> file.</p>

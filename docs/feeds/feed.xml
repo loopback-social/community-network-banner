@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Loopback Social — Community News</title>
+    <link>https://loopback.social/</link>
+    <atom:link href="https://loopback.social/feeds/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Events and announcements shared across the Loopback Social community network.</description>
+    <language>ko-en</language>
+    <lastBuildDate>Sun, 17 May 2026 15:05:24 GMT</lastBuildDate>
+    <generator>community-network-banner build-feeds.mjs</generator>
+    <item>
+      <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다! / UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!</title>
+      <link>https://event-us.kr/m/124753/53287</link>
+      <guid isPermaLink="false">news-185094cb59619cf3</guid>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] 오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!
+[EN] UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!
+Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지) / UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)</title>
+      <link>https://2026.ubuntu-kr.org/cfp</link>
+      <guid isPermaLink="false">news-b0e0f6215a3202d7</guid>
+      <pubDate>Mon, 18 May 2026 15:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)
+[EN] UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)
+Event: 2026-05-18T15:00:00.000Z — 2026-06-05T14:59:59.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월 / 🚀 [dot4] Monthly .NET Talks · May</title>
+      <link>https://ticketa.co/event/qpye8cf5</link>
+      <guid isPermaLink="false">news-7aa5940cb18897a2</guid>
+      <pubDate>Tue, 12 May 2026 04:30:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] 🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월
+[EN] 🚀 [dot4] Monthly .NET Talks · May
+Event: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)</title>
+      <link>https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205</link>
+      <guid isPermaLink="false">news-3964fc0404a12140</guid>
+      <pubDate>Sat, 02 May 2026 15:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] 🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)
+[EN] 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)
+Event: 2026-05-02T15:00:00.000Z — 2026-05-25T14:59:59.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - 5월 2일 대전 스타창작소 5층 / Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F</title>
+      <link>https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472</link>
+      <guid isPermaLink="false">news-b6bffab567e60cd8</guid>
+      <pubDate>Sat, 02 May 2026 04:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - 5월 2일 대전 스타창작소 5층
+[EN] Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F
+Event: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604 / .NET Universe: Busan Edition, 2604 with Busan IT Mogakko</title>
+      <link>https://dotnetuniverse.net/xyz/busan-2604</link>
+      <guid isPermaLink="false">news-62078c508884d301</guid>
+      <pubDate>Thu, 16 Apr 2026 15:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] 부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604
+[EN] .NET Universe: Busan Edition, 2604 with Busan IT Mogakko
+Event: 2026-04-16T15:00:00.000Z — 2026-04-25T13:00:00.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>.NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요. / Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.</title>
+      <link>https://dotnetuniverse.net/2026</link>
+      <guid isPermaLink="false">news-4d31e1117a871061</guid>
+      <pubDate>Sun, 29 Mar 2026 15:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] .NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.
+[EN] Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.
+Event: 2026-03-29T15:00:00.000Z — 2026-12-31T15:00:00.000Z
+Category: announcement</description>
+    </item>
+    <item>
+      <title>뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요. / Submit news or community links! Click here to let us know.</title>
+      <link>https://loopback.social/</link>
+      <guid isPermaLink="false">news-ac13ecb9659a09ed</guid>
+      <pubDate>Tue, 31 Dec 2019 15:00:00 GMT</pubDate>
+      <category>announcement</category>
+      <description>[KO] 뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.
+[EN] Submit news or community links! Click here to let us know.
+Event: 2019-12-31T15:00:00.000Z — 2099-12-31T14:59:59.000Z
+Category: announcement</description>
+    </item>
+  </channel>
+</rss>

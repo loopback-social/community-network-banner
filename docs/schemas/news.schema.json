@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://loopback.social/schemas/news.schema.json",
   "title": "Loopback Social News Items",
-  "description": "Schema for docs/news.json — items displayed in the banner news ticker.",
+  "description": "Schema for docs/news.json — items displayed in the banner news ticker. Also feeds news.ics, feed.xml, and events.jsonld for external consumers (calendars, readers, AI agents).",
   "type": "array",
   "items": { "$ref": "#/definitions/newsItem" },
   "definitions": {
@@ -11,6 +11,11 @@
       "required": ["start", "end", "message", "display"],
       "additionalProperties": false,
       "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:-]{3,80}$",
+          "description": "Stable identifier used as GUID/UID in feed.xml and news.ics. Derived from message+start when omitted."
+        },
         "start": {
           "type": "string",
           "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$",
@@ -25,6 +30,25 @@
           "type": "string",
           "description": "UTC offset such as '+09:00' or 'Z', or an IANA name such as 'Asia/Seoul'. Defaults to UTC if omitted.",
           "minLength": 1
+        },
+        "event_start": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$",
+          "description": "Optional. Actual event start datetime used by news.ics / events.jsonld. Falls back to 'start' when omitted."
+        },
+        "event_end": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$",
+          "description": "Optional. Actual event end datetime used by news.ics / events.jsonld. Falls back to 'end' when omitted."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["event", "campaign", "release", "recruit", "announcement"],
+          "description": "Optional. Hint for downstream consumers. 'event' items get calendar VEVENT/Schema.org Event treatment; others remain in RSS only."
+        },
+        "location": {
+          "$ref": "#/definitions/localizedString",
+          "description": "Optional. Human-readable venue (e.g. '서울 강남'). Used in news.ics LOCATION and Event.location.name."
         },
         "message": {
           "$ref": "#/definitions/localizedString",

@@ -27,7 +27,7 @@ To add a solidarity banner to your website, simply add the following line of cod
 Use the `data-color` attribute to set the banner background color, `data-textcolor` to set the text color, and `data-lang` to set the display language.
 
 | Attribute | Description | Default | Example |
-|-----------|-------------|---------|--------|
+| --- | --- | --- | --- |
 | `data-color` | Banner background color (hex) | `#000000` | `#005a9c` |
 | `data-textcolor` | Banner text/link color (hex) | `#ffffff` | `#f0f0f0` |
 | `data-lang` | Display language (`auto`, `ko`, `en`) | `auto` | `ko` |
@@ -70,15 +70,20 @@ To add items to the news ticker at the bottom of the banner, add entries to the 
 ### Field Reference
 
 | Field | Required | Description |
-|-------|----------|-------------|
-| `start` | ✅ | Display start date/time (`YYYY-MM-DD HH:mm:ss`) |
-| `end` | ✅ | Display end date/time (`YYYY-MM-DD HH:mm:ss`) |
+| --- | --- | --- |
+| `start` | ✅ | Banner display start (`YYYY-MM-DD HH:mm:ss`) |
+| `end` | ✅ | Banner display end (`YYYY-MM-DD HH:mm:ss`) |
 | `timezone` | ❌ | Timezone. Defaults to UTC if omitted. Accepts both UTC offsets (`"+09:00"`) and IANA names (`"Asia/Seoul"`, case-insensitive) |
+| `event_start` | ❌ | Actual event start datetime, used by `news.ics` and the Schema.org Event payload. Falls back to `start` |
+| `event_end` | ❌ | Actual event end datetime. Falls back to `end` |
+| `category` | ❌ | One of `event` / `campaign` / `release` / `recruit` / `announcement`. Setting `event` (or providing `event_start`) ensures the item appears in the calendar feed |
+| `location` | ❌ | Human-readable venue name. Used as the calendar `LOCATION` and Schema.org `Event.location.name` |
 | `message` | ✅ | Message to display. Either a plain string or a localized object `{"ko": "...", "en": "..."}` |
 | `link` | ❌ | URL to navigate on click. Either a plain string or a localized object `{"ko": "...", "en": "..."}` |
 | `display` | ✅ | Whether to show the item. Accepts `true`, `"true"`, `"yes"`, or `"1"` as enabled |
+| `id` | ❌ | Stable identifier used as the RSS GUID / iCalendar UID. Derived from message+start when omitted |
 
-### Example
+### Example 1 — Simple announcement (banner only)
 
 ```json
 {
@@ -97,7 +102,66 @@ To add items to the news ticker at the bottom of the banner, add entries to the 
 }
 ```
 
-> **Note**: `link` and `message` can also be set as a single string, in which case the same value is used for all languages.
+### Example 2 — Event (correctly surfaced in the calendar feed)
+
+The entry below appears in the banner from March 1 through March 14, but the actual event runs on March 14, 14:00–17:00. Combining `category`, `event_start`, `event_end`, and `location` ensures `news.ics` and `events.jsonld` reflect the exact event time and venue.
+
+```json
+{
+  "start": "2026-03-01 00:00:00",
+  "end": "2026-03-14 17:00:00",
+  "timezone": "Asia/Seoul",
+  "event_start": "2026-03-14 14:00:00",
+  "event_end": "2026-03-14 17:00:00",
+  "category": "event",
+  "location": "Seoul Gangnam",
+  "message": {
+    "ko": "3월 정기 밋업",
+    "en": "March Regular Meetup"
+  },
+  "link": "https://example.com/march-meetup",
+  "display": true
+}
+```
+
+> **Note**: `link`, `message`, and `location` can also be set as a single string, in which case the same value is used for all languages.
+
+## Feeds & AI-Friendly Endpoints
+
+Every time `docs/news.json` or `docs/communities.json` changes, GitHub Actions rebuilds the following files. They are served as static assets under `https://loopback.social/`.
+
+### Per-language variants
+
+Every feed format is published in three variants:
+
+- **Bilingual** (no language suffix, e.g. `feed.xml`, `news.ics`): item titles/descriptions include both Korean and English.
+- **Korean only** (`.ko` suffix, e.g. `feed.ko.xml`): Korean text only; falls back to English when an item has no Korean message.
+- **English only** (`.en` suffix, e.g. `feed.en.xml`): English text only; falls back to Korean when an item has no English message.
+
+The banner's "Feed"/"Calendar" buttons automatically point at the variant matching the active `data-lang` (or auto-detected) language, so subscribers won't see content they can't read.
+
+### Formats
+
+All auto-generated feeds (including `events.jsonld`) live under `https://loopback.social/feeds/`. Only `sitemap.xml` stays at the site root, because search engines look for it at the default `/sitemap.xml` path.
+
+| Path | Format | Purpose |
+| --- | --- | --- |
+| `/feeds/news.ics` · `/feeds/news.ko.ics` · `/feeds/news.en.ics` | iCalendar (RFC 5545) | Subscribe in Google/Apple/Outlook Calendar. Only items with `category: event`, an `event_start`, or a duration ≤ 7 days are included |
+| `/feeds/feed.xml` · `/feeds/feed.ko.xml` · `/feeds/feed.en.xml` | RSS 2.0 | All active news items, for RSS readers |
+| `/feeds/feed.atom` · `/feeds/feed.ko.atom` · `/feeds/feed.en.atom` | Atom 1.0 | Same content in Atom format. Non-bilingual variants carry `xml:lang` |
+| `/feeds/feed.json` · `/feeds/feed.ko.json` · `/feeds/feed.en.json` | JSON Feed 1.1 | Every item — regardless of variant — carries `_loopback_social` with raw `message_ko`/`message_en`/`event_start`/`event_end`/`location_ko`/`location_en` |
+| `/feeds/feeds.opml` · `/feeds/feeds.ko.opml` · `/feeds/feeds.en.opml` | OPML 2.0 | Bundle of our feeds + participating-community collection. Import in any RSS reader to subscribe to the whole network in one step |
+| `/feeds/events.jsonld` | Schema.org JSON-LD | `Organization` + `Event` graph (always bilingual structured data) |
+| `/llms.txt` | Markdown | Discovery file for AI agents — lists endpoints and explains how to interpret the data |
+| `/sitemap.xml` | XML sitemap | Index of public assets |
+| `/robots.txt` | robots.txt | Points at the sitemap and allows full crawling |
+
+Build triggers:
+
+- The issue-to-PR automation runs the feed builder when it opens a PR, so the PR already contains the regenerated feeds.
+- Pushes to `main` that touch `news.json` or `communities.json` trigger `build-feeds.yml`, which auto-commits the result.
+- A daily cron at 00:00 UTC (09:00 KST) rebuilds even without data changes, so expired items drop out and `lastBuildDate` stays fresh.
+- To run locally: `node .github/scripts/build-feeds.mjs`
 
 ## How It Works
 
@@ -107,10 +171,13 @@ To add items to the news ticker at the bottom of the banner, add entries to the 
 - `docs/banner.impl.js`: Actual banner implementation (cache-busted with timestamp)
 - `docs/communities.json`: List of participating communities
 - `docs/news.json`: News ticker content
+- `docs/news.ics`, `docs/feed.xml`, `docs/events.jsonld`, `docs/sitemap.xml`: Auto-generated feeds (do not edit by hand)
+- `docs/llms.txt`, `docs/robots.txt`: Search/AI discovery metadata
 - `docs/schemas/`: JSON Schemas for `communities.json`/`news.json` (used by CI validation)
 - `.github/ISSUE_TEMPLATE/`: Structured submission forms (parsed by automation)
-- `.github/scripts/`: Form-to-JSON conversion scripts
+- `.github/scripts/`: Form-to-JSON conversion and feed-build scripts
 - `.github/workflows/issue-to-pr.yml`: Issue → PR automation workflow
+- `.github/workflows/build-feeds.yml`: Feed rebuild workflow
 
 ### Operation
 

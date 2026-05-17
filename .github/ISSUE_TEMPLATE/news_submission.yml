@@ -71,6 +71,57 @@ body:
       required: false
 
   - type: dropdown
+    id: category
+    attributes:
+      label: 카테고리 / Category
+      description: |
+        선택 사항. 'event'로 지정하면 캘린더(.ics)와 Schema.org Event 데이터에서 더 정확하게 다뤄집니다.
+        Optional. Setting this to 'event' helps calendar (.ics) and Schema.org Event consumers treat the item more accurately.
+      options:
+        - ""
+        - "event"
+        - "campaign"
+        - "release"
+        - "recruit"
+        - "announcement"
+      default: 0
+    validations:
+      required: false
+
+  - type: input
+    id: event_start
+    attributes:
+      label: 실제 이벤트 시작 일시 / Actual event start
+      description: |
+        선택 사항. 위 '시작 일시'는 배너 표시 시작을 의미합니다. 이벤트의 실제 시작 시각이 다르면 여기에 입력하세요 (캘린더에 반영됩니다).
+        Optional. The 'Start datetime' field above is when the banner begins displaying. If the actual event start differs, enter it here (used by the calendar feed).
+      placeholder: "2026-06-15 14:00:00"
+    validations:
+      required: false
+
+  - type: input
+    id: event_end
+    attributes:
+      label: 실제 이벤트 종료 일시 / Actual event end
+      description: |
+        선택 사항. 비워두면 'event_start'와 같은 시각으로 처리됩니다.
+        Optional. If blank, defaults to the same time as 'event_start'.
+      placeholder: "2026-06-15 17:00:00"
+    validations:
+      required: false
+
+  - type: input
+    id: location
+    attributes:
+      label: 장소 / Location
+      description: |
+        선택 사항. 사람이 읽을 수 있는 장소 이름을 입력하세요 (예: '서울 강남'). 캘린더의 LOCATION 필드와 Schema.org Event.location.name 에 사용됩니다.
+        Optional. Free-form venue name (e.g. 'Seoul Gangnam'). Used as the calendar LOCATION and Schema.org Event.location.name.
+      placeholder: "서울 강남"
+    validations:
+      required: false
+
+  - type: dropdown
     id: display
     attributes:
       label: 표시 여부 / Display

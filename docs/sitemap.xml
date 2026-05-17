@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://loopback.social/</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/index.en.html</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/news.json</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/communities.json</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/news.ics</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/news.ko.ics</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/news.en.ics</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.xml</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.ko.xml</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.en.xml</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.atom</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.ko.atom</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.en.atom</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.json</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.ko.json</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feed.en.json</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feeds.opml</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feeds.ko.opml</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/feeds.en.opml</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/feeds/events.jsonld</loc><lastmod>2026-05-17</lastmod></url>
+  <url><loc>https://loopback.social/llms.txt</loc><lastmod>2026-05-17</lastmod></url>
+</urlset>

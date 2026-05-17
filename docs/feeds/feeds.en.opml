@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Loopback Social — Community Network</title>
+    <dateCreated>Sun, 17 May 2026 15:05:24 GMT</dateCreated>
+    <dateModified>Sun, 17 May 2026 15:05:24 GMT</dateModified>
+    <ownerName>Loopback Social</ownerName>
+    <ownerId>https://loopback.social/</ownerId>
+  </head>
+  <body>
+    <outline text="Loopback Social — News" title="Loopback Social — News">
+      <outline type="rss" text="Loopback Social — News (RSS 2.0)" title="Loopback Social — News (RSS 2.0)" xmlUrl="https://loopback.social/feeds/feed.en.xml" htmlUrl="https://loopback.social/" />
+      <outline type="atom" text="Loopback Social — News (Atom 1.0)" title="Loopback Social — News (Atom 1.0)" xmlUrl="https://loopback.social/feeds/feed.en.atom" htmlUrl="https://loopback.social/" />
+      <outline type="json" text="Loopback Social — News (JSON Feed)" title="Loopback Social — News (JSON Feed)" xmlUrl="https://loopback.social/feeds/feed.en.json" htmlUrl="https://loopback.social/" />
+    </outline>
+    <outline text="Participating communities" title="Participating communities">
+      <outline text="loopback.social" title="loopback.social" htmlUrl="https://loopback.social/index.en.html" />
+      <outline text=".NET Dev" title=".NET Dev" htmlUrl="https://forum.dotnetdev.kr/" />
+      <outline text=".NET Universe" title=".NET Universe" htmlUrl="https://dotnetuniverse.net/" />
+      <outline text="FediDev.kr" title="FediDev.kr" htmlUrl="https://fedidev.kr/" />
+      <outline text="FOSS for All" title="FOSS for All" htmlUrl="https://fossforall.org" />
+      <outline text="CloudBro" title="CloudBro" htmlUrl="https://www.cloudbro.ai" />
+      <outline text="Ubuntu Korea" title="Ubuntu Korea" htmlUrl="https://ubuntu-kr.org" />
+      <outline text="dot4" title="dot4" htmlUrl="https://dot4.kr/" />
+    </outline>
+  </body>
+</opml>

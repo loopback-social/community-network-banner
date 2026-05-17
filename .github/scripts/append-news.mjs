@@ -39,6 +39,21 @@ const messageEn = clean(parsed.message_en);
 const linkKo = clean(parsed.link_ko);
 const linkEn = clean(parsed.link_en);
 const displayRaw = clean(parsed.display) || 'true';
+const category = clean(parsed.category);
+const eventStart = clean(parsed.event_start);
+const eventEnd = clean(parsed.event_end);
+const locationStr = clean(parsed.location);
+
+const ALLOWED_CATEGORIES = ['event', 'campaign', 'release', 'recruit', 'announcement'];
+if (category && !ALLOWED_CATEGORIES.includes(category)) {
+  fail(`category must be one of ${ALLOWED_CATEGORIES.join('/')}: "${category}"`);
+}
+if (eventStart && !DATETIME_RE.test(eventStart)) fail(`event_start must match YYYY-MM-DD HH:MM:SS: "${eventStart}"`);
+if (eventEnd && !DATETIME_RE.test(eventEnd)) fail(`event_end must match YYYY-MM-DD HH:MM:SS: "${eventEnd}"`);
+if (eventStart && eventEnd && new Date(eventStart.replace(' ', 'T') + 'Z') > new Date(eventEnd.replace(' ', 'T') + 'Z')) {
+  fail(`event_start (${eventStart}) must be earlier than or equal to event_end (${eventEnd}).`);
+}
+if (eventEnd && !eventStart) fail('event_end requires event_start.');
 
 if (!DATETIME_RE.test(start)) fail(`start must match YYYY-MM-DD HH:MM:SS: "${start}"`);
 if (!DATETIME_RE.test(end)) fail(`end must match YYYY-MM-DD HH:MM:SS: "${end}"`);
@@ -69,6 +84,10 @@ const entry = {
   start,
   end,
   ...(timezone ? { timezone } : {}),
+  ...(eventStart ? { event_start: eventStart } : {}),
+  ...(eventEnd ? { event_end: eventEnd } : {}),
+  ...(category ? { category } : {}),
+  ...(locationStr ? { location: locationStr } : {}),
   message: localized(messageKo, messageEn),
   ...(linkKo ? { link: localized(linkKo, linkEn) } : {}),
   display

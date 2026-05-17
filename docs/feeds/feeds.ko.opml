@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Loopback Social — 커뮤니티 네트워크</title>
+    <dateCreated>Sun, 17 May 2026 15:05:24 GMT</dateCreated>
+    <dateModified>Sun, 17 May 2026 15:05:24 GMT</dateModified>
+    <ownerName>Loopback Social</ownerName>
+    <ownerId>https://loopback.social/</ownerId>
+  </head>
+  <body>
+    <outline text="Loopback Social 뉴스" title="Loopback Social 뉴스">
+      <outline type="rss" text="Loopback Social — 뉴스 (RSS 2.0)" title="Loopback Social — 뉴스 (RSS 2.0)" xmlUrl="https://loopback.social/feeds/feed.ko.xml" htmlUrl="https://loopback.social/" />
+      <outline type="atom" text="Loopback Social — 뉴스 (Atom 1.0)" title="Loopback Social — 뉴스 (Atom 1.0)" xmlUrl="https://loopback.social/feeds/feed.ko.atom" htmlUrl="https://loopback.social/" />
+      <outline type="json" text="Loopback Social — 뉴스 (JSON Feed)" title="Loopback Social — 뉴스 (JSON Feed)" xmlUrl="https://loopback.social/feeds/feed.ko.json" htmlUrl="https://loopback.social/" />
+    </outline>
+    <outline text="참여 커뮤니티" title="참여 커뮤니티">
+      <outline text="loopback.social" title="loopback.social" htmlUrl="https://loopback.social/" />
+      <outline text="닷넷데브" title="닷넷데브" htmlUrl="https://forum.dotnetdev.kr/" />
+      <outline text="닷넷 유니버스" title="닷넷 유니버스" htmlUrl="https://dotnetuniverse.net/" />
+      <outline text="한국 연합우주 개발자 모임" title="한국 연합우주 개발자 모임" htmlUrl="https://fedidev.kr/" />
+      <outline text="FOSS for All (포스포올)" title="FOSS for All (포스포올)" htmlUrl="https://fossforall.org" />
+      <outline text="CloudBro" title="CloudBro" htmlUrl="https://www.cloudbro.ai" />
+      <outline text="우분투한국커뮤니티" title="우분투한국커뮤니티" htmlUrl="https://ubuntu-kr.org" />
+      <outline text="dot4" title="dot4" htmlUrl="https://dot4.kr/" />
+    </outline>
+  </body>
+</opml>

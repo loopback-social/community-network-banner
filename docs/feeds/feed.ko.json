@@ -1,0 +1,164 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Loopback Social — 커뮤니티 뉴스",
+  "description": "Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.",
+  "home_page_url": "https://loopback.social/",
+  "feed_url": "https://loopback.social/feeds/feed.ko.json",
+  "icon": "https://loopback.social/images/icons8-loop-windows-11-color-512.png",
+  "favicon": "https://loopback.social/images/icons8-loop-windows-11-color-32.png",
+  "language": "ko",
+  "items": [
+    {
+      "id": "https://loopback.social/events#news-185094cb59619cf3",
+      "title": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!",
+      "content_text": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!\nEvent: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z\nCategory: announcement",
+      "date_published": "2026-08-29T00:00:00.000Z",
+      "date_modified": "2026-08-29T00:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!",
+        "message_en": "UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!",
+        "event_start": "2026-08-29T00:00:00.000Z",
+        "event_end": "2026-08-29T08:00:00.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://event-us.kr/m/124753/53287"
+    },
+    {
+      "id": "https://loopback.social/events#news-b0e0f6215a3202d7",
+      "title": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)",
+      "content_text": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)\nEvent: 2026-05-18T15:00:00.000Z — 2026-06-05T14:59:59.000Z\nCategory: announcement",
+      "date_published": "2026-05-18T15:00:00.000Z",
+      "date_modified": "2026-05-18T15:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)",
+        "message_en": "UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)",
+        "event_start": "2026-05-18T15:00:00.000Z",
+        "event_end": "2026-06-05T14:59:59.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://2026.ubuntu-kr.org/cfp"
+    },
+    {
+      "id": "https://loopback.social/events#news-7aa5940cb18897a2",
+      "title": "🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월",
+      "content_text": "🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월\nEvent: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z\nCategory: announcement",
+      "date_published": "2026-05-12T04:30:00.000Z",
+      "date_modified": "2026-05-12T04:30:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월",
+        "message_en": "🚀 [dot4] Monthly .NET Talks · May",
+        "event_start": "2026-05-12T04:30:00.000Z",
+        "event_end": "2026-05-28T08:30:00.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://ticketa.co/event/qpye8cf5"
+    },
+    {
+      "id": "https://loopback.social/events#news-3964fc0404a12140",
+      "title": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)",
+      "content_text": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)\nEvent: 2026-05-02T15:00:00.000Z — 2026-05-25T14:59:59.000Z\nCategory: announcement",
+      "date_published": "2026-05-02T15:00:00.000Z",
+      "date_modified": "2026-05-02T15:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)",
+        "message_en": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)",
+        "event_start": "2026-05-02T15:00:00.000Z",
+        "event_end": "2026-05-25T14:59:59.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205"
+    },
+    {
+      "id": "https://loopback.social/events#news-b6bffab567e60cd8",
+      "title": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층",
+      "content_text": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층\nEvent: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z\nCategory: announcement",
+      "date_published": "2026-05-02T04:00:00.000Z",
+      "date_modified": "2026-05-02T04:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층",
+        "message_en": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F",
+        "event_start": "2026-05-02T04:00:00.000Z",
+        "event_end": "2026-05-02T08:00:00.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472"
+    },
+    {
+      "id": "https://loopback.social/events#news-62078c508884d301",
+      "title": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604",
+      "content_text": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604\nEvent: 2026-04-16T15:00:00.000Z — 2026-04-25T13:00:00.000Z\nCategory: announcement",
+      "date_published": "2026-04-16T15:00:00.000Z",
+      "date_modified": "2026-04-16T15:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604",
+        "message_en": ".NET Universe: Busan Edition, 2604 with Busan IT Mogakko",
+        "event_start": "2026-04-16T15:00:00.000Z",
+        "event_end": "2026-04-25T13:00:00.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://dotnetuniverse.net/xyz/busan-2604"
+    },
+    {
+      "id": "https://loopback.social/events#news-4d31e1117a871061",
+      "title": ".NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.",
+      "content_text": ".NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.\nEvent: 2026-03-29T15:00:00.000Z — 2026-12-31T15:00:00.000Z\nCategory: announcement",
+      "date_published": "2026-03-29T15:00:00.000Z",
+      "date_modified": "2026-03-29T15:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": ".NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.",
+        "message_en": "Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.",
+        "event_start": "2026-03-29T15:00:00.000Z",
+        "event_end": "2026-12-31T15:00:00.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://dotnetuniverse.net/2026"
+    },
+    {
+      "id": "https://loopback.social/events#news-ac13ecb9659a09ed",
+      "title": "뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.",
+      "content_text": "뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.\nEvent: 2019-12-31T15:00:00.000Z — 2099-12-31T14:59:59.000Z\nCategory: announcement",
+      "date_published": "2019-12-31T15:00:00.000Z",
+      "date_modified": "2019-12-31T15:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "message_ko": "뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.",
+        "message_en": "Submit news or community links! Click here to let us know.",
+        "event_start": "2019-12-31T15:00:00.000Z",
+        "event_end": "2099-12-31T14:59:59.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://loopback.social/"
+    }
+  ]
+}

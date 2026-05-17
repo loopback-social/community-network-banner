@@ -18,6 +18,10 @@
         "url": {
           "$ref": "#/definitions/localizedString",
           "description": "Community URL. String or { ko, en } object."
+        },
+        "feed": {
+          "$ref": "#/definitions/localizedString",
+          "description": "Optional RSS/Atom feed URL exposed in feeds.opml so subscribers can pick up this community's own posts."
         }
       }
     },

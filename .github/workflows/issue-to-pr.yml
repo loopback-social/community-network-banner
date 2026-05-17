@@ -40,6 +40,9 @@ jobs:
       - name: Validate communities.json
         run: npx ajv validate -s docs/schemas/communities.schema.json -d docs/communities.json --strict=false --all-errors
 
+      - name: Rebuild feeds (events.jsonld embeds the community list)
+        run: node .github/scripts/build-feeds.mjs
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v6
@@ -115,6 +118,9 @@ jobs:
 
       - name: Validate news.json
         run: npx ajv validate -s docs/schemas/news.schema.json -d docs/news.json --strict=false --all-errors
+
+      - name: Rebuild feeds (ics/rss/jsonld/sitemap)
+        run: node .github/scripts/build-feeds.mjs
 
       - name: Create Pull Request
         id: cpr

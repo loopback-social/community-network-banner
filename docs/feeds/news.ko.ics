@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//loopback.social//community-network-banner//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Loopback Social — 커뮤니티 행사
+X-WR-CALDESC:Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.
+X-WR-TIMEZONE:Asia/Seoul
+BEGIN:VEVENT
+UID:news-b6bffab567e60cd8@loopback.social
+DTSTAMP:20260517T150524Z
+DTSTART:20260502T040000Z
+DTEND:20260502T080000Z
+SUMMARY:Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 
+ 대전 스타창작소 5층
+DESCRIPTION:Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2
+ 일 대전 스타창작소 5층\nLink: https://discourse.ubuntu-kr.org/t/u
+ buntu-26-04-lts-release-party-installfest-daejeon/50472\nCategory: announc
+ ement\nSource: https://loopback.social/news.json
+URL:https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-instal
+ lfest-daejeon/50472
+CATEGORIES:announcement
+END:VEVENT
+BEGIN:VEVENT
+UID:news-185094cb59619cf3@loopback.social
+DTSTAMP:20260517T150524Z
+DTSTART:20260829T000000Z
+DTEND:20260829T080000Z
+SUMMARY:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 한국
+ 마이크로소프트에서 개최됩니다!
+DESCRIPTION:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 
+ 한국마이크로소프트에서 개최됩니다!\nLink: https://event-us
+ .kr/m/124753/53287\nCategory: announcement\nSource: https://loopback.socia
+ l/news.json
+URL:https://event-us.kr/m/124753/53287
+CATEGORIES:announcement
+END:VEVENT
+END:VCALENDAR

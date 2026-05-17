@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>Loopback Social — Community Network</title>
+    <dateCreated>Sun, 17 May 2026 15:05:24 GMT</dateCreated>
+    <dateModified>Sun, 17 May 2026 15:05:24 GMT</dateModified>
+    <ownerName>Loopback Social</ownerName>
+    <ownerId>https://loopback.social/</ownerId>
+  </head>
+  <body>
+    <outline text="Loopback Social — News" title="Loopback Social — News">
+      <outline type="rss" text="Loopback Social — News (RSS 2.0, bilingual)" title="Loopback Social — News (RSS 2.0, bilingual)" xmlUrl="https://loopback.social/feeds/feed.xml" htmlUrl="https://loopback.social/" />
+      <outline type="atom" text="Loopback Social — News (Atom 1.0, bilingual)" title="Loopback Social — News (Atom 1.0, bilingual)" xmlUrl="https://loopback.social/feeds/feed.atom" htmlUrl="https://loopback.social/" />
+      <outline type="json" text="Loopback Social — News (JSON Feed, bilingual)" title="Loopback Social — News (JSON Feed, bilingual)" xmlUrl="https://loopback.social/feeds/feed.json" htmlUrl="https://loopback.social/" />
+      <outline type="rss" text="Loopback Social — News (RSS 2.0, 한국어)" title="Loopback Social — News (RSS 2.0, 한국어)" xmlUrl="https://loopback.social/feeds/feed.ko.xml" htmlUrl="https://loopback.social/" />
+      <outline type="atom" text="Loopback Social — News (Atom 1.0, 한국어)" title="Loopback Social — News (Atom 1.0, 한국어)" xmlUrl="https://loopback.social/feeds/feed.ko.atom" htmlUrl="https://loopback.social/" />
+      <outline type="json" text="Loopback Social — News (JSON Feed, 한국어)" title="Loopback Social — News (JSON Feed, 한국어)" xmlUrl="https://loopback.social/feeds/feed.ko.json" htmlUrl="https://loopback.social/" />
+      <outline type="rss" text="Loopback Social — News (RSS 2.0, English)" title="Loopback Social — News (RSS 2.0, English)" xmlUrl="https://loopback.social/feeds/feed.en.xml" htmlUrl="https://loopback.social/" />
+      <outline type="atom" text="Loopback Social — News (Atom 1.0, English)" title="Loopback Social — News (Atom 1.0, English)" xmlUrl="https://loopback.social/feeds/feed.en.atom" htmlUrl="https://loopback.social/" />
+      <outline type="json" text="Loopback Social — News (JSON Feed, English)" title="Loopback Social — News (JSON Feed, English)" xmlUrl="https://loopback.social/feeds/feed.en.json" htmlUrl="https://loopback.social/" />
+    </outline>
+    <outline text="Participating communities" title="Participating communities">
+      <outline text="loopback.social" title="loopback.social" htmlUrl="https://loopback.social/" />
+      <outline text="닷넷데브" title="닷넷데브" htmlUrl="https://forum.dotnetdev.kr/" />
+      <outline text="닷넷 유니버스" title="닷넷 유니버스" htmlUrl="https://dotnetuniverse.net/" />
+      <outline text="한국 연합우주 개발자 모임" title="한국 연합우주 개발자 모임" htmlUrl="https://fedidev.kr/" />
+      <outline text="FOSS for All (포스포올)" title="FOSS for All (포스포올)" htmlUrl="https://fossforall.org" />
+      <outline text="CloudBro" title="CloudBro" htmlUrl="https://www.cloudbro.ai" />
+      <outline text="우분투한국커뮤니티" title="우분투한국커뮤니티" htmlUrl="https://ubuntu-kr.org" />
+      <outline text="dot4" title="dot4" htmlUrl="https://dot4.kr/" />
+    </outline>
+  </body>
+</opml>

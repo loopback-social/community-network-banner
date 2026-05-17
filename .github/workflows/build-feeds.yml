@@ -1,0 +1,50 @@
+name: Build feeds
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/news.json'
+      - 'docs/communities.json'
+      - '.github/scripts/build-feeds.mjs'
+      - '.github/workflows/build-feeds.yml'
+  schedule:
+    # Daily at 00:00 UTC (09:00 KST) so expired items drop out of feeds.
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-feeds
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build feeds
+        run: node .github/scripts/build-feeds.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/news.ics docs/feed.xml docs/events.jsonld docs/sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No feed changes."
+          else
+            git commit -m "chore: regenerate feeds (ics/rss/jsonld/sitemap)"
+            git push
+          fi

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko">
+  <title>Loopback Social — 커뮤니티 뉴스</title>
+  <subtitle>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</subtitle>
+  <link rel="alternate" type="text/html" href="https://loopback.social/" />
+  <link rel="self" type="application/atom+xml" href="https://loopback.social/feeds/feed.ko.atom" />
+  <id>tag:loopback.social,2026:feed/ko</id>
+  <updated>2026-05-17T15:05:24.434Z</updated>
+  <generator uri="https://github.com/loopback-social/community-network-banner">community-network-banner build-feeds.mjs</generator>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-185094cb59619cf3</id>
+    <title type="text">오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
+    <link rel="alternate" type="text/html" href="https://event-us.kr/m/124753/53287" />
+    <published>2026-08-29T00:00:00.000Z</published>
+    <updated>2026-08-29T00:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!
+Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-b0e0f6215a3202d7</id>
+    <title type="text">UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)</title>
+    <link rel="alternate" type="text/html" href="https://2026.ubuntu-kr.org/cfp" />
+    <published>2026-05-18T15:00:00.000Z</published>
+    <updated>2026-05-18T15:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)
+Event: 2026-05-18T15:00:00.000Z — 2026-06-05T14:59:59.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-7aa5940cb18897a2</id>
+    <title type="text">🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월</title>
+    <link rel="alternate" type="text/html" href="https://ticketa.co/event/qpye8cf5" />
+    <published>2026-05-12T04:30:00.000Z</published>
+    <updated>2026-05-12T04:30:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월
+Event: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-3964fc0404a12140</id>
+    <title type="text">🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)</title>
+    <link rel="alternate" type="text/html" href="https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205" />
+    <published>2026-05-02T15:00:00.000Z</published>
+    <updated>2026-05-02T15:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)
+Event: 2026-05-02T15:00:00.000Z — 2026-05-25T14:59:59.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-b6bffab567e60cd8</id>
+    <title type="text">Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - 5월 2일 대전 스타창작소 5층</title>
+    <link rel="alternate" type="text/html" href="https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472" />
+    <published>2026-05-02T04:00:00.000Z</published>
+    <updated>2026-05-02T04:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - 5월 2일 대전 스타창작소 5층
+Event: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-62078c508884d301</id>
+    <title type="text">부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604</title>
+    <link rel="alternate" type="text/html" href="https://dotnetuniverse.net/xyz/busan-2604" />
+    <published>2026-04-16T15:00:00.000Z</published>
+    <updated>2026-04-16T15:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604
+Event: 2026-04-16T15:00:00.000Z — 2026-04-25T13:00:00.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-4d31e1117a871061</id>
+    <title type="text">.NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.</title>
+    <link rel="alternate" type="text/html" href="https://dotnetuniverse.net/2026" />
+    <published>2026-03-29T15:00:00.000Z</published>
+    <updated>2026-03-29T15:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">.NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.
+Event: 2026-03-29T15:00:00.000Z — 2026-12-31T15:00:00.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-ac13ecb9659a09ed</id>
+    <title type="text">뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.</title>
+    <link rel="alternate" type="text/html" href="https://loopback.social/" />
+    <published>2019-12-31T15:00:00.000Z</published>
+    <updated>2019-12-31T15:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">뉴스나 커뮤니티 링크를 제보하세요! 여기를 클릭해서 알려주세요.
+Event: 2019-12-31T15:00:00.000Z — 2099-12-31T14:59:59.000Z
+Category: announcement</summary>
+  </entry>
+</feed>
