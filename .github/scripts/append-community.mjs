@@ -32,6 +32,8 @@ const nameKo = clean(parsed.name_ko);
 const nameEn = clean(parsed.name_en);
 const urlKo = clean(parsed.url_ko);
 const urlEn = clean(parsed.url_en);
+const networkUrlKo = clean(parsed.network_url_ko);
+const networkUrlEn = clean(parsed.network_url_en);
 
 if (!nameKo) fail('name_ko (커뮤니티 이름 / 한국어) is required.');
 if (!urlKo) fail('url_ko (커뮤니티 URL / 한국어) is required.');
@@ -39,6 +41,8 @@ if (!urlKo) fail('url_ko (커뮤니티 URL / 한국어) is required.');
 const isHttpUrl = (s) => /^https?:\/\/\S+$/i.test(s);
 if (!isHttpUrl(urlKo)) fail(`url_ko must be a valid http(s) URL: ${urlKo}`);
 if (urlEn && !isHttpUrl(urlEn)) fail(`url_en must be a valid http(s) URL: ${urlEn}`);
+if (networkUrlKo && !isHttpUrl(networkUrlKo)) fail(`network_url_ko must be a valid http(s) URL: ${networkUrlKo}`);
+if (networkUrlEn && !isHttpUrl(networkUrlEn)) fail(`network_url_en must be a valid http(s) URL: ${networkUrlEn}`);
 
 const localized = (ko, en) => {
   if (en && en !== ko) return { ko, en };
@@ -49,6 +53,15 @@ const entry = {
   name: localized(nameKo, nameEn),
   url: localized(urlKo, urlEn)
 };
+if (networkUrlKo || networkUrlEn) {
+  // Mirror the localized pattern: if both filled and differ, store as {ko, en};
+  // otherwise fold to a single string.
+  if (networkUrlKo && networkUrlEn && networkUrlKo !== networkUrlEn) {
+    entry.network_url = { ko: networkUrlKo, en: networkUrlEn };
+  } else {
+    entry.network_url = networkUrlKo || networkUrlEn;
+  }
+}
 
 const raw = await readFile(COMMUNITIES_PATH, 'utf8');
 const list = JSON.parse(raw);

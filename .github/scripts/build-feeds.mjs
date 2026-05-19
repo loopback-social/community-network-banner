@@ -14,6 +14,7 @@ import { resolve } from 'node:path';
 
 const SITE_ORIGIN = 'https://loopback.social';
 const NEWS_PATH = resolve('docs/news.json');
+const NETWORK_NEWS_PATH = resolve('docs/news.network.json');
 const COMMUNITIES_PATH = resolve('docs/communities.json');
 const SITEMAP_PATH = resolve('docs/sitemap.xml');
 
@@ -190,6 +191,51 @@ const pickBody = (item, langMode, opts = {}) => {
 };
 const langTag = (langMode) => langMode === 'mul' ? 'mul' : langMode;
 
+// Per-item enrichment. Called once for curated items (source="curated") and once
+// for aggregated network items (source="network"); network items get a `[Community]`
+// prefix on the displayed message so the origin is visible in every variant.
+const enrichItem = (raw, idx, source) => {
+  if (!isTruthy(raw.display)) return null;
+  const displayStart = parseLocal(raw.start, raw.timezone);
+  const displayEnd = parseLocal(raw.end, raw.timezone);
+  if (!displayStart || !displayEnd) return null;
+  const eventStart = raw.event_start ? parseLocal(raw.event_start, raw.timezone) : displayStart;
+  const eventEnd = raw.event_end ? parseLocal(raw.event_end, raw.timezone) : displayEnd;
+  let messageKo = localized(raw.message, 'ko');
+  let messageEn = localized(raw.message, 'en') || messageKo;
+  const linkKo = localized(raw.link, 'ko');
+  const linkEn = localized(raw.link, 'en') || linkKo;
+  const locationKo = localized(raw.location, 'ko');
+  const locationEn = localized(raw.location, 'en') || locationKo;
+  const category = raw.category || null;
+
+  let communityKo = null, communityEn = null, communitySlug = null;
+  if (source === 'network' && raw._source) {
+    communitySlug = raw._source.community || null;
+    const cname = raw._source.community_name;
+    communityKo = localized(cname, 'ko');
+    communityEn = localized(cname, 'en') || communityKo;
+    if (messageKo && communityKo) messageKo = `[${communityKo}] ${messageKo}`;
+    if (messageEn && (communityEn || communityKo)) messageEn = `[${communityEn || communityKo}] ${messageEn}`;
+  }
+
+  return {
+    uid: itemUid(raw, `${source}-${idx}`),
+    source,
+    communitySlug,
+    communityKo,
+    communityEn,
+    category,
+    categoryLabel: category || 'announcement',
+    displayStart, displayEnd, eventStart, eventEnd,
+    timezone: raw.timezone || 'UTC',
+    messageKo, messageEn,
+    linkKo, linkEn,
+    locationKo, locationEn,
+    raw
+  };
+};
+
 // ---------- main ----------
 const main = async () => {
   const news = JSON.parse(await readFile(NEWS_PATH, 'utf8'));
@@ -197,37 +243,22 @@ const main = async () => {
   if (!Array.isArray(news)) throw new Error('docs/news.json must be an array');
   if (!Array.isArray(communities)) throw new Error('docs/communities.json must be an array');
 
+  let networkNews = [];
+  try {
+    networkNews = JSON.parse(await readFile(NETWORK_NEWS_PATH, 'utf8'));
+    if (!Array.isArray(networkNews)) throw new Error('docs/news.network.json must be an array');
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    // First run before aggregator has populated the file — proceed without network items.
+  }
+
   const now = new Date();
   const cutoff = new Date(now.getTime() - FEED_BACKDATE_DAYS * 24 * 60 * 60 * 1000);
 
-  const enriched = news
-    .map((raw, idx) => {
-      if (!isTruthy(raw.display)) return null;
-      const displayStart = parseLocal(raw.start, raw.timezone);
-      const displayEnd = parseLocal(raw.end, raw.timezone);
-      if (!displayStart || !displayEnd) return null;
-      const eventStart = raw.event_start ? parseLocal(raw.event_start, raw.timezone) : displayStart;
-      const eventEnd = raw.event_end ? parseLocal(raw.event_end, raw.timezone) : displayEnd;
-      const messageKo = localized(raw.message, 'ko');
-      const messageEn = localized(raw.message, 'en') || messageKo;
-      const linkKo = localized(raw.link, 'ko');
-      const linkEn = localized(raw.link, 'en') || linkKo;
-      const locationKo = localized(raw.location, 'ko');
-      const locationEn = localized(raw.location, 'en') || locationKo;
-      const category = raw.category || null;
-      return {
-        uid: itemUid(raw, idx),
-        category,
-        categoryLabel: category || 'announcement',
-        displayStart, displayEnd, eventStart, eventEnd,
-        timezone: raw.timezone || 'UTC',
-        messageKo, messageEn,
-        linkKo, linkEn,
-        locationKo, locationEn,
-        raw
-      };
-    })
-    .filter((x) => x && x.displayEnd >= cutoff);
+  const enriched = [
+    ...news.map((raw, idx) => enrichItem(raw, idx, 'curated')),
+    ...networkNews.map((raw, idx) => enrichItem(raw, idx, 'network'))
+  ].filter((x) => x && x.displayEnd >= cutoff);
 
   enriched.sort((a, b) => a.eventStart.getTime() - b.eventStart.getTime());
 
@@ -425,6 +456,11 @@ const buildJsonFeed = (items, now, langMode = 'mul') => {
         tags: [item.categoryLabel],
         // Always include raw bilingual fields so downstream tools can re-localize.
         _loopback_social: {
+          source: item.source,
+          community: item.communitySlug || null,
+          community_name: item.communityKo || item.communityEn
+            ? { ko: item.communityKo || null, en: item.communityEn || null }
+            : null,
           message_ko: item.messageKo || null,
           message_en: item.messageEn || null,
           event_start: iso(item.eventStart),

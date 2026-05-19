@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/news.json'
+      - 'docs/news.network.json'
       - 'docs/communities.json'
       - '.github/scripts/build-feeds.mjs'
       - '.github/workflows/build-feeds.yml'

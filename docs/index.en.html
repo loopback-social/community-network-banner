@@ -143,14 +143,27 @@
     <pre><button class="copy-button">Copy</button><code>&lt;script src="https://loopback.social/banner.js" data-color="#005a9c" data-textcolor="#ffffff" data-lang="en" defer&gt;&lt;/script&gt;</code></pre>
 
     <h2>Step 2. Get Your Name Out There</h2>
-    <p>There are two main ways to participate in loopback.social:</p>
-    <ul>
-        <li>To add your community to be displayed on the banner together, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">submit a community listing issue to the GitHub repository</a> after installing the banner.</li>
-        <li>To share news in the news ticker, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">submit a news submission issue to the GitHub repository</a> after installing the banner.</li>
-    </ul>
+    <p>Loopback Social's news channel has two paths.</p>
 
-    <h2>Step 3. Submit News</h2>
-    <p>If you have news to show in the news ticker at the bottom of the banner, you can edit <code>docs/news.json</code> or submit reports through the <strong>News Submission</strong> issue template on GitHub.</p>
+    <h3>Recommended: Network repository (self-publishing)</h3>
+    <p>Host a <code>news.json</code> on your community's own site and Loopback Social will <strong>pull it every 6 hours</strong> and surface it on the banner. After the one-time registration, your team updates content at your own pace — no per-item PRs to our repository. The banner always shows the origin as a <code>[Community Name] Message</code> prefix.</p>
+    <ol>
+        <li>Publish a JSON file on your domain conforming to <a href="./schemas/news.schema.json"><code>news.schema.json</code></a> (e.g. <code>https://forum.example.com/loopback.json</code>). To split by language, run two URLs like <code>loopback.ko.json</code> / <code>loopback.en.json</code>.</li>
+        <li>Submit a <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">community registration issue</a> with the URL(s).</li>
+        <li>After a maintainer merges the registration, the aggregator picks up the most recent active items every 6 hours — top-2 from a single URL, or top-1 from each side of a ko/en split. <strong>At most 2 items per community.</strong></li>
+        <li>From then on, just update your own JSON file; the next cycle reflects the change.</li>
+    </ol>
+
+    <h3>Alternative: Manual submission (issue/PR review)</h3>
+    <p>If self-hosting an auto-updated JSON isn't practical, the existing path still works:</p>
+    <ul>
+        <li>Register your community only — <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">community registration issue</a> (leave the network URL field blank).</li>
+        <li>Post individual news items — <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">news submission issue</a>.</li>
+    </ul>
+    <p>A maintainer reviews and merges the PR. Loopback Social maintainers also use this path for curated highlights they want to emphasise.</p>
+
+    <h2>Step 3. Item format (<code>news.json</code>)</h2>
+    <p>Both paths above share the same item shape. Either edit <code>docs/news.json</code> directly via PR, or host the same format on your own site.</p>
 
     <h3><code>news.json</code> Item Format</h3>
     <pre><code>{

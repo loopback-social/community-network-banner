@@ -1,0 +1,55 @@
+name: Aggregate network news
+
+# Pulls each registered community's network_url JSON into docs/news.network.json
+# on a 6-hour cadence. build-feeds.yml then picks up the change and regenerates
+# the public RSS/Atom/JSON Feed/ICS/OPML/JSON-LD variants downstream.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/communities.json'
+      - '.github/scripts/aggregate-network.mjs'
+      - '.github/workflows/aggregate-network.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggregate-network
+  cancel-in-progress: false
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ajv
+        run: npm install --no-save ajv@8
+
+      - name: Aggregate network sources
+        run: node .github/scripts/aggregate-network.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/news.network.json
+          if git diff --cached --quiet; then
+            echo "No network aggregation changes."
+          else
+            git commit -m "chore: refresh aggregated network news"
+            git push
+          fi

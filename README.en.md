@@ -40,12 +40,29 @@ When `data-lang` is set to `auto`, the language is automatically detected from t
 
 ## Step 2. Participation
 
-There are two main ways to participate in loopback.social:
+Loopback Social's news channel has two paths:
 
-- To add your community to be displayed on the banner together, [submit a community listing issue to the GitHub repository](https://github.com/loopback-social/community-network-banner/issues/new/choose) after installing the banner.
-- To share news in the news ticker, [submit a news submission issue to the GitHub repository](https://github.com/loopback-social/community-network-banner/issues/new/choose) after installing the banner.
+### Recommended: Network repository (self-publishing)
 
-Once you submit the issue form, an automation bot validates the inputs and opens a pull request that appends the entry to `docs/communities.json` or `docs/news.json`. A maintainer reviews and merges the PR, and the change goes live immediately.
+Host a `news.json` on your community's own site and Loopback Social will **pull it every 6 hours** and surface it on the banner. After the one-time registration, your team updates content at your own pace — no per-item PRs to our repository.
+
+How it works:
+
+1. Publish a `news.json` on your domain that conforms to our [`news.schema.json`](docs/schemas/news.schema.json). Example: `https://forum.example.com/loopback.json`. To split by language, run two URLs like `loopback.ko.json` / `loopback.en.json`.
+2. Submit a [community registration issue](https://github.com/loopback-social/community-network-banner/issues/new/choose) with the URL(s).
+3. After a maintainer merges the registration, the aggregator picks up the most recent active items every 6 hours — top-2 from a single URL, or top-1 from each side of a ko/en split. **At most 2 items per community.**
+4. From then on you just update your own JSON file; the next aggregator cycle reflects the change automatically. No further PRs to us.
+
+The banner always shows the origin as a `[Community Name] Message` prefix.
+
+### Alternative: Manual submission (issue/PR review)
+
+If self-hosting an auto-updated JSON isn't practical, the existing path still works:
+
+- Register your community only — [community registration issue](https://github.com/loopback-social/community-network-banner/issues/new/choose) (leave the network URL field blank).
+- Post individual news items — [news submission issue](https://github.com/loopback-social/community-network-banner/issues/new/choose).
+
+The automation bot validates inputs and opens a PR appending to `docs/communities.json` or `docs/news.json`. A maintainer reviews and merges. Loopback Social maintainers also use this path directly for curated highlights they want to emphasise.
 
 ## News Registration Guide (`news.json`)
 

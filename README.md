@@ -40,12 +40,29 @@
 
 ## Step 2. 참여하기
 
-loopback.social에 참여하는 방법은 크게 두 가지입니다.
+loopback.social의 뉴스 채널은 두 갈래입니다.
 
-- 커뮤니티를 배너에 같이 표시되게 추가하려면, 배너 설치 후 [GitHub 저장소에 커뮤니티 등재 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
-- 뉴스 티커에 소식을 전하려면, 배너 설치 후 [GitHub 저장소에 뉴스 제보 등록 이슈를 제출](https://github.com/loopback-social/community-network-banner/issues/new/choose)해주세요.
+### 권장: 네트워크 리포지터리 (자율 게시)
 
-이슈 양식을 제출하면 자동화 봇이 입력값을 검증하고 `docs/communities.json` 또는 `docs/news.json`에 항목을 추가하는 PR을 자동으로 생성합니다. 운영자가 PR을 검토하고 머지하면 즉시 반영됩니다.
+커뮤니티 운영진이 자기 사이트에 `news.json` 형식의 파일을 호스팅하면, Loopback Social이 **6시간마다 자동으로 가져와** 배너에 노출합니다. 한 번 등재되면 이후 콘텐츠는 운영진이 자기 페이스로 갱신 — 매번 우리 리포지터리에 PR을 보낼 필요가 없습니다.
+
+작동 방식:
+
+1. 커뮤니티 운영진이 자기 도메인에 `news.json`(우리 [`news.schema.json`](docs/schemas/news.schema.json) 형식)을 게시합니다. 예: `https://forum.example.com/loopback.json`. 언어별로 분리하고 싶으면 `loopback.ko.json` / `loopback.en.json` 두 개로 운영 가능.
+2. [커뮤니티 등재 이슈](https://github.com/loopback-social/community-network-banner/issues/new/choose)에 그 URL(들)을 함께 제출합니다.
+3. 운영자가 검수 후 머지 → 자동화 봇이 6시간마다 가장 최근 active 항목을 가져옴 (단일 URL 시 top-2, 언어별 분리 시 각 top-1, **커뮤니티당 최대 2개**).
+4. 커뮤니티는 이후 자기 사이트의 파일만 갱신하면 다음 사이클에 자동 반영. 별도 PR 불필요.
+
+배너에서는 `[커뮤니티 이름] 메시지` 형태로 출처가 항상 명시됩니다.
+
+### 대안: 수동 제보 (PR 검수)
+
+자동 게시 환경을 운영하기 어려운 경우, 종전 방식으로도 계속 참여할 수 있습니다:
+
+- 커뮤니티만 등재하고 싶다면 [커뮤니티 등재 이슈](https://github.com/loopback-social/community-network-banner/issues/new/choose)를 제출 (네트워크 URL 칸은 비워두면 됩니다).
+- 개별 뉴스 항목을 띄우고 싶다면 [뉴스 제보 등록 이슈](https://github.com/loopback-social/community-network-banner/issues/new/choose)를 제출.
+
+이슈 양식을 제출하면 자동화 봇이 입력값을 검증하고 `docs/communities.json` 또는 `docs/news.json`에 항목을 추가하는 PR을 생성합니다. 운영자가 PR을 검토하고 머지하면 즉시 반영됩니다. Loopback Social 운영진이 큐레이션해 강조하고 싶은 소식도 이 경로로 직접 등록됩니다.
 
 ## 뉴스 등록 가이드 (`news.json`)
 

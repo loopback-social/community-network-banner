@@ -4,8 +4,9 @@
 
 ## Primary data (machine-readable, always current)
 
-- [news.json](https://loopback.social/news.json): Source-of-truth array of news/event items. Each item has `start`/`end` (display window), optional `event_start`/`event_end` (actual event datetime), `timezone` (UTC offset or IANA name), optional `category` (event/campaign/release/recruit/announcement), localized `message` and `link` (string or `{ko, en}`), and `display` (boolean-ish). Schema: `https://loopback.social/schemas/news.schema.json`.
-- [communities.json](https://loopback.social/communities.json): Array of participating communities, each with localized `name` and `url`. Schema: `https://loopback.social/schemas/communities.schema.json`.
+- [news.json](https://loopback.social/news.json): Curated highlights, hand-managed by Loopback Social maintainers. Array of news/event items. Each item has `start`/`end` (display window), optional `event_start`/`event_end` (actual event datetime), `timezone` (UTC offset or IANA name), optional `category` (event/campaign/release/recruit/announcement), localized `message` and `link` (string or `{ko, en}`), and `display` (boolean-ish). Schema: `https://loopback.social/schemas/news.schema.json`.
+- [news.network.json](https://loopback.social/news.network.json): Auto-aggregated from each participating community's `network_url`. Same item schema as `news.json` plus a `_source` object (`community`, `community_name`, `community_url`, `source_url`, `lang`). At most 2 items per community. Refreshed every 6 hours. Communities publish/update freely on their own site once registered; no per-item PR review.
+- [communities.json](https://loopback.social/communities.json): Array of participating communities, each with localized `name` and `url`. Optional `network_url` field (string or `{ko, en}`) points at the community's self-hosted news source consumed by the aggregator. Schema: `https://loopback.social/schemas/communities.schema.json`.
 - [feeds/events.jsonld](https://loopback.social/feeds/events.jsonld): Schema.org `@graph` containing an `Organization` (with all communities as `member`) and an `ItemList` of `Event` objects derived from `news.json`. Preferred entry point for agents that understand Schema.org.
 
 ## Feeds (built from news.json / communities.json)

@@ -44,6 +44,33 @@ body:
     validations:
       required: false
 
+  - type: markdown
+    attributes:
+      value: |
+        ### 네트워크 뉴스 소스 / Network news source (선택 / optional)
+
+        등재 후 매 6시간마다 자동으로 가져갈 뉴스 JSON 파일의 URL입니다. 형식은 우리 `news.schema.json`과 동일합니다. 한 커뮤니티당 최대 2개(언어별)까지 등록 가능하며, 각 URL의 최근 active 항목이 자동으로 배너에 노출됩니다. 비워두면 종전과 같이 매번 이슈/PR로 소식을 제보할 수 있습니다.
+
+        URL of a JSON file we will fetch every 6 hours after registration. The file must follow our `news.schema.json`. You can register up to two URLs per community (one per language); the most recent active items from each are surfaced on the banner. Leave blank to keep posting via issues/PRs as before.
+
+  - type: input
+    id: network_url_ko
+    attributes:
+      label: 네트워크 뉴스 소스 URL (한국어) / Network news source URL (Korean)
+      description: https:// 로 시작하는 전체 URL. / Full https:// URL.
+      placeholder: https://example.com/loopback.ko.json
+    validations:
+      required: false
+
+  - type: input
+    id: network_url_en
+    attributes:
+      label: 네트워크 뉴스 소스 URL (영어) / Network news source URL (English)
+      description: 영어 콘텐츠가 분리된 별도 URL이 있다면 입력. 비워두면 한국어 URL만 사용. / Separate English-content URL if you publish one. Blank uses the Korean URL only.
+      placeholder: https://example.com/loopback.en.json
+    validations:
+      required: false
+
   - type: textarea
     id: description
     attributes:

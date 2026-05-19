@@ -151,32 +151,55 @@
     return shuffled;
   };
 
-  let news = [];
-  try {
-    const urlNews = new URL("news.json", scriptSrc || location.href);
-    urlNews.searchParams.set('t', Date.now()); // 캐시 무효화를 위한 타임스탬프
-    const respNews = await fetch(urlNews);
-    const rawNews = await respNews.json();
-    const now = new Date();
-    news = rawNews.filter((n) => {
-      const d = n.display;
-      if (!(d === true || (typeof d === "string" && ["true","yes","1"].includes(d.trim().toLowerCase())))) return false;
-      try {
-        const start = parseNewsDate(n.start, n.timezone);
-        const end = parseNewsDate(n.end, n.timezone);
-        return start <= now && now <= end;
-      } catch {
-        return false;
+  const now = new Date();
+  const isActive = (n) => {
+    const d = n.display;
+    if (!(d === true || (typeof d === "string" && ["true","yes","1"].includes(d.trim().toLowerCase())))) return false;
+    try {
+      const start = parseNewsDate(n.start, n.timezone);
+      const end = parseNewsDate(n.end, n.timezone);
+      return start <= now && now <= end;
+    } catch {
+      return false;
+    }
+  };
+
+  // Network items get a [Community Name] prefix at render time so subscribers
+  // and ticker viewers see which community originated each item.
+  const localizeNewsItem = (item) => {
+    let message = getLocalizedText(item.message);
+    const link = getLocalizedText(item.link);
+    if (item._source && item._source.community_name) {
+      const cname = getLocalizedText(item._source.community_name);
+      if (cname) message = `[${cname}] ${message}`;
+    }
+    return { ...item, message, link };
+  };
+
+  const fetchActiveNews = async (path) => {
+    try {
+      const url = new URL(path, scriptSrc || location.href);
+      url.searchParams.set('t', Date.now()); // cache-bust
+      const resp = await fetch(url);
+      if (!resp.ok) {
+        // 404 on news.network.json is fine — aggregator may not have run yet.
+        if (resp.status === 404) return [];
+        throw new Error(`HTTP ${resp.status}`);
       }
-    }).map(item => ({
-      ...item,
-      message: getLocalizedText(item.message),
-      link: getLocalizedText(item.link)
-    }));
-  } catch (err) {
-    console.error("Failed to load news.json", err);
-    hasLoadError = true;
-  }
+      const raw = await resp.json();
+      return raw.filter(isActive).map(localizeNewsItem);
+    } catch (err) {
+      console.error(`Failed to load ${path}`, err);
+      return null; // signal error to caller
+    }
+  };
+
+  let news = [];
+  const curated = await fetchActiveNews('news.json');
+  const network = await fetchActiveNews('news.network.json');
+  if (curated === null) hasLoadError = true;
+  if (network === null) hasLoadError = true;
+  news = [...(curated || []), ...(network || [])];
 
   let communities = [];
   try {

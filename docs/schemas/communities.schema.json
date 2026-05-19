@@ -22,6 +22,10 @@
         "feed": {
           "$ref": "#/definitions/localizedString",
           "description": "Optional RSS/Atom feed URL exposed in feeds.opml so subscribers can pick up this community's own posts."
+        },
+        "network_url": {
+          "$ref": "#/definitions/localizedString",
+          "description": "URL of this community's Loopback Social news source JSON (must match news.schema.json). Single string, or { ko, en } when separate URLs per language (max 2 URLs). Aggregator pulls top items here automatically on a 6-hour cron."
         }
       }
     },
