@@ -154,6 +154,66 @@
         <li>이후 자기 사이트 파일만 갱신하면 다음 사이클에 자동 반영.</li>
     </ol>
 
+    <h4>호스팅 명세 (네트워크 소스 운영자 가이드)</h4>
+    <p>aggregator(<a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>.github/scripts/aggregate-network.mjs</code></a>)가 자기 사이트의 JSON을 어떻게 다루는지 알아두면 운영이 수월합니다.</p>
+
+    <h5>최소 요구사항</h5>
+    <ul>
+        <li><strong>HTTPS</strong>로 공개 접근 가능 (등재 양식은 <code>https://</code> URL만 허용)</li>
+        <li>본문은 <code>news.schema.json</code>을 따르는 <strong>JSON 배열</strong>. 항목 형식은 아래 Step 3의 양식과 동일</li>
+        <li>응답 <strong>본문 1 MB 이내</strong>, <strong>10초 안에 응답</strong>. 초과 시 그 사이클 스킵</li>
+        <li>30x 리다이렉트는 자동 추종</li>
+    </ul>
+
+    <h5>항목 선택 규칙</h5>
+    <ul>
+        <li>aggregator는 현재 시각이 <code>start ≤ now ≤ end</code> 안인 active 항목만 후보로 봅니다 (<code>display</code>가 truthy인 항목 한정).</li>
+        <li>후보를 <code>start</code> <strong>내림차순</strong>으로 정렬 후 위에서부터 픽업 (가장 최근에 시작된 항목이 먼저).</li>
+        <li><code>network_url</code>이 단일 문자열이면 그 URL에서 <strong>top-2</strong>. <code>{ko, en}</code> 두 URL이면 <strong>각 top-1</strong>(언어별 1개씩). <strong>커뮤니티당 최대 2개</strong>.</li>
+        <li>같은 항목이 ko/en URL 양쪽에 등장하면 한 번만 노출. 정확한 중복 제거를 원하면 항목에 <code>id</code> 필드를 명시. 없으면 <code>start + message</code>의 해시로 dedup.</li>
+    </ul>
+
+    <h5>출처 메타데이터</h5>
+    <p>픽업된 모든 항목에는 다음 모양의 <code>_source</code>가 자동으로 박혀 들어갑니다 — 커뮤니티가 페이로드에 직접 넣은 <code>_source</code>는 덮어쓰입니다. 배너 런타임은 <code>_source.community_name</code>을 읽어 <code>[커뮤니티 이름] 메시지</code> prefix를 자동으로 붙이고, RSS/Atom/JSON Feed의 <code>_loopback_social</code> 확장에도 동일 정보가 포함됩니다.</p>
+    <pre><code>{
+  "_source": {
+    "community": "kebab-slug",
+    "community_name": { "ko": "닷넷데브", "en": ".NET Dev" },
+    "community_url": "https://forum.dotnetdev.kr/",
+    "source_url": "https://forum.dotnetdev.kr/loopback.json",
+    "lang": "ko"
+  }
+}</code></pre>
+
+    <h5>갱신 주기와 캐싱</h5>
+    <ul>
+        <li>매 6시간마다 cron (<code>0 */6 * * *</code> UTC) + <code>docs/communities.json</code> 변경 시 + 수동 dispatch.</li>
+        <li>aggregator는 별도 캐시 우회를 하지 않으므로, 자기 사이트의 <code>Cache-Control</code>은 자유롭게 설정 (권장: <code>max-age=600</code> 이내).</li>
+        <li>다음 cron 시점까지 기다리지 않고 즉시 반영하려면 운영자가 <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">aggregate-network.yml 워크플로</a>의 "Run workflow"를 누를 수 있습니다.</li>
+    </ul>
+
+    <h5>장애 동작</h5>
+    <ul>
+        <li>한 URL이 fetch 실패(타임아웃·HTTP error·1 MB 초과)하거나 스키마 검증에 실패하면 해당 URL만 스킵, 다른 커뮤니티는 정상 처리.</li>
+        <li>실패는 Actions 로그에 <code>::warning::network aggregator failures: …</code>로 기록되며, <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">워크플로 실행 로그</a>에서 사유 확인 가능.</li>
+    </ul>
+
+    <h5>항목 라이프사이클</h5>
+    <p><code>end</code>가 과거가 된 항목도 <strong>30일</strong> 동안 <code>docs/news.network.json</code>에 남아 RSS/Atom/JSON Feed 구독자가 최근 변경을 따라잡을 수 있게 합니다. 30일 지나면 자동으로 제거됩니다.</p>
+
+    <h5>로컬 검증</h5>
+    <p>자기 JSON이 schema에 부합하는지 사전 확인:</p>
+    <pre><button class="copy-button">복사</button><code>npx ajv-cli@5 validate \
+  -s https://loopback.social/schemas/news.schema.json \
+  -d my-news.json \
+  --strict=false --all-errors</code></pre>
+    <p>aggregator를 직접 돌려보고 싶으면:</p>
+    <pre><button class="copy-button">복사</button><code>git clone https://github.com/loopback-social/community-network-banner
+cd community-network-banner
+npm install --no-save ajv@8
+node .github/scripts/aggregate-network.mjs
+# → docs/news.network.json에 픽업 결과가 기록됨</code></pre>
+
     <h3>대안: 수동 제보 (PR 검수)</h3>
     <p>자동 게시 환경을 운영하기 어렵다면 종전 방식으로도 계속 참여 가능합니다.</p>
     <ul>

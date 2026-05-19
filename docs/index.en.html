@@ -154,6 +154,66 @@
         <li>From then on, just update your own JSON file; the next cycle reflects the change.</li>
     </ol>
 
+    <h4>Hosting specification (for network source operators)</h4>
+    <p>Knowing exactly how the aggregator (<a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>.github/scripts/aggregate-network.mjs</code></a>) handles your JSON makes operations smooth.</p>
+
+    <h5>Minimum requirements</h5>
+    <ul>
+        <li>Publicly reachable over <strong>HTTPS</strong> (the registration form only accepts <code>https://</code> URLs)</li>
+        <li>Body must be a <strong>JSON array</strong> conforming to <code>news.schema.json</code>. The item shape matches Step 3 below</li>
+        <li>Response <strong>≤ 1 MB</strong>, <strong>answered within 10 seconds</strong>. Overruns cause that URL to be skipped for the cycle</li>
+        <li>30x redirects are followed automatically</li>
+    </ul>
+
+    <h5>Item selection rules</h5>
+    <ul>
+        <li>The aggregator considers only items active at the current time (<code>start ≤ now ≤ end</code>), with truthy <code>display</code>.</li>
+        <li>Candidates are sorted by <code>start</code> <strong>descending</strong> (most recently started first).</li>
+        <li>Single-string <code>network_url</code> → <strong>top-2</strong> from that URL. <code>{ko, en}</code> two-URL split → <strong>top-1 each</strong>. <strong>Maximum 2 items per community.</strong></li>
+        <li>An item appearing in both ko and en URLs surfaces once. For accurate dedup, set an explicit <code>id</code> field on the item; otherwise the aggregator hashes <code>start + message</code>.</li>
+    </ul>
+
+    <h5>Source metadata</h5>
+    <p>Every picked-up item gets a <code>_source</code> object stamped in automatically — any <code>_source</code> the community put in the payload is overwritten. The banner runtime reads <code>_source.community_name</code> and prepends a <code>[Community Name] Message</code> prefix; the same info appears in the <code>_loopback_social</code> extension of the RSS/Atom/JSON Feed outputs.</p>
+    <pre><code>{
+  "_source": {
+    "community": "kebab-slug",
+    "community_name": { "ko": "닷넷데브", "en": ".NET Dev" },
+    "community_url": "https://forum.dotnetdev.kr/",
+    "source_url": "https://forum.dotnetdev.kr/loopback.json",
+    "lang": "ko"
+  }
+}</code></pre>
+
+    <h5>Refresh cadence and caching</h5>
+    <ul>
+        <li>Every 6 hours by cron (<code>0 */6 * * *</code> UTC), plus on <code>docs/communities.json</code> changes, plus manual dispatch.</li>
+        <li>The aggregator does not bypass caches, so feel free to set whatever <code>Cache-Control</code> you want on your file (recommended: <code>max-age=600</code> or shorter).</li>
+        <li>To reflect a change immediately without waiting for the next cron, a maintainer can trigger "Run workflow" on the <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">aggregate-network.yml workflow</a>.</li>
+    </ul>
+
+    <h5>Failure behavior</h5>
+    <ul>
+        <li>If a single URL fails to fetch (timeout, HTTP error, 1 MB overrun) or fails schema validation, only that URL is skipped — other communities still aggregate normally.</li>
+        <li>Failures land in the Actions log as <code>::warning::network aggregator failures: …</code>. Inspect the <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">workflow run log</a> for the exact reason.</li>
+    </ul>
+
+    <h5>Item lifecycle</h5>
+    <p>Items whose <code>end</code> is in the past stay in <code>docs/news.network.json</code> for <strong>30 days</strong> so RSS/Atom/JSON Feed subscribers can catch up on recent changes. They are removed automatically afterwards.</p>
+
+    <h5>Local validation</h5>
+    <p>Check your JSON against the schema before going live:</p>
+    <pre><button class="copy-button">Copy</button><code>npx ajv-cli@5 validate \
+  -s https://loopback.social/schemas/news.schema.json \
+  -d my-news.json \
+  --strict=false --all-errors</code></pre>
+    <p>To run the aggregator against the registered communities yourself:</p>
+    <pre><button class="copy-button">Copy</button><code>git clone https://github.com/loopback-social/community-network-banner
+cd community-network-banner
+npm install --no-save ajv@8
+node .github/scripts/aggregate-network.mjs
+# → results are written into docs/news.network.json</code></pre>
+
     <h3>Alternative: Manual submission (issue/PR review)</h3>
     <p>If self-hosting an auto-updated JSON isn't practical, the existing path still works:</p>
     <ul>

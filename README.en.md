@@ -55,6 +55,77 @@ How it works:
 
 The banner always shows the origin as a `[Community Name] Message` prefix.
 
+#### Hosting specification (for network source operators)
+
+Knowing exactly how the aggregator ([`.github/scripts/aggregate-network.mjs`](.github/scripts/aggregate-network.mjs)) handles your JSON makes operations smooth.
+
+##### Minimum requirements
+
+- Publicly reachable over **HTTPS** (the registration form only accepts `https://` URLs)
+- Body must be a **JSON array** conforming to `news.schema.json`. The item shape is identical to the [News Registration Guide](#news-registration-guide-newsjson) below — your hosted file uses the same format
+- Response **≤ 1 MB**, **answered within 10 seconds**. Overruns cause that URL to be skipped for the cycle
+- 30x redirects are followed automatically
+
+##### Item selection rules
+
+- The aggregator considers only items active at the current time (`start ≤ now ≤ end`), with truthy `display`.
+- Candidates are sorted by `start` **descending** (most recently started first).
+- Single-string `network_url` → **top-2** from that URL. `{ko, en}` two-URL split → **top-1 each**. **Maximum 2 items per community.**
+- An item appearing in both ko and en URLs surfaces once. For accurate dedup, set an explicit `id` field on the item; otherwise the aggregator hashes `start + message`.
+
+##### Source metadata
+
+- Every picked-up item gets a `_source` object stamped in automatically — any `_source` the community put in the payload is overwritten.
+- The banner runtime reads `_source.community_name` and prepends a `[Community Name] Message` prefix automatically. The same info also appears in the `_loopback_social` extension of the RSS/Atom/JSON Feed outputs so subscribers can identify the origin.
+
+```json
+{
+  "_source": {
+    "community": "kebab-slug",
+    "community_name": { "ko": "닷넷데브", "en": ".NET Dev" },
+    "community_url": "https://forum.dotnetdev.kr/",
+    "source_url": "https://forum.dotnetdev.kr/loopback.json",
+    "lang": "ko"
+  }
+}
+```
+
+##### Refresh cadence and caching
+
+- Every 6 hours by cron (`0 */6 * * *` UTC), plus on `docs/communities.json` changes, plus manual dispatch.
+- The aggregator does not bypass caches, so feel free to set whatever `Cache-Control` you want on your file (recommended: `max-age=600` or shorter).
+- To reflect a change immediately without waiting for the next cron, a maintainer can trigger "Run workflow" on the [aggregate-network.yml workflow](https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml).
+
+##### Failure behavior
+
+- If a single URL fails to fetch (timeout, HTTP error, 1 MB overrun) or fails schema validation, only that URL is skipped — other communities still aggregate normally. One broken source must not block the rest.
+- Failures land in the Actions log as `::warning::network aggregator failures: …`. Maintainers can inspect the [workflow run log](https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml) for the exact reason.
+
+##### Item lifecycle
+
+- Items whose `end` is in the past stay in `docs/news.network.json` for **30 days** so RSS/Atom/JSON Feed subscribers can catch up on recent changes. They are removed automatically afterwards.
+
+##### Local validation
+
+To check your JSON against the schema before going live:
+
+```bash
+npx ajv-cli@5 validate \
+  -s https://loopback.social/schemas/news.schema.json \
+  -d my-news.json \
+  --strict=false --all-errors
+```
+
+To run the aggregator against the registered communities yourself:
+
+```bash
+git clone https://github.com/loopback-social/community-network-banner
+cd community-network-banner
+npm install --no-save ajv@8
+node .github/scripts/aggregate-network.mjs
+# → results are written into docs/news.network.json
+```
+
 ### Alternative: Manual submission (issue/PR review)
 
 If self-hosting an auto-updated JSON isn't practical, the existing path still works:
