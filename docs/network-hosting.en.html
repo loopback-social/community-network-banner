@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>Network Feed Hosting Specification — Loopback Social</title>
+
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-16.png" sizes="16x16" type="image/png">
+
+  <meta property="og:title" content="Network Feed Hosting Specification — Loopback Social" />
+  <meta property="og:description" content="Operator guide for self-hosting a news.json that Loopback Social automatically surfaces on the banner." />
+  <meta property="og:url" content="https://loopback.social/network-hosting.en.html" />
+  <meta property="og:type" content="article" />
+
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
+    main { max-width: 720px; padding: 1rem; margin: auto; }
+    h1   { margin-top: 0; }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 0.25em;
+      position: relative;
+      overflow-x: auto;
+    }
+    .copy-button {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background-color: #ddd;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 0.25em;
+      cursor: pointer;
+    }
+    .copy-button:hover {
+      background-color: #ccc;
+    }
+    .lang-switcher {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+    .lang-switcher a {
+      text-decoration: none;
+      margin: 0 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: #f0f0f0;
+    }
+    .lang-switcher .active {
+      background: #007acc;
+      color: white;
+    }
+    .breadcrumb {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .breadcrumb a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="lang-switcher">
+      <a href="network-hosting.html">🇰🇷 한국어</a>
+      <span class="active">🇺🇸 English</span>
+    </div>
+
+    <div class="breadcrumb">
+      <a href="./index.en.html">← Back to Loopback Social</a>
+    </div>
+
+    <h1>Network Feed Hosting Specification</h1>
+    <p>When a community hosts a <code>news.json</code>-formatted file on its own domain, a Loopback Social bot <strong>pulls it every 6 hours</strong> and surfaces the items on the banner and public feeds. This document is the operator guide for the self-publishing path (<a href="./index.en.html#step2">Step 2 Option 1 on the homepage</a>).</p>
+
+    <h2>End-to-end flow</h2>
+    <ol>
+      <li>Publish a JSON array on your domain conforming to <a href="./schemas/news.schema.json"><code>news.schema.json</code></a>. Example: <code>https://forum.example.com/loopback.json</code>. To split by language, run two URLs like <code>loopback.ko.json</code> / <code>loopback.en.json</code>.</li>
+      <li>Submit a <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">community registration issue</a> with those URL(s) in the "Network news source" field.</li>
+      <li>After a maintainer merges the registration, <a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>aggregate-network.mjs</code></a> pulls the most recent active items every 6 hours.</li>
+      <li>From then on you just update your own file; the next cycle reflects the change automatically. No further PRs to us.</li>
+    </ol>
+    <p>The banner always displays the origin as a <code>[Community Name] Message</code> prefix, and the same metadata appears in all public RSS/Atom/JSON Feed outputs.</p>
+
+    <h2>Minimum requirements</h2>
+    <ul>
+      <li>Publicly reachable over <strong>HTTPS</strong>. The registration form only accepts URLs starting with <code>https://</code>.</li>
+      <li>Body must be a <strong>JSON array</strong> conforming to <code>news.schema.json</code>. The item shape matches <a href="./index.en.html#step3">Step 3 on the homepage</a>.</li>
+      <li>Response <strong>≤ 1 MB</strong>, <strong>answered within 10 seconds</strong>. Overruns cause that URL to be skipped for the cycle.</li>
+      <li>30x redirects are followed automatically.</li>
+    </ul>
+
+    <h2>Item selection rules</h2>
+    <ul>
+      <li>The aggregator considers only items active at the current time (<code>start ≤ now ≤ end</code>), with truthy <code>display</code>.</li>
+      <li>Candidates are sorted by <code>start</code> <strong>descending</strong> (most recently started first).</li>
+      <li>Single-string <code>network_url</code> → <strong>top-2</strong> from that URL. <code>{ko, en}</code> two-URL split → <strong>top-1 each</strong>. <strong>Maximum 2 items per community.</strong></li>
+      <li>An item appearing in both ko and en URLs surfaces once. For accurate dedup, set an explicit <code>id</code> field on the item; otherwise the aggregator hashes <code>start + message</code>.</li>
+    </ul>
+
+    <h2>Source metadata (<code>_source</code>)</h2>
+    <p>Every picked-up item gets the following <code>_source</code> object stamped in automatically. Any <code>_source</code> the community put in the payload is overwritten.</p>
+    <pre><code>{
+  "_source": {
+    "community": "kebab-slug",
+    "community_name": { "ko": "닷넷데브", "en": ".NET Dev" },
+    "community_url": "https://forum.dotnetdev.kr/",
+    "source_url": "https://forum.dotnetdev.kr/loopback.json",
+    "lang": "ko"
+  }
+}</code></pre>
+    <p>The banner runtime reads <code>_source.community_name</code> and prepends a <code>[Community Name] Message</code> prefix automatically. The same info also appears in the <code>_loopback_social</code> extension of the RSS/Atom/JSON Feed outputs so subscribers can identify the origin.</p>
+
+    <h2>Refresh cadence and caching</h2>
+    <ul>
+      <li>Every 6 hours by cron (<code>0 */6 * * *</code> UTC), plus on <code>docs/communities.json</code> changes, plus manual dispatch.</li>
+      <li>The aggregator does not bypass caches, so set whatever <code>Cache-Control</code> you want on your file (recommended: <code>max-age=600</code> or shorter).</li>
+      <li>To reflect a change immediately without waiting for the next cron, a maintainer can trigger "Run workflow" on the <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">aggregate-network.yml workflow</a>.</li>
+    </ul>
+
+    <h2>Failure behavior</h2>
+    <ul>
+      <li>If a single URL fails to fetch (timeout, HTTP error, 1 MB overrun) or fails schema validation, only that URL is skipped — other communities still aggregate normally. One broken source must not block the rest.</li>
+      <li>Failures land in the Actions log as <code>::warning::network aggregator failures: …</code>. Inspect the <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">workflow run log</a> for the exact reason.</li>
+    </ul>
+
+    <h2>Item lifecycle</h2>
+    <p>Items whose <code>end</code> is in the past stay in <code>docs/news.network.json</code> for <strong>30 days</strong> so RSS/Atom/JSON Feed subscribers can catch up on recent changes. They are removed automatically afterwards.</p>
+
+    <h2>Local validation</h2>
+    <p>Check your JSON against the schema before going live:</p>
+    <pre><button class="copy-button">Copy</button><code>npx ajv-cli@5 validate \
+  -s https://loopback.social/schemas/news.schema.json \
+  -d my-news.json \
+  --strict=false --all-errors</code></pre>
+    <p>To run the aggregator against the registered communities yourself:</p>
+    <pre><button class="copy-button">Copy</button><code>git clone https://github.com/loopback-social/community-network-banner
+cd community-network-banner
+npm install --no-save ajv@8
+node .github/scripts/aggregate-network.mjs
+# → results are written into docs/news.network.json</code></pre>
+
+    <h2>Related</h2>
+    <ul>
+      <li><a href="./schemas/news.schema.json"><code>news.schema.json</code></a> — item schema</li>
+      <li><a href="./schemas/communities.schema.json"><code>communities.schema.json</code></a> — <code>network_url</code> field definition</li>
+      <li><a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>aggregate-network.mjs</code></a> — aggregator source</li>
+      <li><a href="./news.network.json"><code>news.network.json</code></a> — current pickup result</li>
+    </ul>
+  </main>
+
+  <script src="./banner.js" defer></script>
+  <script>
+    document.querySelectorAll('.copy-button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const codeTemplate = this.nextElementSibling.innerText;
+        const code = codeTemplate.replace('${Date.now()}', Date.now());
+        navigator.clipboard.writeText(code).then(() => {
+          this.innerText = 'Copied!';
+          setTimeout(() => {
+            this.innerText = 'Copy';
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
+    });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CE354QS6P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2CE354QS6P');
+  </script>
+</body>
+</html>

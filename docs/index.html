@@ -128,7 +128,7 @@
       이 프로젝트를 통해 커뮤니티 간의 연결을 상징하고, 함께하는 캠페인으로서 운영하고자 합니다.
     </p>
 
-    <h2>Step 1. 설치하기</h2>
+    <h2 id="step1">Step 1. 설치하기</h2>
     <p>웹 사이트나 포럼 상단에 배너를 추가하려면 다음 한 줄의 코드를 HTML 파일이나 스킨 본문에 <code>&lt;/body&gt;</code> 태그 (닫는 body 태그) 바로 앞에 추가하면 됩니다.</p>
     <pre><button class="copy-button">복사</button><code>&lt;script src="https://loopback.social/banner.js" defer&gt;&lt;/script&gt;</code></pre>
 
@@ -142,87 +142,25 @@
     <p>색상과 언어를 함께 지정할 수도 있습니다.</p>
     <pre><button class="copy-button">복사</button><code>&lt;script src="https://loopback.social/banner.js" data-color="#005a9c" data-textcolor="#ffffff" data-lang="en" defer&gt;&lt;/script&gt;</code></pre>
 
-    <h2>Step 2. 이름 알리기</h2>
-    <p>loopback.social의 뉴스 채널은 두 갈래입니다.</p>
+    <h2 id="step2">Step 2. 이름 알리기</h2>
 
-    <h3>권장: 네트워크 리포지터리 (자율 게시)</h3>
-    <p>커뮤니티 운영진이 자기 사이트에 <code>news.json</code> 형식의 파일을 호스팅하면, Loopback Social이 <strong>6시간마다 자동으로 가져와</strong> 배너에 노출합니다. 한 번 등재되면 이후 콘텐츠는 운영진이 자기 페이스로 갱신 — 매번 PR을 보낼 필요가 없습니다. 배너에는 <code>[커뮤니티 이름] 메시지</code> 형태로 출처가 항상 표시됩니다.</p>
+    <h3>선수 조건: Step 1의 배너 설치</h3>
+    <p>이 단계의 모든 옵션은 <a href="#step1">Step 1</a>에서 자기 커뮤니티 사이트 상단에 배너를 설치한 뒤에 진행하세요. 배너 설치 없이는 다른 커뮤니티의 소식이 자기 방문자에게 노출되지 않고, 네트워크의 연결도 양방향이 되지 않습니다.</p>
+
+    <h3>옵션 1 (권장): 자동 피드 운영</h3>
+    <p>커뮤니티가 자기 도메인에 <code>news.json</code> 형식의 파일을 호스팅하고, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>에 그 URL까지 함께 제출하세요. 등재가 머지되면 Loopback Social 봇이 <strong>6시간마다 자동으로 가져와</strong> 배너와 공용 피드(RSS/Atom/JSON/iCal)에 노출합니다. 이후로는 자기 사이트의 파일만 갱신하면 다음 사이클에 반영되며, 매번 PR을 만들 필요가 없습니다. 배너에는 <code>[커뮤니티 이름] 메시지</code> 형태로 출처가 항상 명시됩니다.</p>
+    <p>호스팅 요구사항·선택 규칙·갱신 주기·장애 대응 등 운영자가 알아야 할 상세 명세는 별도 페이지에 정리해두었습니다: <strong><a href="./network-hosting.html">네트워크 피드 호스팅 명세 →</a></strong></p>
+
+    <h3>옵션 2: 수동 피드 추가</h3>
+    <p>자동 게시 환경을 운영하기 어렵다면, 종전 방식대로 항목 단위 제보로도 계속 참여 가능합니다.</p>
     <ol>
-        <li>자기 도메인에 <a href="./schemas/news.schema.json"><code>news.schema.json</code></a> 형식의 JSON 파일을 게시 (예: <code>https://forum.example.com/loopback.json</code>). 언어별로 분리하고 싶다면 <code>loopback.ko.json</code> / <code>loopback.en.json</code> 두 개로 운영 가능.</li>
-        <li><a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>에 그 URL(들)을 함께 제출.</li>
-        <li>운영자가 검수 후 머지 → 자동화 봇이 6시간마다 가장 최근 active 항목을 가져옴. 단일 URL이면 top-2, 언어별 분리 시 각 top-1, <strong>커뮤니티당 최대 2개</strong>.</li>
-        <li>이후 자기 사이트 파일만 갱신하면 다음 사이클에 자동 반영.</li>
+        <li><a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>에 커뮤니티 정보를 제출 (네트워크 URL 칸은 비워두세요).</li>
+        <li>소식이 생길 때마다 <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">뉴스 제보 등재 이슈</a>를 제출하거나 <code>docs/news.json</code>을 직접 수정하는 PR을 보냅니다.</li>
+        <li>운영자가 검토·머지하면 다음 사이클에 배너와 공용 피드에 반영됩니다.</li>
     </ol>
+    <p>Loopback Social 운영진이 큐레이션해 강조하고 싶은 소식도 이 경로로 직접 등재됩니다.</p>
 
-    <h4>호스팅 명세 (네트워크 소스 운영자 가이드)</h4>
-    <p>aggregator(<a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>.github/scripts/aggregate-network.mjs</code></a>)가 자기 사이트의 JSON을 어떻게 다루는지 알아두면 운영이 수월합니다.</p>
-
-    <h5>최소 요구사항</h5>
-    <ul>
-        <li><strong>HTTPS</strong>로 공개 접근 가능 (등재 양식은 <code>https://</code> URL만 허용)</li>
-        <li>본문은 <code>news.schema.json</code>을 따르는 <strong>JSON 배열</strong>. 항목 형식은 아래 Step 3의 양식과 동일</li>
-        <li>응답 <strong>본문 1 MB 이내</strong>, <strong>10초 안에 응답</strong>. 초과 시 그 사이클 스킵</li>
-        <li>30x 리다이렉트는 자동 추종</li>
-    </ul>
-
-    <h5>항목 선택 규칙</h5>
-    <ul>
-        <li>aggregator는 현재 시각이 <code>start ≤ now ≤ end</code> 안인 active 항목만 후보로 봅니다 (<code>display</code>가 truthy인 항목 한정).</li>
-        <li>후보를 <code>start</code> <strong>내림차순</strong>으로 정렬 후 위에서부터 픽업 (가장 최근에 시작된 항목이 먼저).</li>
-        <li><code>network_url</code>이 단일 문자열이면 그 URL에서 <strong>top-2</strong>. <code>{ko, en}</code> 두 URL이면 <strong>각 top-1</strong>(언어별 1개씩). <strong>커뮤니티당 최대 2개</strong>.</li>
-        <li>같은 항목이 ko/en URL 양쪽에 등장하면 한 번만 노출. 정확한 중복 제거를 원하면 항목에 <code>id</code> 필드를 명시. 없으면 <code>start + message</code>의 해시로 dedup.</li>
-    </ul>
-
-    <h5>출처 메타데이터</h5>
-    <p>픽업된 모든 항목에는 다음 모양의 <code>_source</code>가 자동으로 박혀 들어갑니다 — 커뮤니티가 페이로드에 직접 넣은 <code>_source</code>는 덮어쓰입니다. 배너 런타임은 <code>_source.community_name</code>을 읽어 <code>[커뮤니티 이름] 메시지</code> prefix를 자동으로 붙이고, RSS/Atom/JSON Feed의 <code>_loopback_social</code> 확장에도 동일 정보가 포함됩니다.</p>
-    <pre><code>{
-  "_source": {
-    "community": "kebab-slug",
-    "community_name": { "ko": "닷넷데브", "en": ".NET Dev" },
-    "community_url": "https://forum.dotnetdev.kr/",
-    "source_url": "https://forum.dotnetdev.kr/loopback.json",
-    "lang": "ko"
-  }
-}</code></pre>
-
-    <h5>갱신 주기와 캐싱</h5>
-    <ul>
-        <li>매 6시간마다 cron (<code>0 */6 * * *</code> UTC) + <code>docs/communities.json</code> 변경 시 + 수동 dispatch.</li>
-        <li>aggregator는 별도 캐시 우회를 하지 않으므로, 자기 사이트의 <code>Cache-Control</code>은 자유롭게 설정 (권장: <code>max-age=600</code> 이내).</li>
-        <li>다음 cron 시점까지 기다리지 않고 즉시 반영하려면 운영자가 <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">aggregate-network.yml 워크플로</a>의 "Run workflow"를 누를 수 있습니다.</li>
-    </ul>
-
-    <h5>장애 동작</h5>
-    <ul>
-        <li>한 URL이 fetch 실패(타임아웃·HTTP error·1 MB 초과)하거나 스키마 검증에 실패하면 해당 URL만 스킵, 다른 커뮤니티는 정상 처리.</li>
-        <li>실패는 Actions 로그에 <code>::warning::network aggregator failures: …</code>로 기록되며, <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">워크플로 실행 로그</a>에서 사유 확인 가능.</li>
-    </ul>
-
-    <h5>항목 라이프사이클</h5>
-    <p><code>end</code>가 과거가 된 항목도 <strong>30일</strong> 동안 <code>docs/news.network.json</code>에 남아 RSS/Atom/JSON Feed 구독자가 최근 변경을 따라잡을 수 있게 합니다. 30일 지나면 자동으로 제거됩니다.</p>
-
-    <h5>로컬 검증</h5>
-    <p>자기 JSON이 schema에 부합하는지 사전 확인:</p>
-    <pre><button class="copy-button">복사</button><code>npx ajv-cli@5 validate \
-  -s https://loopback.social/schemas/news.schema.json \
-  -d my-news.json \
-  --strict=false --all-errors</code></pre>
-    <p>aggregator를 직접 돌려보고 싶으면:</p>
-    <pre><button class="copy-button">복사</button><code>git clone https://github.com/loopback-social/community-network-banner
-cd community-network-banner
-npm install --no-save ajv@8
-node .github/scripts/aggregate-network.mjs
-# → docs/news.network.json에 픽업 결과가 기록됨</code></pre>
-
-    <h3>대안: 수동 제보 (PR 검수)</h3>
-    <p>자동 게시 환경을 운영하기 어렵다면 종전 방식으로도 계속 참여 가능합니다.</p>
-    <ul>
-        <li>커뮤니티만 등재하고 싶다면 <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>를 제출 (네트워크 URL 칸은 비워두면 됨).</li>
-        <li>개별 뉴스 항목을 띄우고 싶다면 <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">뉴스 제보 등록 이슈</a>를 제출.</li>
-    </ul>
-    <p>운영자가 PR을 검토하고 머지하면 즉시 반영됩니다. Loopback Social 운영진이 큐레이션해 강조하고 싶은 소식도 이 경로로 직접 등록됩니다.</p>
-
-    <h2>Step 3. 뉴스 제보하기 (<code>news.json</code> 양식)</h2>
+    <h2 id="step3">Step 3. 뉴스 제보하기 (<code>news.json</code> 양식)</h2>
     <p>위의 어느 경로든 동일한 항목 형식을 사용합니다. 운영진이 직접 <code>docs/news.json</code>을 수정하거나, 자기 사이트에 같은 형식의 파일을 호스팅하면 됩니다.</p>
 
     <h3><code>news.json</code> 항목 형식</h3>

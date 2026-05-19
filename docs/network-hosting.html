@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>네트워크 피드 호스팅 명세 — Loopback Social</title>
+
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./images/icons8-loop-windows-11-color-16.png" sizes="16x16" type="image/png">
+
+  <meta property="og:title" content="네트워크 피드 호스팅 명세 — Loopback Social" />
+  <meta property="og:description" content="자기 사이트에서 news.json을 호스팅해 Loopback Social 배너에 자동으로 노출시키는 운영자 가이드." />
+  <meta property="og:url" content="https://loopback.social/network-hosting.html" />
+  <meta property="og:type" content="article" />
+
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; margin: 0; }
+    main { max-width: 720px; padding: 1rem; margin: auto; }
+    h1   { margin-top: 0; }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 0.25em;
+      position: relative;
+      overflow-x: auto;
+    }
+    .copy-button {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background-color: #ddd;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 0.25em;
+      cursor: pointer;
+    }
+    .copy-button:hover {
+      background-color: #ccc;
+    }
+    .lang-switcher {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+    .lang-switcher a {
+      text-decoration: none;
+      margin: 0 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: #f0f0f0;
+    }
+    .lang-switcher .active {
+      background: #007acc;
+      color: white;
+    }
+    .breadcrumb {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .breadcrumb a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="lang-switcher">
+      <span class="active">🇰🇷 한국어</span>
+      <a href="network-hosting.en.html">🇺🇸 English</a>
+    </div>
+
+    <div class="breadcrumb">
+      <a href="./">← Loopback Social 홈으로</a>
+    </div>
+
+    <h1>네트워크 피드 호스팅 명세</h1>
+    <p>커뮤니티가 자기 도메인에서 <code>news.json</code> 형식의 파일을 호스팅하면, Loopback Social 봇이 <strong>6시간마다 자동으로 가져와</strong> 배너와 공용 피드에 노출합니다. 본 문서는 그 자율 게시 경로(<a href="./#step2">홈의 Step 2 옵션 1</a>)를 운영하려는 커뮤니티 담당자를 위한 가이드입니다.</p>
+
+    <h2>전체 흐름</h2>
+    <ol>
+      <li>자기 도메인에 <a href="./schemas/news.schema.json"><code>news.schema.json</code></a> 형식의 JSON 배열을 게시합니다. 예: <code>https://forum.example.com/loopback.json</code>. 언어별로 분리하고 싶다면 <code>loopback.ko.json</code> / <code>loopback.en.json</code> 두 개로 운영 가능합니다.</li>
+      <li><a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>의 "네트워크 뉴스 소스" 칸에 그 URL(들)을 함께 제출합니다.</li>
+      <li>운영자가 검수 후 머지 → <a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>aggregate-network.mjs</code></a>가 6시간마다 가장 최근 active 항목을 가져옵니다.</li>
+      <li>이후로는 자기 사이트의 파일만 갱신하면 다음 사이클에 자동 반영됩니다. 별도 PR 불필요.</li>
+    </ol>
+    <p>배너에서는 <code>[커뮤니티 이름] 메시지</code> 형태로 출처가 항상 명시되고, 공용 RSS/Atom/JSON Feed에도 동일한 메타데이터가 포함됩니다.</p>
+
+    <h2>최소 요구사항</h2>
+    <ul>
+      <li><strong>HTTPS</strong>로 공개 접근 가능. 등재 양식은 <code>https://</code>로 시작하는 URL만 허용합니다.</li>
+      <li>본문은 <code>news.schema.json</code>을 따르는 <strong>JSON 배열</strong>. 항목 형식은 <a href="./#step3">홈의 Step 3 항목 형식</a>과 동일.</li>
+      <li>응답 <strong>본문 1 MB 이내</strong>, <strong>10초 안에 응답</strong>. 초과 시 그 사이클은 해당 URL을 스킵.</li>
+      <li>30x 리다이렉트는 자동 추종.</li>
+    </ul>
+
+    <h2>항목 선택 규칙</h2>
+    <ul>
+      <li>aggregator는 현재 시각이 <code>start ≤ now ≤ end</code> 안인 active 항목만 후보로 봅니다 (<code>display</code>가 truthy인 항목 한정).</li>
+      <li>후보를 <code>start</code> <strong>내림차순</strong>으로 정렬 후 위에서부터 픽업 (가장 최근에 시작된 항목이 먼저).</li>
+      <li><code>network_url</code>이 단일 문자열이면 그 URL에서 <strong>top-2</strong>. <code>{ko, en}</code> 두 URL이면 <strong>각 top-1</strong>(언어별 1개씩). <strong>커뮤니티당 최대 2개</strong>.</li>
+      <li>같은 항목이 ko/en URL 양쪽에 등장하면 한 번만 노출됩니다. 정확한 중복 제거를 원하면 항목에 <code>id</code> 필드를 명시. 없으면 <code>start + message</code>의 해시로 dedup.</li>
+    </ul>
+
+    <h2>출처 메타데이터 (<code>_source</code>)</h2>
+    <p>픽업된 모든 항목에는 다음 모양의 <code>_source</code>가 자동으로 박혀 들어갑니다. 커뮤니티가 페이로드에 직접 넣은 <code>_source</code>는 덮어쓰입니다.</p>
+    <pre><code>{
+  "_source": {
+    "community": "kebab-slug",
+    "community_name": { "ko": "닷넷데브", "en": ".NET Dev" },
+    "community_url": "https://forum.dotnetdev.kr/",
+    "source_url": "https://forum.dotnetdev.kr/loopback.json",
+    "lang": "ko"
+  }
+}</code></pre>
+    <p>배너 런타임은 <code>_source.community_name</code>을 읽어 <code>[커뮤니티 이름] 메시지</code> prefix를 자동으로 붙입니다. RSS/Atom/JSON Feed의 <code>_loopback_social</code> 확장에도 동일 정보가 포함되어 구독자가 출처를 식별할 수 있습니다.</p>
+
+    <h2>갱신 주기와 캐싱</h2>
+    <ul>
+      <li>매 6시간마다 cron (<code>0 */6 * * *</code> UTC) + <code>docs/communities.json</code> 변경 시 + 수동 dispatch.</li>
+      <li>aggregator는 별도 캐시 우회를 하지 않으므로, 자기 사이트의 <code>Cache-Control</code>은 자유롭게 설정해도 됩니다 (권장: <code>max-age=600</code> 이내).</li>
+      <li>다음 cron 시점까지 기다리지 않고 즉시 반영하고 싶으면 운영자가 <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">aggregate-network.yml 워크플로</a>의 "Run workflow"를 누를 수 있습니다.</li>
+    </ul>
+
+    <h2>장애 동작</h2>
+    <ul>
+      <li>한 URL이 fetch 실패(타임아웃·HTTP error·1 MB 초과)하거나 스키마 검증에 실패하면 해당 URL만 스킵하고, 다른 커뮤니티는 정상 처리됩니다. 하나의 깨진 소스가 전체 수집을 막지 않습니다.</li>
+      <li>실패는 Actions 로그에 <code>::warning::network aggregator failures: …</code>로 기록되며, <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">워크플로 실행 로그</a>에서 사유를 확인할 수 있습니다.</li>
+    </ul>
+
+    <h2>항목 라이프사이클</h2>
+    <p><code>end</code>가 과거가 된 항목도 <strong>30일</strong> 동안 <code>docs/news.network.json</code>에 남아 RSS/Atom/JSON Feed 구독자가 최근 변경을 따라잡을 수 있게 합니다. 30일이 지나면 자동으로 제거됩니다.</p>
+
+    <h2>로컬 검증</h2>
+    <p>자기 JSON이 schema에 부합하는지 사전에 확인:</p>
+    <pre><button class="copy-button">복사</button><code>npx ajv-cli@5 validate \
+  -s https://loopback.social/schemas/news.schema.json \
+  -d my-news.json \
+  --strict=false --all-errors</code></pre>
+    <p>aggregator를 직접 돌려보고 싶다면:</p>
+    <pre><button class="copy-button">복사</button><code>git clone https://github.com/loopback-social/community-network-banner
+cd community-network-banner
+npm install --no-save ajv@8
+node .github/scripts/aggregate-network.mjs
+# → docs/news.network.json에 픽업 결과가 기록됨</code></pre>
+
+    <h2>관련 링크</h2>
+    <ul>
+      <li><a href="./schemas/news.schema.json"><code>news.schema.json</code></a> — 항목 스키마</li>
+      <li><a href="./schemas/communities.schema.json"><code>communities.schema.json</code></a> — <code>network_url</code> 필드 정의</li>
+      <li><a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>aggregate-network.mjs</code></a> — aggregator 소스</li>
+      <li><a href="./news.network.json"><code>news.network.json</code></a> — 현재 픽업 결과</li>
+    </ul>
+  </main>
+
+  <script src="./banner.js" defer></script>
+  <script>
+    document.querySelectorAll('.copy-button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const codeTemplate = this.nextElementSibling.innerText;
+        const code = codeTemplate.replace('${Date.now()}', Date.now());
+        navigator.clipboard.writeText(code).then(() => {
+          this.innerText = '복사됨!';
+          setTimeout(() => {
+            this.innerText = '복사';
+          }, 2000);
+        }).catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+      });
+    });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CE354QS6P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2CE354QS6P');
+  </script>
+</body>
+</html>

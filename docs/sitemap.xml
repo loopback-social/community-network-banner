@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://loopback.social/</loc><lastmod>2026-05-19</lastmod></url>
   <url><loc>https://loopback.social/index.en.html</loc><lastmod>2026-05-19</lastmod></url>
+  <url><loc>https://loopback.social/network-hosting.html</loc><lastmod>2026-05-19</lastmod></url>
+  <url><loc>https://loopback.social/network-hosting.en.html</loc><lastmod>2026-05-19</lastmod></url>
   <url><loc>https://loopback.social/news.json</loc><lastmod>2026-05-19</lastmod></url>
   <url><loc>https://loopback.social/communities.json</loc><lastmod>2026-05-19</lastmod></url>
   <url><loc>https://loopback.social/feeds/news.ics</loc><lastmod>2026-05-19</lastmod></url>

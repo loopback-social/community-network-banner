@@ -643,6 +643,8 @@ const buildSitemap = (now) => {
   const urls = [
     `${SITE_ORIGIN}/`,
     `${SITE_ORIGIN}/index.en.html`,
+    `${SITE_ORIGIN}/network-hosting.html`,
+    `${SITE_ORIGIN}/network-hosting.en.html`,
     `${SITE_ORIGIN}/news.json`,
     `${SITE_ORIGIN}/communities.json`,
     // Feed variants live under /feeds/. Bilingual filenames keep their original

@@ -37,6 +37,8 @@ Format-specific notes:
 - [Repository](https://github.com/loopback-social/community-network-banner): Source code, issue templates for submitting news or new communities, GitHub Actions that auto-generate PRs from issue submissions and rebuild the feeds above whenever data changes.
 - [Banner installation guide (Korean)](https://loopback.social/index.html)
 - [Banner installation guide (English)](https://loopback.social/index.en.html)
+- [Network feed hosting specification (Korean)](https://loopback.social/network-hosting.html): operator guide for self-hosting a `news.json` consumed by the aggregator.
+- [Network feed hosting specification (English)](https://loopback.social/network-hosting.en.html)
 
 ## Notes for agents
 
