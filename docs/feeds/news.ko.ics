@@ -7,8 +7,8 @@ X-WR-CALNAME:Loopback Social — 커뮤니티 행사
 X-WR-CALDESC:Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
-UID:news-b6bffab567e60cd8@loopback.social
-DTSTAMP:20260519T020349Z
+UID:news-b0c2cf1b51a81766@loopback.social
+DTSTAMP:20260519T124438Z
 DTSTART:20260502T040000Z
 DTEND:20260502T080000Z
 SUMMARY:Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 
@@ -22,8 +22,8 @@ URL:https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-instal
 CATEGORIES:announcement
 END:VEVENT
 BEGIN:VEVENT
-UID:news-185094cb59619cf3@loopback.social
-DTSTAMP:20260519T020349Z
+UID:news-548a88c071856781@loopback.social
+DTSTAMP:20260519T124438Z
 DTSTART:20260829T000000Z
 DTEND:20260829T080000Z
 SUMMARY:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 한국
