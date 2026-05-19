@@ -458,12 +458,15 @@
       font-size: 1.05rem; font-weight: 700; color: #000; margin: 0;
     }
     .gtb-sub-popup .popup-close {
-      background: none; border: none; cursor: pointer;
-      font-size: 1.4rem; color: #666;
-      padding: 0; width: 28px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; border-radius: 4px;
+      cursor: pointer; color: #555;
+      padding: 0; margin: 0;
+      width: 30px; height: 30px; min-width: 0; max-width: none;
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1; vertical-align: middle;
+      font: inherit; text-transform: none;
     }
-    .gtb-sub-popup .popup-close:hover { color: #000; }
+    .gtb-sub-popup .popup-close:hover { background: #f4f4f4; }
     .gtb-sub-popup .popup-desc {
       margin: 0.5rem 0 1rem;
       font-size: 0.88rem; color: #555; line-height: 1.5;
@@ -719,7 +722,7 @@
       const closeBtn = document.createElement("button");
       closeBtn.type = "button";
       closeBtn.className = "popup-close";
-      closeBtn.innerHTML = "&times;";
+      closeBtn.innerHTML = SVG_CLOSE;
       closeBtn.setAttribute("aria-label", CLOSE_LABEL[lang]);
       closeBtn.addEventListener("click", () => closePopup(popup));
       header.append(title, closeBtn);
