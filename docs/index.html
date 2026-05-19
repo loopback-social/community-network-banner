@@ -145,10 +145,10 @@
     <h2 id="step2">Step 2. 이름 알리기</h2>
 
     <h3>선수 조건: Step 1의 배너 설치</h3>
-    <p>이 단계의 모든 옵션은 <a href="#step1">Step 1</a>에서 자기 커뮤니티 사이트 상단에 배너를 설치한 뒤에 진행하세요. 배너 설치 없이는 다른 커뮤니티의 소식이 자기 방문자에게 노출되지 않고, 네트워크의 연결도 양방향이 되지 않습니다.</p>
+    <p>이 단계의 모든 옵션은 <a href="#step1">Step 1</a>에 따라 운영하시는 커뮤니티 사이트 상단에 배너를 먼저 설치한 뒤 진행해주세요. 배너가 설치되어 있지 않으면 다른 커뮤니티의 소식이 우리 커뮤니티 방문자에게 노출되지 않고, 네트워크의 연결도 양방향으로 이뤄지지 않습니다.</p>
 
     <h3>옵션 1 (권장): 자동 피드 운영</h3>
-    <p>커뮤니티가 자기 도메인에 <code>news.json</code> 형식의 파일을 호스팅하고, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>에 그 URL까지 함께 제출하세요. 등재가 머지되면 Loopback Social 봇이 <strong>6시간마다 자동으로 가져와</strong> 배너와 공용 피드(RSS/Atom/JSON/iCal)에 노출합니다. 이후로는 자기 사이트의 파일만 갱신하면 다음 사이클에 반영되며, 매번 PR을 만들 필요가 없습니다. 배너에는 <code>[커뮤니티 이름] 메시지</code> 형태로 출처가 항상 명시됩니다.</p>
+    <p>커뮤니티에서 운영하시는 도메인에 <code>news.json</code> 형식의 파일을 호스팅하시고, <a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>에 해당 URL을 함께 제출해주세요. 등재가 머지되면 Loopback Social 봇이 <strong>6시간마다 자동으로 가져와</strong> 배너와 공용 피드(RSS/Atom/JSON/iCal)에 노출합니다. 이후에는 호스팅하신 파일만 갱신하시면 다음 사이클에 반영되어, 매번 PR을 만들 필요가 없습니다. 배너에는 <code>[커뮤니티 이름] 메시지</code> 형태로 출처가 항상 명시됩니다.</p>
     <p>호스팅 요구사항·선택 규칙·갱신 주기·장애 대응 등 운영자가 알아야 할 상세 명세는 별도 페이지에 정리해두었습니다: <strong><a href="./network-hosting.html">네트워크 피드 호스팅 명세 →</a></strong></p>
 
     <h3>옵션 2: 수동 피드 추가</h3>
@@ -161,7 +161,7 @@
     <p>Loopback Social 운영진이 큐레이션해 강조하고 싶은 소식도 이 경로로 직접 등재됩니다.</p>
 
     <h2 id="step3">Step 3. 뉴스 제보하기 (<code>news.json</code> 양식)</h2>
-    <p>위의 어느 경로든 동일한 항목 형식을 사용합니다. 운영진이 직접 <code>docs/news.json</code>을 수정하거나, 자기 사이트에 같은 형식의 파일을 호스팅하면 됩니다.</p>
+    <p>위의 어느 경로든 동일한 항목 형식을 사용합니다. 운영진께서 직접 <code>docs/news.json</code>을 수정하시거나, 커뮤니티 사이트에 같은 형식의 파일을 호스팅하시면 됩니다.</p>
 
     <h3><code>news.json</code> 항목 형식</h3>
     <pre><code>{
@@ -236,7 +236,7 @@
     <p><strong>참고:</strong> <code>link</code>와 <code>message</code>, <code>location</code>은 단일 문자열로도 설정할 수 있으며, 이 경우 모든 언어에 동일한 값이 사용됩니다.</p>
 
     <h2>피드 및 API (외부 연동용)</h2>
-    <p>참여 커뮤니티가 다른 커뮤니티의 일정과 소식을 자기 도구에서 활용할 수 있도록 다음 엔드포인트를 제공합니다. <code>news.json</code>·<code>communities.json</code>이 바뀔 때마다 GitHub Actions가 자동으로 다시 빌드하며, 매일 09:00 KST(00:00 UTC)에도 갱신됩니다. AI 에이전트도 이 경로들을 통해 항상 최신 정보를 가져갈 수 있습니다.</p>
+    <p>참여 커뮤니티가 다른 커뮤니티의 일정과 소식을 각자의 도구에서 활용할 수 있도록 다음 엔드포인트를 제공합니다. <code>news.json</code>·<code>communities.json</code>이 바뀔 때마다 GitHub Actions가 자동으로 다시 빌드하며, 매일 09:00 KST(00:00 UTC)에도 갱신됩니다. AI 에이전트도 이 경로들을 통해 항상 최신 정보를 가져갈 수 있습니다.</p>
     <ul>
       <li>iCalendar 피드 — 이중 언어 <a href="./feeds/news.ics"><code>/feeds/news.ics</code></a> · 한국어 <a href="./feeds/news.ko.ics"><code>/feeds/news.ko.ics</code></a> · 영어 <a href="./feeds/news.en.ics"><code>/feeds/news.en.ics</code></a>. Google/Apple/Outlook 캘린더에 구독 추가하면 커뮤니티 이벤트가 일정에 들어옵니다. <em>(<code>category: event</code>이거나 <code>event_start</code>가 있는 항목, 또는 7일 이내 짧은 기간 항목만 포함)</em></li>
       <li>RSS 2.0 — 이중 언어 <a href="./feeds/feed.xml"><code>/feeds/feed.xml</code></a> · 한국어 <a href="./feeds/feed.ko.xml"><code>/feeds/feed.ko.xml</code></a> · 영어 <a href="./feeds/feed.en.xml"><code>/feeds/feed.en.xml</code></a></li>

@@ -15,7 +15,7 @@
   <link rel="icon" href="./images/icons8-loop-windows-11-color-16.png" sizes="16x16" type="image/png">
 
   <meta property="og:title" content="네트워크 피드 호스팅 명세 — Loopback Social" />
-  <meta property="og:description" content="자기 사이트에서 news.json을 호스팅해 Loopback Social 배너에 자동으로 노출시키는 운영자 가이드." />
+  <meta property="og:description" content="커뮤니티 사이트에서 news.json을 호스팅해 Loopback Social 배너에 자동으로 노출시키는 운영자 가이드." />
   <meta property="og:url" content="https://loopback.social/network-hosting.html" />
   <meta property="og:type" content="article" />
 
@@ -85,14 +85,14 @@
     </div>
 
     <h1>네트워크 피드 호스팅 명세</h1>
-    <p>커뮤니티가 자기 도메인에서 <code>news.json</code> 형식의 파일을 호스팅하면, Loopback Social 봇이 <strong>6시간마다 자동으로 가져와</strong> 배너와 공용 피드에 노출합니다. 본 문서는 그 자율 게시 경로(<a href="./#step2">홈의 Step 2 옵션 1</a>)를 운영하려는 커뮤니티 담당자를 위한 가이드입니다.</p>
+    <p>커뮤니티가 운영하시는 도메인에 <code>news.json</code> 형식의 파일을 호스팅하시면, Loopback Social 봇이 <strong>6시간마다 자동으로 가져와</strong> 배너와 공용 피드에 노출합니다. 본 문서는 그 자율 게시 경로(<a href="./#step2">홈의 Step 2 옵션 1</a>)를 운영하시려는 커뮤니티 담당자를 위한 가이드입니다.</p>
 
     <h2>전체 흐름</h2>
     <ol>
-      <li>자기 도메인에 <a href="./schemas/news.schema.json"><code>news.schema.json</code></a> 형식의 JSON 배열을 게시합니다. 예: <code>https://forum.example.com/loopback.json</code>. 언어별로 분리하고 싶다면 <code>loopback.ko.json</code> / <code>loopback.en.json</code> 두 개로 운영 가능합니다.</li>
+      <li>운영하시는 도메인에 <a href="./schemas/news.schema.json"><code>news.schema.json</code></a> 형식의 JSON 배열을 게시합니다. 예: <code>https://forum.example.com/loopback.json</code>. 언어별로 분리하시려면 <code>loopback.ko.json</code> / <code>loopback.en.json</code> 두 개로 운영하실 수 있습니다.</li>
       <li><a href="https://github.com/loopback-social/community-network-banner/issues/new/choose" target="_blank">커뮤니티 등재 이슈</a>의 "네트워크 뉴스 소스" 칸에 그 URL(들)을 함께 제출합니다.</li>
       <li>운영자가 검수 후 머지 → <a href="https://github.com/loopback-social/community-network-banner/blob/main/.github/scripts/aggregate-network.mjs" target="_blank"><code>aggregate-network.mjs</code></a>가 6시간마다 가장 최근 active 항목을 가져옵니다.</li>
-      <li>이후로는 자기 사이트의 파일만 갱신하면 다음 사이클에 자동 반영됩니다. 별도 PR 불필요.</li>
+      <li>이후에는 호스팅하신 파일만 갱신하시면 다음 사이클에 자동 반영됩니다. 별도 PR 불필요.</li>
     </ol>
     <p>배너에서는 <code>[커뮤니티 이름] 메시지</code> 형태로 출처가 항상 명시되고, 공용 RSS/Atom/JSON Feed에도 동일한 메타데이터가 포함됩니다.</p>
 
@@ -128,7 +128,7 @@
     <h2>갱신 주기와 캐싱</h2>
     <ul>
       <li>매 6시간마다 cron (<code>0 */6 * * *</code> UTC) + <code>docs/communities.json</code> 변경 시 + 수동 dispatch.</li>
-      <li>aggregator는 별도 캐시 우회를 하지 않으므로, 자기 사이트의 <code>Cache-Control</code>은 자유롭게 설정해도 됩니다 (권장: <code>max-age=600</code> 이내).</li>
+      <li>aggregator는 별도 캐시 우회를 하지 않으므로, 운영하시는 사이트의 <code>Cache-Control</code>은 자유롭게 설정하셔도 됩니다 (권장: <code>max-age=600</code> 이내).</li>
       <li>다음 cron 시점까지 기다리지 않고 즉시 반영하고 싶으면 운영자가 <a href="https://github.com/loopback-social/community-network-banner/actions/workflows/aggregate-network.yml" target="_blank">aggregate-network.yml 워크플로</a>의 "Run workflow"를 누를 수 있습니다.</li>
     </ul>
 
@@ -142,7 +142,7 @@
     <p><code>end</code>가 과거가 된 항목도 <strong>30일</strong> 동안 <code>docs/news.network.json</code>에 남아 RSS/Atom/JSON Feed 구독자가 최근 변경을 따라잡을 수 있게 합니다. 30일이 지나면 자동으로 제거됩니다.</p>
 
     <h2>로컬 검증</h2>
-    <p>자기 JSON이 schema에 부합하는지 사전에 확인:</p>
+    <p>작성하신 JSON이 schema에 부합하는지 사전에 확인:</p>
     <pre><button class="copy-button">복사</button><code>npx ajv-cli@5 validate \
   -s https://loopback.social/schemas/news.schema.json \
   -d my-news.json \
