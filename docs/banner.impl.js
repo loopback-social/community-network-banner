@@ -228,7 +228,7 @@
     #global-top-banner {
       box-sizing: border-box; width: 100%;
       background: ${bannerBg}; color: ${bannerText}; padding: 0.5em 1rem;
-      display: flex; align-items: center; gap: 1rem;
+      display: flex; flex-wrap: nowrap; align-items: center; gap: 1rem;
       font: 400 14px/1 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       position: relative; z-index: 999;
@@ -250,21 +250,27 @@
       position: relative;
     }
     #global-top-banner .view-all-news {
+      display: inline-flex; align-items: center;
+      flex-shrink: 0; vertical-align: middle; line-height: 1;
+      height: auto; width: auto; min-width: 0; max-width: none;
       background: none; border: none; color: ${bannerText}; cursor: pointer;
       font: inherit; white-space: nowrap; opacity: 0.7;
-      padding: 0; text-decoration: underline;
+      padding: 0; margin: 0; text-decoration: underline; text-transform: none;
     }
     #global-top-banner .view-all-news:hover {
       opacity: 1;
     }
     #global-top-banner .feed-links {
       display: inline-flex; align-items: center; gap: 0.75rem;
-      flex-shrink: 0;
+      flex-shrink: 0; vertical-align: middle; line-height: 1;
     }
     #global-top-banner .feed-links button {
+      display: inline-flex; align-items: center;
+      vertical-align: middle; line-height: 1;
+      height: auto; width: auto; min-width: 0; max-width: none;
       background: none; border: none; color: ${bannerText}; cursor: pointer;
       font: inherit; white-space: nowrap; opacity: 0.7;
-      padding: 0; text-decoration: underline;
+      padding: 0; margin: 0; text-decoration: underline; text-transform: none;
     }
     #global-top-banner .feed-links button:hover {
       opacity: 1;
@@ -513,10 +519,15 @@
     }
     #global-top-banner .gtb-dropdown {
       position: relative; font-weight: bold;
+      flex-shrink: 0; vertical-align: middle; line-height: 1;
     }
     #global-top-banner button.gtb-dropdown-toggle {
+      display: inline-flex; align-items: center; gap: .25rem;
+      vertical-align: middle; line-height: 1;
+      height: auto; width: auto; min-width: 0; max-width: none;
       background: none; border: none; color: inherit; cursor: pointer;
-      display: flex; align-items: center; gap: .25rem; font: inherit;
+      font: inherit; white-space: nowrap;
+      padding: 0; margin: 0; text-transform: none;
     }
     #global-top-banner button.gtb-dropdown-toggle:focus {
       outline: 2px solid #555; outline-offset: 2px;
