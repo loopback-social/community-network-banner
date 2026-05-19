@@ -412,9 +412,13 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
     }
     #global-news-modal .modal-action-btn {
-      background: none; border: 1px solid #ddd; border-radius: 4px;
-      cursor: pointer; padding: 0.25rem 0.45rem;
-      color: #555; display: inline-flex; align-items: center; justify-content: center;
+      background: none; border: none; border-radius: 4px;
+      cursor: pointer; padding: 0; margin: 0;
+      width: 30px; height: 30px; min-width: 0; max-width: none;
+      color: #555;
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1; vertical-align: middle;
+      font: inherit; text-transform: none;
     }
     #global-news-modal .modal-action-btn:hover {
       color: #000; background: #f4f4f4;
