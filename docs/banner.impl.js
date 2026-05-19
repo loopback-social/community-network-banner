@@ -341,6 +341,8 @@
       overflow-y: auto;
       margin: 1rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      font: 400 14px/1.5 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
+      color: #000;
     }
     #global-news-modal .modal-header {
       display: flex;
@@ -351,23 +353,23 @@
       border-bottom: 1px solid #eee;
     }
     #global-news-modal .modal-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 0;
+      font: 700 18px/1.3 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
+      margin: 0; padding: 0;
       color: #000;
+      text-transform: none; letter-spacing: normal;
     }
     #global-news-modal .close-modal {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font: 400 24px/1 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
       cursor: pointer;
       color: #666;
-      padding: 0;
-      width: 30px;
-      height: 30px;
-      display: flex;
+      padding: 0; margin: 0;
+      width: 30px; height: 30px; min-width: 0; max-width: none;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      text-transform: none;
     }
     #global-news-modal .close-modal:hover {
       color: #000;
@@ -376,11 +378,21 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      font: inherit;
     }
     #global-news-modal .news-list li {
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
+      list-style: none;
+      display: list-item;
+      margin: 0 0 1rem 0;
+      padding: 0 0 1rem 0;
       border-bottom: 1px solid #eee;
+      font: inherit;
+      text-indent: 0;
+    }
+    #global-news-modal .news-list li::before,
+    #global-news-modal .news-list li::marker {
+      content: none !important;
+      display: none !important;
     }
     #global-news-modal .news-list li:last-child {
       border-bottom: none;
@@ -390,7 +402,7 @@
     #global-news-modal .news-list a {
       color: #0066cc;
       text-decoration: none;
-      font-weight: 500;
+      font: inherit; font-weight: 500;
     }
     #global-news-modal .news-list a:hover {
       text-decoration: underline;
@@ -544,17 +556,29 @@
       position: fixed; min-width: 180px;
       background: #fff; color: #000; border-radius: 4px;
       box-shadow: 0 4px 12px rgba(0,0,0,.15);
-      padding: .5rem 0; list-style: none; margin: 0;
+      padding: .5rem 0; margin: 0;
+      list-style: none;
+      font: 400 14px/1.4 ${isEnglish ? "'Inter'" : "'Noto Sans KR'"}, sans-serif;
       display: none;
       z-index: 2147483647;
     }
     #global-top-menu.open {
       display: block;
     }
+    #global-top-menu li {
+      list-style: none; margin: 0; padding: 0;
+      display: list-item;
+    }
+    #global-top-menu li::before,
+    #global-top-menu li::marker {
+      content: none !important;
+      display: none !important;
+    }
     #global-top-menu a {
-      display: block; padding: .5rem 1rem;
+      display: block; padding: .5rem 1rem; margin: 0;
       color: #000; text-decoration: none;
-      font-weight: 400;
+      font: inherit; font-weight: 400;
+      line-height: 1.4; text-transform: none;
     }
     #global-top-menu a:hover {
       background: #f2f2f2;
