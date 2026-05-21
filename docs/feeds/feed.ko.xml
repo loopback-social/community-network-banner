@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 21 May 2026 02:02:18 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 12:37:25 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
@@ -39,13 +39,13 @@ Event: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z
 Category: announcement</description>
     </item>
     <item>
-      <title>🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)</title>
+      <title>🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)</title>
       <link>https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205</link>
-      <guid isPermaLink="false">news-5b9e4dc3457197f0</guid>
+      <guid isPermaLink="false">news-20ac7e8cd968129f</guid>
       <pubDate>Sat, 02 May 2026 15:00:00 GMT</pubDate>
       <category>announcement</category>
-      <description>🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)
-Event: 2026-05-02T15:00:00.000Z — 2026-05-25T14:59:59.000Z
+      <description>🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)
+Event: 2026-05-02T15:00:00.000Z — 2026-06-26T14:59:59.000Z
 Category: announcement</description>
     </item>
     <item>

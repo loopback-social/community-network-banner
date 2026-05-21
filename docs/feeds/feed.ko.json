@@ -75,9 +75,9 @@
       "url": "https://ticketa.co/event/qpye8cf5"
     },
     {
-      "id": "https://loopback.social/events#news-5b9e4dc3457197f0",
-      "title": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)",
-      "content_text": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)\nEvent: 2026-05-02T15:00:00.000Z — 2026-05-25T14:59:59.000Z\nCategory: announcement",
+      "id": "https://loopback.social/events#news-20ac7e8cd968129f",
+      "title": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)",
+      "content_text": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)\nEvent: 2026-05-02T15:00:00.000Z — 2026-06-26T14:59:59.000Z\nCategory: announcement",
       "date_published": "2026-05-02T15:00:00.000Z",
       "date_modified": "2026-05-02T15:00:00.000Z",
       "tags": [
@@ -87,10 +87,10 @@
         "source": "curated",
         "community": null,
         "community_name": null,
-        "message_ko": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)",
-        "message_en": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)",
+        "message_ko": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)",
+        "message_en": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
         "event_start": "2026-05-02T15:00:00.000Z",
-        "event_end": "2026-05-25T14:59:59.000Z",
+        "event_end": "2026-06-26T14:59:59.000Z",
         "location_ko": null,
         "location_en": null
       },

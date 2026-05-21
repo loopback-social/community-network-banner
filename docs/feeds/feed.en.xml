@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.en.xml" rel="self" type="application/rss+xml" />
     <description>Events and announcements shared across the Loopback Social community network.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 21 May 2026 02:02:18 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2026 12:37:25 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!</title>
@@ -39,13 +39,13 @@ Event: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z
 Category: announcement</description>
     </item>
     <item>
-      <title>🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)</title>
+      <title>🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)</title>
       <link>https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205</link>
-      <guid isPermaLink="false">news-5b9e4dc3457197f0</guid>
+      <guid isPermaLink="false">news-20ac7e8cd968129f</guid>
       <pubDate>Sat, 02 May 2026 15:00:00 GMT</pubDate>
       <category>announcement</category>
-      <description>🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)
-Event: 2026-05-02T15:00:00.000Z — 2026-05-25T14:59:59.000Z
+      <description>🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)
+Event: 2026-05-02T15:00:00.000Z — 2026-06-26T14:59:59.000Z
 Category: announcement</description>
     </item>
     <item>

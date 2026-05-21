@@ -173,10 +173,10 @@
           "position": 5,
           "item": {
             "@type": "Event",
-            "@id": "https://loopback.social/events#news-5b9e4dc3457197f0",
-            "name": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)",
+            "@id": "https://loopback.social/events#news-20ac7e8cd968129f",
+            "name": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
             "startDate": "2026-05-02T15:00:00.000Z",
-            "endDate": "2026-05-25T14:59:59.000Z",
+            "endDate": "2026-06-26T14:59:59.000Z",
             "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled",
             "isAccessibleForFree": true,
@@ -186,8 +186,8 @@
             ],
             "additionalType": "announcement",
             "url": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205",
-            "alternateName": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)",
-            "description": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)",
+            "alternateName": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
+            "description": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
             "location": {
               "@type": "VirtualLocation",
               "url": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205"
