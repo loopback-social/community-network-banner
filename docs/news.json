@@ -125,11 +125,11 @@
   },
   {
     "start": "2026-05-03 00:00:00",
-    "end": "2026-05-25 23:59:59",
+    "end": "2026-06-26 23:59:59",
     "timezone": "+09:00",
     "message": {
-      "ko": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~5/25 마감)",
-      "en": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 5/25)"
+      "ko": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)",
+      "en": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)"
     },
     "link": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205",
     "display": true
