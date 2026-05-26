@@ -5,7 +5,7 @@
   <link rel="alternate" type="text/html" href="https://loopback.social/" />
   <link rel="self" type="application/atom+xml" href="https://loopback.social/feeds/feed.en.atom" />
   <id>tag:loopback.social,2026:feed/en</id>
-  <updated>2026-05-25T02:08:23.758Z</updated>
+  <updated>2026-05-26T01:59:16.685Z</updated>
   <generator uri="https://github.com/loopback-social/community-network-banner">community-network-banner build-feeds.mjs</generator>
   <entry>
     <id>tag:loopback.social,2026:news/news-548a88c071856781</id>
@@ -60,17 +60,6 @@ Category: announcement</summary>
     <category term="announcement" />
     <summary type="text">Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F
 Event: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z
-Category: announcement</summary>
-  </entry>
-  <entry>
-    <id>tag:loopback.social,2026:news/news-c460eede95073f03</id>
-    <title type="text">.NET Universe: Busan Edition, 2604 with Busan IT Mogakko</title>
-    <link rel="alternate" type="text/html" href="https://dotnetuniverse.net/xyz/busan-2604" />
-    <published>2026-04-16T15:00:00.000Z</published>
-    <updated>2026-04-16T15:00:00.000Z</updated>
-    <category term="announcement" />
-    <summary type="text">.NET Universe: Busan Edition, 2604 with Busan IT Mogakko
-Event: 2026-04-16T15:00:00.000Z — 2026-04-25T13:00:00.000Z
 Category: announcement</summary>
   </entry>
   <entry>

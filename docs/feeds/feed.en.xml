@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.en.xml" rel="self" type="application/rss+xml" />
     <description>Events and announcements shared across the Loopback Social community network.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 25 May 2026 02:08:23 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 01:59:16 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!</title>
@@ -56,16 +56,6 @@ Category: announcement</description>
       <category>announcement</category>
       <description>Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F
 Event: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z
-Category: announcement</description>
-    </item>
-    <item>
-      <title>.NET Universe: Busan Edition, 2604 with Busan IT Mogakko</title>
-      <link>https://dotnetuniverse.net/xyz/busan-2604</link>
-      <guid isPermaLink="false">news-c460eede95073f03</guid>
-      <pubDate>Thu, 16 Apr 2026 15:00:00 GMT</pubDate>
-      <category>announcement</category>
-      <description>.NET Universe: Busan Edition, 2604 with Busan IT Mogakko
-Event: 2026-04-16T15:00:00.000Z — 2026-04-25T13:00:00.000Z
 Category: announcement</description>
     </item>
     <item>

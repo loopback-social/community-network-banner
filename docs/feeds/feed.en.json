@@ -119,28 +119,6 @@
       "url": "https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472"
     },
     {
-      "id": "https://loopback.social/events#news-c460eede95073f03",
-      "title": ".NET Universe: Busan Edition, 2604 with Busan IT Mogakko",
-      "content_text": ".NET Universe: Busan Edition, 2604 with Busan IT Mogakko\nEvent: 2026-04-16T15:00:00.000Z — 2026-04-25T13:00:00.000Z\nCategory: announcement",
-      "date_published": "2026-04-16T15:00:00.000Z",
-      "date_modified": "2026-04-16T15:00:00.000Z",
-      "tags": [
-        "announcement"
-      ],
-      "_loopback_social": {
-        "source": "curated",
-        "community": null,
-        "community_name": null,
-        "message_ko": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2604",
-        "message_en": ".NET Universe: Busan Edition, 2604 with Busan IT Mogakko",
-        "event_start": "2026-04-16T15:00:00.000Z",
-        "event_end": "2026-04-25T13:00:00.000Z",
-        "location_ko": null,
-        "location_en": null
-      },
-      "url": "https://dotnetuniverse.net/xyz/busan-2604"
-    },
-    {
       "id": "https://loopback.social/events#news-c2b8446c72e7e050",
       "title": "Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.",
       "content_text": "Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.\nEvent: 2026-03-29T15:00:00.000Z — 2026-12-31T15:00:00.000Z\nCategory: announcement",
