@@ -97,28 +97,6 @@
       "url": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205"
     },
     {
-      "id": "https://loopback.social/events#news-b0c2cf1b51a81766",
-      "title": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층 / Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F",
-      "content_text": "[KO] Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층\n[EN] Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F\nEvent: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z\nCategory: announcement",
-      "date_published": "2026-05-02T04:00:00.000Z",
-      "date_modified": "2026-05-02T04:00:00.000Z",
-      "tags": [
-        "announcement"
-      ],
-      "_loopback_social": {
-        "source": "curated",
-        "community": null,
-        "community_name": null,
-        "message_ko": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층",
-        "message_en": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F",
-        "event_start": "2026-05-02T04:00:00.000Z",
-        "event_end": "2026-05-02T08:00:00.000Z",
-        "location_ko": null,
-        "location_en": null
-      },
-      "url": "https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472"
-    },
-    {
       "id": "https://loopback.social/events#news-c2b8446c72e7e050",
       "title": ".NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요. / Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.",
       "content_text": "[KO] .NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.\n[EN] Replay videos for .NET Universe 2026 are being released in sequence. Check the event page for updates.\nEvent: 2026-03-29T15:00:00.000Z — 2026-12-31T15:00:00.000Z\nCategory: announcement",

@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 7,
+      "numberOfItems": 6,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -121,32 +121,6 @@
           "position": 3,
           "item": {
             "@type": "Event",
-            "@id": "https://loopback.social/events#news-b0c2cf1b51a81766",
-            "name": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층 / Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F",
-            "startDate": "2026-05-02T04:00:00.000Z",
-            "endDate": "2026-05-02T08:00:00.000Z",
-            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "inLanguage": [
-              "ko",
-              "en"
-            ],
-            "additionalType": "announcement",
-            "url": "https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472",
-            "alternateName": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F",
-            "description": "Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - 5월 2일 대전 스타창작소 5층 / Ubuntu 26.04 LTS Release Party & InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F",
-            "location": {
-              "@type": "VirtualLocation",
-              "url": "https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "item": {
-            "@type": "Event",
             "@id": "https://loopback.social/events#news-20ac7e8cd968129f",
             "name": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
             "startDate": "2026-05-02T15:00:00.000Z",
@@ -170,7 +144,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 4,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-4acbe976567c665c",
@@ -196,7 +170,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 5,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-213c3f052f1774a1",
@@ -222,7 +196,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 6,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",

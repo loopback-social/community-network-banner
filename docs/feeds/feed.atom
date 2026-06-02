@@ -5,7 +5,7 @@
   <link rel="alternate" type="text/html" href="https://loopback.social/" />
   <link rel="self" type="application/atom+xml" href="https://loopback.social/feeds/feed.atom" />
   <id>tag:loopback.social,2026:feed</id>
-  <updated>2026-06-01T02:31:17.258Z</updated>
+  <updated>2026-06-02T02:29:59.923Z</updated>
   <generator uri="https://github.com/loopback-social/community-network-banner">community-network-banner build-feeds.mjs</generator>
   <entry>
     <id>tag:loopback.social,2026:news/news-548a88c071856781</id>
@@ -53,18 +53,6 @@ Category: announcement</summary>
     <summary type="text">[KO] 🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)
 [EN] 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)
 Event: 2026-05-02T15:00:00.000Z — 2026-06-26T14:59:59.000Z
-Category: announcement</summary>
-  </entry>
-  <entry>
-    <id>tag:loopback.social,2026:news/news-b0c2cf1b51a81766</id>
-    <title type="text">Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - 5월 2일 대전 스타창작소 5층 / Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F</title>
-    <link rel="alternate" type="text/html" href="https://discourse.ubuntu-kr.org/t/ubuntu-26-04-lts-release-party-installfest-daejeon/50472" />
-    <published>2026-05-02T04:00:00.000Z</published>
-    <updated>2026-05-02T04:00:00.000Z</updated>
-    <category term="announcement" />
-    <summary type="text">[KO] Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - 5월 2일 대전 스타창작소 5층
-[EN] Ubuntu 26.04 LTS Release Party &amp; InstallFest @daejeon - May 2, Daejeon SC Art Hall 5F
-Event: 2026-05-02T04:00:00.000Z — 2026-05-02T08:00:00.000Z
 Category: announcement</summary>
   </entry>
   <entry>
