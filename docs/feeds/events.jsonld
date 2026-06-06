@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 6,
+      "numberOfItems": 7,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -197,6 +197,31 @@
         {
           "@type": "ListItem",
           "position": 6,
+          "item": {
+            "@type": "Event",
+            "@id": "https://loopback.social/events#news-99805ae4d59f7127",
+            "name": "Build //localhost:Seoul",
+            "startDate": "2026-06-25T04:30:00.000Z",
+            "endDate": "2026-06-25T09:00:00.000Z",
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "inLanguage": [
+              "ko",
+              "en"
+            ],
+            "additionalType": "event",
+            "url": "https://luma.com/md1iheb7",
+            "description": "Build //localhost:Seoul / Build //localhost:Seoul",
+            "location": {
+              "@type": "Place",
+              "name": "서울특별시 종로구 중학동 종로1길 50"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",

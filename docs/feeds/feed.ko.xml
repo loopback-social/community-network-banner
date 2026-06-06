@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Sat, 06 Jun 2026 01:57:59 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 13:22:07 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
@@ -17,6 +17,17 @@
       <description>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!
 Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
 Category: announcement</description>
+    </item>
+    <item>
+      <title>Build //localhost:Seoul</title>
+      <link>https://luma.com/md1iheb7</link>
+      <guid isPermaLink="false">news-99805ae4d59f7127</guid>
+      <pubDate>Thu, 04 Jun 2026 15:00:00 GMT</pubDate>
+      <category>event</category>
+      <description>Build //localhost:Seoul
+Event: 2026-06-25T04:30:00.000Z — 2026-06-25T09:00:00.000Z
+Category: event
+Location: 서울특별시 종로구 중학동 종로1길 50</description>
     </item>
     <item>
       <title>UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)</title>

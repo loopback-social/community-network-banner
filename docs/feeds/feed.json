@@ -31,6 +31,28 @@
       "url": "https://event-us.kr/m/124753/53287"
     },
     {
+      "id": "https://loopback.social/events#news-99805ae4d59f7127",
+      "title": "Build //localhost:Seoul",
+      "content_text": "[KO] Build //localhost:Seoul\nEvent: 2026-06-25T04:30:00.000Z — 2026-06-25T09:00:00.000Z\nCategory: event\nLocation: 서울특별시 종로구 중학동 종로1길 50",
+      "date_published": "2026-06-04T15:00:00.000Z",
+      "date_modified": "2026-06-04T15:00:00.000Z",
+      "tags": [
+        "event"
+      ],
+      "_loopback_social": {
+        "source": "curated",
+        "community": null,
+        "community_name": null,
+        "message_ko": "Build //localhost:Seoul",
+        "message_en": "Build //localhost:Seoul",
+        "event_start": "2026-06-25T04:30:00.000Z",
+        "event_end": "2026-06-25T09:00:00.000Z",
+        "location_ko": "서울특별시 종로구 중학동 종로1길 50",
+        "location_en": "서울특별시 종로구 중학동 종로1길 50"
+      },
+      "url": "https://luma.com/md1iheb7"
+    },
+    {
       "id": "https://loopback.social/events#news-213c3f052f1774a1",
       "title": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지) / UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)",
       "content_text": "[KO] UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지)\n[EN] UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)\nEvent: 2026-05-18T15:00:00.000Z — 2026-06-05T14:59:59.000Z\nCategory: announcement",

@@ -155,5 +155,17 @@
     },
     "link": "https://2026.ubuntu-kr.org/cfp",
     "display": true
+  },
+  {
+    "start": "2026-06-05 00:00:00",
+    "end": "2026-06-25 18:00:00",
+    "timezone": "+09:00",
+    "event_start": "2026-06-25 13:30:00",
+    "event_end": "2026-06-25 18:00:00",
+    "category": "event",
+    "location": "서울특별시 종로구 중학동 종로1길 50",
+    "message": "Build //localhost:Seoul",
+    "link": "https://luma.com/md1iheb7",
+    "display": true
   }
 ]
