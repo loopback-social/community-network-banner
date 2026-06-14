@@ -5,7 +5,7 @@
   <link rel="alternate" type="text/html" href="https://loopback.social/" />
   <link rel="self" type="application/atom+xml" href="https://loopback.social/feeds/feed.en.atom" />
   <id>tag:loopback.social,2026:feed/en</id>
-  <updated>2026-06-14T02:29:01.975Z</updated>
+  <updated>2026-06-14T07:59:22.418Z</updated>
   <generator uri="https://github.com/loopback-social/community-network-banner">community-network-banner build-feeds.mjs</generator>
   <entry>
     <id>tag:loopback.social,2026:news/news-548a88c071856781</id>
@@ -16,6 +16,17 @@
     <category term="announcement" />
     <summary type="text">UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!
 Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
+Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-ba8b08cb1b845ac7</id>
+    <title type="text">.NET Universe: Busan Edition, 2606 with Busan IT Mogakko</title>
+    <link rel="alternate" type="text/html" href="https://dotnetuniverse.net/xyz/busan-2606" />
+    <published>2026-06-13T15:00:00.000Z</published>
+    <updated>2026-06-13T15:00:00.000Z</updated>
+    <category term="announcement" />
+    <summary type="text">.NET Universe: Busan Edition, 2606 with Busan IT Mogakko
+Event: 2026-06-13T15:00:00.000Z — 2026-06-20T13:00:00.000Z
 Category: announcement</summary>
   </entry>
   <entry>

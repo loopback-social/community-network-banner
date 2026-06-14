@@ -7,8 +7,21 @@ X-WR-CALNAME:Loopback Social — 커뮤니티 행사
 X-WR-CALDESC:Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
+UID:news-ba8b08cb1b845ac7@loopback.social
+DTSTAMP:20260614T075922Z
+DTSTART:20260613T150000Z
+DTEND:20260620T130000Z
+SUMMARY:부산IT모각코와 함께 하는 .NET Universe: Busan Edition\, 2
+ 606
+DESCRIPTION:부산IT모각코와 함께 하는 .NET Universe: Busan Edition
+ \, 2606\nLink: https://dotnetuniverse.net/xyz/busan-2606\nCategory: announ
+ cement\nSource: https://loopback.social/news.json
+URL:https://dotnetuniverse.net/xyz/busan-2606
+CATEGORIES:announcement
+END:VEVENT
+BEGIN:VEVENT
 UID:news-99805ae4d59f7127@loopback.social
-DTSTAMP:20260614T022901Z
+DTSTAMP:20260614T075922Z
 DTSTART:20260625T043000Z
 DTEND:20260625T090000Z
 SUMMARY:Build //localhost:Seoul
@@ -20,7 +33,7 @@ CATEGORIES:event
 END:VEVENT
 BEGIN:VEVENT
 UID:news-548a88c071856781@loopback.social
-DTSTAMP:20260614T022901Z
+DTSTAMP:20260614T075922Z
 DTSTART:20260829T000000Z
 DTEND:20260829T080000Z
 SUMMARY:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 한국

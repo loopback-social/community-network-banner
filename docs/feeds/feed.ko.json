@@ -31,6 +31,28 @@
       "url": "https://event-us.kr/m/124753/53287"
     },
     {
+      "id": "https://loopback.social/events#news-ba8b08cb1b845ac7",
+      "title": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606",
+      "content_text": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606\nEvent: 2026-06-13T15:00:00.000Z — 2026-06-20T13:00:00.000Z\nCategory: announcement",
+      "date_published": "2026-06-13T15:00:00.000Z",
+      "date_modified": "2026-06-13T15:00:00.000Z",
+      "tags": [
+        "announcement"
+      ],
+      "_loopback_social": {
+        "source": "curated",
+        "community": null,
+        "community_name": null,
+        "message_ko": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606",
+        "message_en": ".NET Universe: Busan Edition, 2606 with Busan IT Mogakko",
+        "event_start": "2026-06-13T15:00:00.000Z",
+        "event_end": "2026-06-20T13:00:00.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://dotnetuniverse.net/xyz/busan-2606"
+    },
+    {
       "id": "https://loopback.social/events#news-99805ae4d59f7127",
       "title": "Build //localhost:Seoul",
       "content_text": "Build //localhost:Seoul\nEvent: 2026-06-25T04:30:00.000Z — 2026-06-25T09:00:00.000Z\nCategory: event\nLocation: 서울특별시 종로구 중학동 종로1길 50",
