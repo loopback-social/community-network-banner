@@ -5,7 +5,7 @@
   <link rel="alternate" type="text/html" href="https://loopback.social/" />
   <link rel="self" type="application/atom+xml" href="https://loopback.social/feeds/feed.en.atom" />
   <id>tag:loopback.social,2026:feed/en</id>
-  <updated>2026-06-27T01:59:50.440Z</updated>
+  <updated>2026-06-28T02:10:45.483Z</updated>
   <generator uri="https://github.com/loopback-social/community-network-banner">community-network-banner build-feeds.mjs</generator>
   <entry>
     <id>tag:loopback.social,2026:news/news-548a88c071856781</id>
@@ -50,17 +50,6 @@ Location: 서울특별시 종로구 중학동 종로1길 50</summary>
     <category term="announcement" />
     <summary type="text">UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)
 Event: 2026-05-18T15:00:00.000Z — 2026-06-05T14:59:59.000Z
-Category: announcement</summary>
-  </entry>
-  <entry>
-    <id>tag:loopback.social,2026:news/news-4acbe976567c665c</id>
-    <title type="text">🚀 [dot4] Monthly .NET Talks · May</title>
-    <link rel="alternate" type="text/html" href="https://ticketa.co/event/qpye8cf5" />
-    <published>2026-05-12T04:30:00.000Z</published>
-    <updated>2026-05-12T04:30:00.000Z</updated>
-    <category term="announcement" />
-    <summary type="text">🚀 [dot4] Monthly .NET Talks · May
-Event: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z
 Category: announcement</summary>
   </entry>
   <entry>

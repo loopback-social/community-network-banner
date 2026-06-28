@@ -97,28 +97,6 @@
       "url": "https://2026.ubuntu-kr.org/cfp"
     },
     {
-      "id": "https://loopback.social/events#news-4acbe976567c665c",
-      "title": "🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월 / 🚀 [dot4] Monthly .NET Talks · May",
-      "content_text": "[KO] 🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월\n[EN] 🚀 [dot4] Monthly .NET Talks · May\nEvent: 2026-05-12T04:30:00.000Z — 2026-05-28T08:30:00.000Z\nCategory: announcement",
-      "date_published": "2026-05-12T04:30:00.000Z",
-      "date_modified": "2026-05-12T04:30:00.000Z",
-      "tags": [
-        "announcement"
-      ],
-      "_loopback_social": {
-        "source": "curated",
-        "community": null,
-        "community_name": null,
-        "message_ko": "🚀 [dot4] 매달 모이는 닷넷 이야기 · 5월",
-        "message_en": "🚀 [dot4] Monthly .NET Talks · May",
-        "event_start": "2026-05-12T04:30:00.000Z",
-        "event_end": "2026-05-28T08:30:00.000Z",
-        "location_ko": null,
-        "location_en": null
-      },
-      "url": "https://ticketa.co/event/qpye8cf5"
-    },
-    {
       "id": "https://loopback.social/events#news-20ac7e8cd968129f",
       "title": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
       "content_text": "[KO] 🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감)\n[EN] 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)\nEvent: 2026-05-02T15:00:00.000Z — 2026-06-26T14:59:59.000Z\nCategory: announcement",
