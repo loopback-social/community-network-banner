@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 7,
+      "numberOfItems": 6,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -147,32 +147,6 @@
           "position": 4,
           "item": {
             "@type": "Event",
-            "@id": "https://loopback.social/events#news-213c3f052f1774a1",
-            "name": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지) / UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)",
-            "startDate": "2026-05-18T15:00:00.000Z",
-            "endDate": "2026-06-05T14:59:59.000Z",
-            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "inLanguage": [
-              "ko",
-              "en"
-            ],
-            "additionalType": "announcement",
-            "url": "https://2026.ubuntu-kr.org/cfp",
-            "alternateName": "UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)",
-            "description": "UbuCon Korea X MiniDebConf Korea 2026 발표 제안서 모집 (6/5 까지) / UbuCon Korea X MiniDebConf Korea 2026 Call for proposals (Until June 5)",
-            "location": {
-              "@type": "VirtualLocation",
-              "url": "https://2026.ubuntu-kr.org/cfp"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "item": {
-            "@type": "Event",
             "@id": "https://loopback.social/events#news-ba8b08cb1b845ac7",
             "name": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606 / .NET Universe: Busan Edition, 2606 with Busan IT Mogakko",
             "startDate": "2026-06-13T15:00:00.000Z",
@@ -196,7 +170,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 5,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-99805ae4d59f7127",
@@ -221,7 +195,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 6,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",
