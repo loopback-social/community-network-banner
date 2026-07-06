@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 6,
+      "numberOfItems": 7,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -196,6 +196,31 @@
         {
           "@type": "ListItem",
           "position": 6,
+          "item": {
+            "@type": "Event",
+            "@id": "https://loopback.social/events#news-af321c73a91561aa",
+            "name": "Dot4 7월 meetup",
+            "startDate": "2026-07-23T04:30:00.000Z",
+            "endDate": "2026-07-23T08:00:00.000Z",
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "inLanguage": [
+              "ko",
+              "en"
+            ],
+            "additionalType": "event",
+            "url": "https://ticketa.co/event/fsdukhi4",
+            "description": "Dot4 7월 meetup / Dot4 7월 meetup",
+            "location": {
+              "@type": "Place",
+              "name": "서울 종로구 종로1길 50 13층"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",
