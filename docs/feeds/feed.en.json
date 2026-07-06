@@ -31,6 +31,28 @@
       "url": "https://event-us.kr/m/124753/53287"
     },
     {
+      "id": "https://loopback.social/events#news-af321c73a91561aa",
+      "title": "Dot4 7월 meetup",
+      "content_text": "Dot4 7월 meetup\nEvent: 2026-07-23T04:30:00.000Z — 2026-07-23T08:00:00.000Z\nCategory: event\nLocation: 서울 종로구 종로1길 50 13층",
+      "date_published": "2026-06-30T15:00:00.000Z",
+      "date_modified": "2026-06-30T15:00:00.000Z",
+      "tags": [
+        "event"
+      ],
+      "_loopback_social": {
+        "source": "curated",
+        "community": null,
+        "community_name": null,
+        "message_ko": "Dot4 7월 meetup",
+        "message_en": "Dot4 7월 meetup",
+        "event_start": "2026-07-23T04:30:00.000Z",
+        "event_end": "2026-07-23T08:00:00.000Z",
+        "location_ko": "서울 종로구 종로1길 50 13층",
+        "location_en": "서울 종로구 종로1길 50 13층"
+      },
+      "url": "https://ticketa.co/event/fsdukhi4"
+    },
+    {
       "id": "https://loopback.social/events#news-ba8b08cb1b845ac7",
       "title": ".NET Universe: Busan Edition, 2606 with Busan IT Mogakko",
       "content_text": ".NET Universe: Busan Edition, 2606 with Busan IT Mogakko\nEvent: 2026-06-13T15:00:00.000Z — 2026-06-20T13:00:00.000Z\nCategory: announcement",

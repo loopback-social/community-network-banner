@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.xml" rel="self" type="application/rss+xml" />
     <description>Events and announcements shared across the Loopback Social community network.</description>
     <language>ko-en</language>
-    <lastBuildDate>Mon, 06 Jul 2026 01:58:14 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 15:13:35 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다! / UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!</title>
@@ -18,6 +18,17 @@
 [EN] UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!
 Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
 Category: announcement</description>
+    </item>
+    <item>
+      <title>Dot4 7월 meetup</title>
+      <link>https://ticketa.co/event/fsdukhi4</link>
+      <guid isPermaLink="false">news-af321c73a91561aa</guid>
+      <pubDate>Tue, 30 Jun 2026 15:00:00 GMT</pubDate>
+      <category>event</category>
+      <description>[KO] Dot4 7월 meetup
+Event: 2026-07-23T04:30:00.000Z — 2026-07-23T08:00:00.000Z
+Category: event
+Location: 서울 종로구 종로1길 50 13층</description>
     </item>
     <item>
       <title>부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606 / .NET Universe: Busan Edition, 2606 with Busan IT Mogakko</title>
