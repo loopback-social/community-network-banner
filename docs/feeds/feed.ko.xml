@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 20 Jul 2026 01:28:10 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 01:23:16 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
@@ -28,16 +28,6 @@ Category: announcement</description>
 Event: 2026-07-23T04:30:00.000Z — 2026-07-23T08:00:00.000Z
 Category: event
 Location: 서울 종로구 종로1길 50 13층</description>
-    </item>
-    <item>
-      <title>부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606</title>
-      <link>https://dotnetuniverse.net/xyz/busan-2606</link>
-      <guid isPermaLink="false">news-ba8b08cb1b845ac7</guid>
-      <pubDate>Sat, 13 Jun 2026 15:00:00 GMT</pubDate>
-      <category>announcement</category>
-      <description>부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606
-Event: 2026-06-13T15:00:00.000Z — 2026-06-20T13:00:00.000Z
-Category: announcement</description>
     </item>
     <item>
       <title>Build //localhost:Seoul</title>

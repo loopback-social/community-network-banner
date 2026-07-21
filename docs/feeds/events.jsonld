@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 7,
+      "numberOfItems": 6,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -147,32 +147,6 @@
           "position": 4,
           "item": {
             "@type": "Event",
-            "@id": "https://loopback.social/events#news-ba8b08cb1b845ac7",
-            "name": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606 / .NET Universe: Busan Edition, 2606 with Busan IT Mogakko",
-            "startDate": "2026-06-13T15:00:00.000Z",
-            "endDate": "2026-06-20T13:00:00.000Z",
-            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "inLanguage": [
-              "ko",
-              "en"
-            ],
-            "additionalType": "announcement",
-            "url": "https://dotnetuniverse.net/xyz/busan-2606",
-            "alternateName": ".NET Universe: Busan Edition, 2606 with Busan IT Mogakko",
-            "description": "부산IT모각코와 함께 하는 .NET Universe: Busan Edition, 2606 / .NET Universe: Busan Edition, 2606 with Busan IT Mogakko",
-            "location": {
-              "@type": "VirtualLocation",
-              "url": "https://dotnetuniverse.net/xyz/busan-2606"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "item": {
-            "@type": "Event",
             "@id": "https://loopback.social/events#news-99805ae4d59f7127",
             "name": "Build //localhost:Seoul",
             "startDate": "2026-06-25T04:30:00.000Z",
@@ -195,7 +169,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 5,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-af321c73a91561aa",
@@ -220,7 +194,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 6,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",
