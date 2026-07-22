@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Wed, 22 Jul 2026 01:21:52 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 13:13:59 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
@@ -17,6 +17,16 @@
       <description>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!
 Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
 Category: announcement</description>
+    </item>
+    <item>
+      <title>FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집</title>
+      <link>https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105</link>
+      <guid isPermaLink="false">news-4090d46dcfadd2aa</guid>
+      <pubDate>Tue, 21 Jul 2026 15:00:00 GMT</pubDate>
+      <category>campaign</category>
+      <description>FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집
+Event: 2026-07-21T15:00:00.000Z — 2026-09-30T14:59:59.000Z
+Category: campaign</description>
     </item>
     <item>
       <title>Dot4 7월 meetup</title>

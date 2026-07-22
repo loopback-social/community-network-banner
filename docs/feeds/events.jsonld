@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 6,
+      "numberOfItems": 7,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -172,6 +172,32 @@
           "position": 5,
           "item": {
             "@type": "Event",
+            "@id": "https://loopback.social/events#news-4090d46dcfadd2aa",
+            "name": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집 / FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant",
+            "startDate": "2026-07-21T15:00:00.000Z",
+            "endDate": "2026-09-30T14:59:59.000Z",
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "inLanguage": [
+              "ko",
+              "en"
+            ],
+            "additionalType": "campaign",
+            "url": "https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105",
+            "alternateName": "FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant",
+            "description": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집 / FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant",
+            "location": {
+              "@type": "VirtualLocation",
+              "url": "https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Event",
             "@id": "https://loopback.social/events#news-af321c73a91561aa",
             "name": "Dot4 7월 meetup",
             "startDate": "2026-07-23T04:30:00.000Z",
@@ -194,7 +220,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 7,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",

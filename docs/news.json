@@ -196,5 +196,17 @@
       "ko": "https://ticketa.co/event/fsdukhi4"
     },
     "display": true
+  },
+  {
+    "start": "2026-07-22 00:00:00",
+    "end": "2026-09-30 23:59:59",
+    "timezone": "+09:00",
+    "category": "campaign",
+    "message": {
+      "ko": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집",
+      "en": "FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant"
+    },
+    "link": "https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105",
+    "display": true
   }
 ]

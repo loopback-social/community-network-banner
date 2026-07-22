@@ -5,7 +5,7 @@
   <link rel="alternate" type="text/html" href="https://loopback.social/" />
   <link rel="self" type="application/atom+xml" href="https://loopback.social/feeds/feed.atom" />
   <id>tag:loopback.social,2026:feed</id>
-  <updated>2026-07-22T01:21:52.449Z</updated>
+  <updated>2026-07-22T13:13:59.595Z</updated>
   <generator uri="https://github.com/loopback-social/community-network-banner">community-network-banner build-feeds.mjs</generator>
   <entry>
     <id>tag:loopback.social,2026:news/news-548a88c071856781</id>
@@ -18,6 +18,18 @@
 [EN] UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!
 Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
 Category: announcement</summary>
+  </entry>
+  <entry>
+    <id>tag:loopback.social,2026:news/news-4090d46dcfadd2aa</id>
+    <title type="text">FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집 / FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant</title>
+    <link rel="alternate" type="text/html" href="https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105" />
+    <published>2026-07-21T15:00:00.000Z</published>
+    <updated>2026-07-21T15:00:00.000Z</updated>
+    <category term="campaign" />
+    <summary type="text">[KO] FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집
+[EN] FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant
+Event: 2026-07-21T15:00:00.000Z — 2026-09-30T14:59:59.000Z
+Category: campaign</summary>
   </entry>
   <entry>
     <id>tag:loopback.social,2026:news/news-af321c73a91561aa</id>
