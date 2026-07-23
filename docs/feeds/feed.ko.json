@@ -31,6 +31,28 @@
       "url": "https://event-us.kr/m/124753/53287"
     },
     {
+      "id": "https://loopback.social/events#news-4090d46dcfadd2aa",
+      "title": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집",
+      "content_text": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집\nEvent: 2026-07-21T15:00:00.000Z — 2026-09-30T14:59:59.000Z\nCategory: campaign",
+      "date_published": "2026-07-21T15:00:00.000Z",
+      "date_modified": "2026-07-21T15:00:00.000Z",
+      "tags": [
+        "campaign"
+      ],
+      "_loopback_social": {
+        "source": "curated",
+        "community": null,
+        "community_name": null,
+        "message_ko": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집",
+        "message_en": "FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant",
+        "event_start": "2026-07-21T15:00:00.000Z",
+        "event_end": "2026-09-30T14:59:59.000Z",
+        "location_ko": null,
+        "location_en": null
+      },
+      "url": "https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105"
+    },
+    {
       "id": "https://loopback.social/events#news-af321c73a91561aa",
       "title": "Dot4 7월 meetup",
       "content_text": "Dot4 7월 meetup\nEvent: 2026-07-23T04:30:00.000Z — 2026-07-23T08:00:00.000Z\nCategory: event\nLocation: 서울 종로구 종로1길 50 13층",
