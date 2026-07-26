@@ -75,28 +75,6 @@
       "url": "https://ticketa.co/event/fsdukhi4"
     },
     {
-      "id": "https://loopback.social/events#news-99805ae4d59f7127",
-      "title": "Build //localhost:Seoul",
-      "content_text": "Build //localhost:Seoul\nEvent: 2026-06-25T04:30:00.000Z — 2026-06-25T09:00:00.000Z\nCategory: event\nLocation: 서울특별시 종로구 중학동 종로1길 50",
-      "date_published": "2026-06-04T15:00:00.000Z",
-      "date_modified": "2026-06-04T15:00:00.000Z",
-      "tags": [
-        "event"
-      ],
-      "_loopback_social": {
-        "source": "curated",
-        "community": null,
-        "community_name": null,
-        "message_ko": "Build //localhost:Seoul",
-        "message_en": "Build //localhost:Seoul",
-        "event_start": "2026-06-25T04:30:00.000Z",
-        "event_end": "2026-06-25T09:00:00.000Z",
-        "location_ko": "서울특별시 종로구 중학동 종로1길 50",
-        "location_en": "서울특별시 종로구 중학동 종로1길 50"
-      },
-      "url": "https://luma.com/md1iheb7"
-    },
-    {
       "id": "https://loopback.social/events#news-20ac7e8cd968129f",
       "title": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
       "content_text": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)\nEvent: 2026-05-02T15:00:00.000Z — 2026-06-26T14:59:59.000Z\nCategory: announcement",

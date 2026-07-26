@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 7,
+      "numberOfItems": 6,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -147,31 +147,6 @@
           "position": 4,
           "item": {
             "@type": "Event",
-            "@id": "https://loopback.social/events#news-99805ae4d59f7127",
-            "name": "Build //localhost:Seoul",
-            "startDate": "2026-06-25T04:30:00.000Z",
-            "endDate": "2026-06-25T09:00:00.000Z",
-            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "inLanguage": [
-              "ko",
-              "en"
-            ],
-            "additionalType": "event",
-            "url": "https://luma.com/md1iheb7",
-            "description": "Build //localhost:Seoul / Build //localhost:Seoul",
-            "location": {
-              "@type": "Place",
-              "name": "서울특별시 종로구 중학동 종로1길 50"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "item": {
-            "@type": "Event",
             "@id": "https://loopback.social/events#news-4090d46dcfadd2aa",
             "name": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집 / FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant",
             "startDate": "2026-07-21T15:00:00.000Z",
@@ -195,7 +170,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 5,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-af321c73a91561aa",
@@ -220,7 +195,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 6,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",
