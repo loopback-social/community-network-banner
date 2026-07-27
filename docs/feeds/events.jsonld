@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 6,
+      "numberOfItems": 5,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -121,32 +121,6 @@
           "position": 3,
           "item": {
             "@type": "Event",
-            "@id": "https://loopback.social/events#news-20ac7e8cd968129f",
-            "name": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
-            "startDate": "2026-05-02T15:00:00.000Z",
-            "endDate": "2026-06-26T14:59:59.000Z",
-            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "inLanguage": [
-              "ko",
-              "en"
-            ],
-            "additionalType": "announcement",
-            "url": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205",
-            "alternateName": "🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
-            "description": "🚀 Ship to Production: 오픈 프로젝트 시즌 III 모집🔥 (~6/26 마감) / 🚀 Ship to Production: Open Project Season III Recruitment🔥 (Deadline: 6/26)",
-            "location": {
-              "@type": "VirtualLocation",
-              "url": "https://www.cloudbro.ai/t/ship-to-production-open-project-season-iii-5-25/4205"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "item": {
-            "@type": "Event",
             "@id": "https://loopback.social/events#news-4090d46dcfadd2aa",
             "name": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집 / FOSS for All Microgrants: Give a Donation or Apply to Receive a Grant",
             "startDate": "2026-07-21T15:00:00.000Z",
@@ -170,7 +144,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 4,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-af321c73a91561aa",
@@ -195,7 +169,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 5,
           "item": {
             "@type": "Event",
             "@id": "https://loopback.social/events#news-548a88c071856781",
