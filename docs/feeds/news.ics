@@ -8,7 +8,7 @@ X-WR-CALDESC:Events and announcements shared across the Loopback Social communit
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
 UID:news-af321c73a91561aa@loopback.social
-DTSTAMP:20260812T005550Z
+DTSTAMP:20260812T113515Z
 DTSTART:20260723T043000Z
 DTEND:20260723T080000Z
 SUMMARY:Dot4 7월 meetup
@@ -19,8 +19,20 @@ LOCATION:서울 종로구 종로1길 50 13층
 CATEGORIES:event
 END:VEVENT
 BEGIN:VEVENT
+UID:news-fd71c26cf1d2ba68@loopback.social
+DTSTAMP:20260812T113515Z
+DTSTART:20260827T043000Z
+DTEND:20260827T083000Z
+SUMMARY:Dot4 8월 meetup
+DESCRIPTION:[KO] Dot4 8월 meetup\nLink: https://ticketa.co/event/ee3aykrj\
+ nCategory: event\nSource: https://loopback.social/news.json
+URL:https://ticketa.co/event/ee3aykrj
+LOCATION:서울 종로구 종로1길 50 13층 한국마이크로소프트
+CATEGORIES:event
+END:VEVENT
+BEGIN:VEVENT
 UID:news-548a88c071856781@loopback.social
-DTSTAMP:20260812T005550Z
+DTSTAMP:20260812T113515Z
 DTSTART:20260829T000000Z
 DTEND:20260829T080000Z
 SUMMARY:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 한국
