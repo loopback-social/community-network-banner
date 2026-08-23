@@ -6,7 +6,7 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Sat, 22 Aug 2026 00:32:16 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 00:34:32 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
     <item>
       <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
@@ -38,17 +38,6 @@ Location: 서울 종로구 종로1길 50 13층 한국마이크로소프트</desc
       <description>FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집
 Event: 2026-07-21T15:00:00.000Z — 2026-09-30T14:59:59.000Z
 Category: campaign</description>
-    </item>
-    <item>
-      <title>Dot4 7월 meetup</title>
-      <link>https://ticketa.co/event/fsdukhi4</link>
-      <guid isPermaLink="false">news-af321c73a91561aa</guid>
-      <pubDate>Tue, 30 Jun 2026 15:00:00 GMT</pubDate>
-      <category>event</category>
-      <description>Dot4 7월 meetup
-Event: 2026-07-23T04:30:00.000Z — 2026-07-23T08:00:00.000Z
-Category: event
-Location: 서울 종로구 종로1길 50 13층</description>
     </item>
     <item>
       <title>.NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.</title>
