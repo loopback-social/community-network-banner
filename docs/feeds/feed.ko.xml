@@ -6,18 +6,8 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Mon, 28 Sep 2026 02:18:09 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 03:02:44 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
-    <item>
-      <title>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!</title>
-      <link>https://event-us.kr/m/124753/53287</link>
-      <guid isPermaLink="false">news-548a88c071856781</guid>
-      <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
-      <category>announcement</category>
-      <description>오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!
-Event: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z
-Category: announcement</description>
-    </item>
     <item>
       <title>FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집</title>
       <link>https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105</link>

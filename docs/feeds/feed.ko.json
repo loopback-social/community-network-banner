@@ -9,28 +9,6 @@
   "language": "ko",
   "items": [
     {
-      "id": "https://loopback.social/events#news-548a88c071856781",
-      "title": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!",
-      "content_text": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!\nEvent: 2026-08-29T00:00:00.000Z — 2026-08-29T08:00:00.000Z\nCategory: announcement",
-      "date_published": "2026-08-29T00:00:00.000Z",
-      "date_modified": "2026-08-29T00:00:00.000Z",
-      "tags": [
-        "announcement"
-      ],
-      "_loopback_social": {
-        "source": "curated",
-        "community": null,
-        "community_name": null,
-        "message_ko": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다!",
-        "message_en": "UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!",
-        "event_start": "2026-08-29T00:00:00.000Z",
-        "event_end": "2026-08-29T08:00:00.000Z",
-        "location_ko": null,
-        "location_en": null
-      },
-      "url": "https://event-us.kr/m/124753/53287"
-    },
-    {
       "id": "https://loopback.social/events#news-4090d46dcfadd2aa",
       "title": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집",
       "content_text": "FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집\nEvent: 2026-07-21T15:00:00.000Z — 2026-09-30T14:59:59.000Z\nCategory: campaign",

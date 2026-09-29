@@ -62,7 +62,7 @@
       "@type": "ItemList",
       "@id": "https://loopback.social/events#list",
       "name": "Loopback Social — Community Events",
-      "numberOfItems": 4,
+      "numberOfItems": 3,
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -139,32 +139,6 @@
             "location": {
               "@type": "VirtualLocation",
               "url": "https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "item": {
-            "@type": "Event",
-            "@id": "https://loopback.social/events#news-548a88c071856781",
-            "name": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다! / UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!",
-            "startDate": "2026-08-29T00:00:00.000Z",
-            "endDate": "2026-08-29T08:00:00.000Z",
-            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "inLanguage": [
-              "ko",
-              "en"
-            ],
-            "additionalType": "announcement",
-            "url": "https://event-us.kr/m/124753/53287",
-            "alternateName": "UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!",
-            "description": "오는 8월 29일, UbuCon Korea X MiniDebConf Korea 2026이 한국마이크로소프트에서 개최됩니다! / UbuCon Korea X MiniDebConf Korea 2026 will be held at Microsoft Korea on August 29!",
-            "location": {
-              "@type": "VirtualLocation",
-              "url": "https://event-us.kr/m/124753/53287"
             }
           }
         }

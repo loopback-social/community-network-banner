@@ -6,18 +6,4 @@ METHOD:PUBLISH
 X-WR-CALNAME:Loopback Social — 커뮤니티 행사
 X-WR-CALDESC:Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.
 X-WR-TIMEZONE:Asia/Seoul
-BEGIN:VEVENT
-UID:news-548a88c071856781@loopback.social
-DTSTAMP:20260928T021809Z
-DTSTART:20260829T000000Z
-DTEND:20260829T080000Z
-SUMMARY:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 한국
- 마이크로소프트에서 개최됩니다!
-DESCRIPTION:오는 8월 29일\, UbuCon Korea X MiniDebConf Korea 2026이 
- 한국마이크로소프트에서 개최됩니다!\nLink: https://event-us
- .kr/m/124753/53287\nCategory: announcement\nSource: https://loopback.socia
- l/news.json
-URL:https://event-us.kr/m/124753/53287
-CATEGORIES:announcement
-END:VEVENT
 END:VCALENDAR
