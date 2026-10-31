@@ -6,18 +6,8 @@
     <atom:link href="https://loopback.social/feeds/feed.ko.xml" rel="self" type="application/rss+xml" />
     <description>Loopback Social 커뮤니티 네트워크가 함께 공유하는 행사와 공지.</description>
     <language>ko</language>
-    <lastBuildDate>Fri, 30 Oct 2026 03:16:02 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 02:59:39 GMT</lastBuildDate>
     <generator>community-network-banner build-feeds.mjs</generator>
-    <item>
-      <title>FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집</title>
-      <link>https://forum.fossforall.org/t/foss-for-all-microgrants-2026/105</link>
-      <guid isPermaLink="false">news-4090d46dcfadd2aa</guid>
-      <pubDate>Tue, 21 Jul 2026 15:00:00 GMT</pubDate>
-      <category>campaign</category>
-      <description>FOSS for All Microgrants 기부금 및 수혜 오픈소스 프로젝트/커뮤니티 모집
-Event: 2026-07-21T15:00:00.000Z — 2026-09-30T14:59:59.000Z
-Category: campaign</description>
-    </item>
     <item>
       <title>.NET Universe 2026 다시 보기 영상이 순차 공개됩니다. 페이지에서 확인해 보세요.</title>
       <link>https://dotnetuniverse.net/2026</link>
